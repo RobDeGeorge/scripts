@@ -180,7 +180,21 @@ def update_i3_config(colors):
         with open(i3_config_path, 'r') as f:
             config = f.read()
         
-        primary = rgb_to_hex(*colors[0])
+        # Find most vibrant color for focused window
+        most_vibrant = colors[0]
+        max_vibrancy = 0
+        
+        for color in colors:
+            r, g, b = color
+            color_range = max(r, g, b) - min(r, g, b)
+            brightness = (r + g + b) / 3
+            vibrancy = color_range * (brightness / 255.0)
+            
+            if vibrancy > max_vibrancy:
+                max_vibrancy = vibrancy
+                most_vibrant = color
+        
+        primary = rgb_to_hex(*most_vibrant)
         primary = ensure_minimum_brightness(primary, 0.25)
         secondary = adjust_brightness(primary, 0.7)
         tertiary = adjust_brightness(primary, 0.4) 
