@@ -154,22 +154,24 @@ def extract_dominant_colors(image_path):
         colors = sorted(colors, key=lambda x: x[0], reverse=True)
         
         dominant_colors = []
-        for count, color in colors[:20]:
+        for count, color in colors:
             r, g, b = color
-            if color != (0, 0, 0) and color != (255, 255, 255):
-                color_range = max(r, g, b) - min(r, g, b)
-                if color_range > 30:
-                    dominant_colors.append(color)
+            # Skip blacks and whites
+            if (r < 30 and g < 30 and b < 30) or (r > 225 and g > 225 and b > 225):
+                continue
+            
+            dominant_colors.append(color)
             if len(dominant_colors) >= 5:
                 break
                 
+        # Simple fallback
         if len(dominant_colors) < 5:
-            dominant_colors.extend([(100, 120, 140), (80, 100, 120), (60, 80, 100), (40, 60, 80), (20, 40, 60)])
+            dominant_colors.extend([(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)])
         
         return dominant_colors[:5]
     except Exception as e:
         print(f'Error extracting colors: {e}', file=sys.stderr)
-        return [(100, 120, 140), (80, 100, 120), (60, 80, 100), (40, 60, 80), (20, 40, 60)]
+        return [(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)]
 
 def update_i3_config(colors):
     try:
@@ -239,7 +241,7 @@ def update_kitty_config(colors):
         bg_color = adjust_brightness(primary, 0.08)
         bg_color = ensure_minimum_brightness(bg_color, 0.05)
         
-        fg_color = create_readable_text_color(bg_color, colors, 2.5, prefer_color=True)
+        fg_color = create_readable_text_color(bg_color, colors[1:3], 3.0, prefer_color=True)
         selection_bg = adjust_brightness(primary, 0.3)
         selection_bg = ensure_minimum_brightness(selection_bg, 0.2)
         selection_fg = create_readable_text_color(selection_bg, colors, 3.0)
