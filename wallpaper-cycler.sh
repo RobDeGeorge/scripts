@@ -2,6 +2,7 @@
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 INDEX_FILE="$HOME/.wallpaper_index"
 I3_CONFIG="$HOME/.config/i3/config"
+I3BLOCKS_CONFIG="$HOME/.config/i3blocks/config"
 KITTY_CONFIG="$HOME/.config/kitty/kitty.conf"
 DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
 
@@ -359,9 +360,72 @@ def update_razer_keyboard(colors):
     except Exception as e:
         print(f'Error updating Razer keyboard: {e}', file=sys.stderr)
 
+def update_i3blocks_config(colors):
+    try:
+        i3blocks_config_path = '$I3BLOCKS_CONFIG'
+        
+        with open(i3blocks_config_path, 'r') as f:
+            config = f.read()
+        
+        # Generate gradient colors from wallpaper
+        primary = rgb_to_hex(*colors[0])
+        primary = ensure_minimum_brightness(primary, 0.3)
+        
+        # Create a smooth gradient from primary color
+        gradient_colors = []
+        base_h, base_l, base_s = colorsys.rgb_to_hls(*[c/255.0 for c in colors[0]])
+        
+        # Generate 12 colors in a gradient (for 12 blocks)
+        for i in range(12):
+            # Shift hue slightly and vary lightness/saturation
+            hue_shift = (i * 30) % 360 / 360.0  # 30 degree shifts
+            new_h = (base_h + hue_shift * 0.3) % 1.0  # Subtle hue variations
+            
+            # Vary lightness between 0.4 and 0.8 for visibility
+            new_l = 0.4 + (0.4 * (i / 11.0))
+            # Keep saturation high for vibrancy
+            new_s = min(base_s * 1.4, 0.9)
+            
+            r, g, b = colorsys.hls_to_rgb(new_h, new_l, new_s)
+            color_hex = rgb_to_hex(int(r*255), int(g*255), int(b*255))
+            gradient_colors.append(color_hex)
+        
+        # Define the blocks in order as they appear in the config
+        blocks = [
+            'wifi_info', 'cpu_info', 'gpu_info', 'memory_usage', 
+            'disk_usage', 'volume', 'brightness', 'date', 
+            'time', 'battery'
+        ]
+        
+        # Update each block's color using simple string replacement
+        import re
+        lines = config.split('\\n')
+        new_lines = []
+        current_block = None
+        
+        for line in lines:
+            if line.startswith('[') and line.endswith(']'):
+                current_block = line[1:-1]  # Extract block name
+            elif line.startswith('color=#') and current_block in blocks:
+                block_index = blocks.index(current_block)
+                if block_index < len(gradient_colors):
+                    line = f'color={gradient_colors[block_index]}'
+            new_lines.append(line)
+        
+        config = '\\n'.join(new_lines)
+        
+        with open(i3blocks_config_path, 'w') as f:
+            f.write(config)
+            
+        print(f'Updated i3blocks config with wallpaper-based gradient starting from {primary}', file=sys.stderr)
+        
+    except Exception as e:
+        print(f'Error updating i3blocks config: {e}', file=sys.stderr)
+
 wallpaper_path = sys.argv[1]
 colors = extract_dominant_colors(wallpaper_path)
 update_i3_config(colors)
+update_i3blocks_config(colors)
 update_kitty_config(colors)
 update_dunst_config(colors)
 update_razer_keyboard(colors)
@@ -421,7 +485,8 @@ extract_colors_and_update_configs "$WALLPAPER"
 
 xwallpaper --zoom "$WALLPAPER" &
 
-i3-msg reload >/dev/null 2>&1
+# Restart i3 to pick up new i3blocks colors (equivalent to $mod+Shift+r)
+i3-msg restart >/dev/null 2>&1
 
 pkill dunst >/dev/null 2>&1
 dunst &
@@ -429,5 +494,5 @@ dunst &
 notify-send "Wallpaper Updated" "New color scheme applied! 🎨" >/dev/null 2>&1 &
 
 echo "Wallpaper and color scheme updated successfully" >&2
-r
+
 exit 0
