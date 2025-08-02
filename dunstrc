@@ -1,1 +1,10 @@
-/home/rhea/.config/dunst/dunstrc
+[global]
+    geometry = "300x50-0-50"
+    horizontal_alignment = "center"
+    origin = "bottom-center"
+    timeout = 10000
+    
+[urgency_normal]
+    background = "#151d1d"
+    foreground = "#f0f1f4"
+    frame_color = "#454a53"
