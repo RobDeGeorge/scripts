@@ -11,5 +11,6 @@ cp ./i3-config ~/.config/i3/config
 cp ./i3blocks-config ~/.config/i3blocks/config
 cp ./dunstrc ~/.config/dunst/dunstrc
 cp ./kitty.conf ~/.config/kitty/kitty.conf
+cp ./bashrc ~/.bashrc
 
 echo "Config files restored to ~/.config/"
