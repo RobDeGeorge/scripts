@@ -7,4 +7,12 @@ cp ~/.config/dunst/dunstrc ./dunstrc
 cp ~/.config/kitty/kitty.conf ./kitty.conf
 cp ~/.bashrc ./bashrc
 
-echo "Config files synced to current directory"
+# Sync wallpapers
+if [ -d ~/Pictures/Wallpapers ]; then
+    mkdir -p ./wallpapers
+    cp ~/Pictures/Wallpapers/* ./wallpapers/ 2>/dev/null || echo "Warning: No wallpapers found to sync"
+else
+    echo "Warning: ~/Pictures/Wallpapers directory not found"
+fi
+
+echo "Config files and wallpapers synced to current directory"
