@@ -1,10 +1,26 @@
 #!/bin/bash
-WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
-INDEX_FILE="$HOME/.wallpaper_index"
-I3_CONFIG="$HOME/.config/i3/config"
-I3BLOCKS_CONFIG="$HOME/.config/i3blocks/config"
-KITTY_CONFIG="$HOME/.config/kitty/kitty.conf"
-DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
+
+# Get script directory for relative paths
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_DIR="${VENV_DIR:-$SCRIPT_DIR/wallpaper-venv}"
+
+# Configuration with fallbacks
+WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
+INDEX_FILE="${INDEX_FILE:-${HOME}/.wallpaper_index}"
+I3_CONFIG="${I3_CONFIG:-${HOME}/.config/i3/config}"
+I3BLOCKS_CONFIG="${I3BLOCKS_CONFIG:-${HOME}/.config/i3blocks/config}"
+KITTY_CONFIG="${KITTY_CONFIG:-${HOME}/.config/kitty/kitty.conf}"
+DUNST_CONFIG="${DUNST_CONFIG:-${HOME}/.config/dunst/dunstrc}"
+
+# Check if virtual environment exists
+if [ ! -d "$VENV_DIR" ]; then
+    echo "Error: Virtual environment not found at $VENV_DIR" >&2
+    echo "Run ./install-dependencies.sh first to set up dependencies" >&2
+    exit 1
+fi
+
+# Activate virtual environment
+source "$VENV_DIR/bin/activate"
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
     echo "Error: Wallpaper directory $WALLPAPER_DIR does not exist" >&2
@@ -494,5 +510,8 @@ dunst &
 notify-send "Wallpaper Updated" "New color scheme applied! 🎨" >/dev/null 2>&1 &
 
 echo "Wallpaper and color scheme updated successfully" >&2
+
+# Deactivate virtual environment
+deactivate
 
 exit 0

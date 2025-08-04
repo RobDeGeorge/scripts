@@ -100,7 +100,7 @@ alias reddit='chromium-browser http://www.reddit.com --new-window'
 alias gmail='chromium-browser http://gmail.com --new-window'
 alias perplexity='chromium-browser https://www.perplexity.ai/ --new-window'
 alias gameboy='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia mgba-qt'
-alias osrs='DRI_PRIME=1 /home/rhea/Downloads/RuneLite.AppImage'
+alias osrs='DRI_PRIME=1 $HOME/Downloads/RuneLite.AppImage'
 
 # GPU Control Aliases
 alias gpu-on='sudo prime-select nvidia && echo "GPU switched to NVIDIA. Reboot required."'
@@ -141,7 +141,7 @@ if ! shopt -oq posix; then
 fi
 
 # Colorful version
-rhea_greeting() {
+system_greeting() {
     clear
     
     # Try to read current wallpaper colors from kitty config
@@ -281,12 +281,12 @@ rhea_greeting() {
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 # Function to show tree on demand
-alias tree='rhea_greeting'
+alias tree='system_greeting'
 
 # Only show tree automatically on first shell startup
-if [ -z "$RHEA_GREETING_SHOWN" ]; then
-    export RHEA_GREETING_SHOWN=1
-    rhea_greeting
+if [ -z "$SYSTEM_GREETING_SHOWN" ]; then
+    export SYSTEM_GREETING_SHOWN=1
+    system_greeting
 fi
 
 export NVM_DIR="$HOME/.nvm"

@@ -44,8 +44,8 @@ exec --no-startup-id xinput set-prop 15 "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id brightnessctl set 50%
 
 # Wallpaper
-exec --no-startup-id /home/rhea/scripts/wallpaper-cycler.sh
-bindsym $mod+Shift+w exec /home/rhea/scripts/wallpaper-cycler.sh
+exec --no-startup-id ~/.config/scripts/wallpaper-cycler.sh
+bindsym $mod+Shift+w exec ~/.config/scripts/wallpaper-cycler.sh
 
 # ====================================
 # Window Colors
