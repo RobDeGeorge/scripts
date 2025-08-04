@@ -27,75 +27,148 @@ detect_package_manager() {
     fi
 }
 
-# Check if essential packages are already installed
+# Check if packages are already installed
 check_system_packages() {
     local missing=()
     
+    # Core system packages
     command -v python3 &> /dev/null || missing+=("python3")
     command -v xwallpaper &> /dev/null || missing+=("xwallpaper")
     command -v i3 &> /dev/null || missing+=("i3")
+    command -v i3blocks &> /dev/null || missing+=("i3blocks")
+    command -v dunst &> /dev/null || missing+=("dunst")
+    command -v kitty &> /dev/null || missing+=("kitty")
+    command -v scrot &> /dev/null || missing+=("scrot")
+    
+    # Python tools
+    python3 -c "import venv" 2>/dev/null || missing+=("python3-venv")
+    python3 -c "import pip" 2>/dev/null || missing+=("python3-pip")
     
     if [ ${#missing[@]} -eq 0 ]; then
-        echo "✓ Essential system packages already installed"
+        echo "✓ All system packages already installed"
         return 0
     else
         echo "Missing packages: ${missing[*]}"
+        export MISSING_PACKAGES=("${missing[@]}")
         return 1
     fi
+}
+
+# Map package names for different distros
+get_package_names() {
+    local pm="$1"
+    case "$pm" in
+        "apt")
+            echo "python3 python3-venv python3-pip xwallpaper i3-wm i3blocks dunst kitty scrot"
+            ;;
+        "pacman")
+            echo "python python-pip xwallpaper i3-wm i3blocks dunst kitty scrot"
+            ;;
+        "dnf"|"yum")
+            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot"
+            ;;
+        "zypper")
+            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot"
+            ;;
+        "apk")
+            echo "python3 py3-venv py3-pip xwallpaper i3wm i3blocks dunst kitty scrot"
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
+}
+
+# Install only missing packages
+install_missing_packages() {
+    local pm="$1"
+    local missing_packages=("${MISSING_PACKAGES[@]}")
+    local all_packages=($(get_package_names "$pm"))
+    local to_install=()
+    
+    # Map missing commands to package names
+    for missing in "${missing_packages[@]}"; do
+        case "$missing" in
+            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot")
+                # Find the corresponding package in the distro list
+                for pkg in "${all_packages[@]}"; do
+                    if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && "$pkg" == "python" ]]; then
+                        to_install+=("$pkg")
+                        break
+                    fi
+                done
+                ;;
+        esac
+    done
+    
+    # Remove duplicates
+    local unique_packages=($(printf "%s\n" "${to_install[@]}" | sort -u))
+    
+    if [ ${#unique_packages[@]} -eq 0 ]; then
+        echo "✓ No packages need to be installed"
+        return 0
+    fi
+    
+    echo "Installing missing packages: ${unique_packages[*]}"
+    
+    case "$pm" in
+        "apt")
+            sudo apt update
+            sudo apt install -y "${unique_packages[@]}"
+            # Install dev packages if python3 was missing
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo apt install -y python3-dev libjpeg-dev zlib1g-dev
+            fi
+            ;;
+        "pacman")
+            sudo pacman -Sy --noconfirm "${unique_packages[@]}"
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo pacman -S --noconfirm base-devel libjpeg-turbo zlib
+            fi
+            ;;
+        "dnf")
+            sudo dnf install -y "${unique_packages[@]}"
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo dnf install -y python3-devel libjpeg-turbo-devel zlib-devel
+            fi
+            ;;
+        "yum")
+            sudo yum install -y "${unique_packages[@]}"
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo yum install -y python3-devel libjpeg-turbo-devel zlib-devel
+            fi
+            ;;
+        "zypper")
+            sudo zypper install -y "${unique_packages[@]}"
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo zypper install -y python3-devel libjpeg8-devel zlib-devel
+            fi
+            ;;
+        "apk")
+            sudo apk add "${unique_packages[@]}"
+            if [[ " ${missing_packages[*]} " =~ " python3 " ]]; then
+                sudo apk add python3-dev jpeg-dev zlib-dev
+            fi
+            ;;
+        *)
+            echo "Unknown package manager. Please install manually:"
+            printf " - %s\n" "${unique_packages[@]}"
+            read -p "Press Enter when dependencies are installed..."
+            ;;
+    esac
 }
 
 # Install system packages
 install_system_packages() {
     local pm="$1"
     
-    # Check if packages are already installed
+    # Check which packages are missing
     if check_system_packages; then
         return 0
     fi
     
-    echo "Installing system packages using $pm..."
-    
-    case "$pm" in
-        "apt")
-            sudo apt update
-            sudo apt install -y python3 python3-venv python3-pip xwallpaper i3-wm i3blocks dunst kitty
-            # Optional: Pillow dependencies for better image support
-            sudo apt install -y python3-dev libjpeg-dev zlib1g-dev
-            ;;
-        "pacman")
-            sudo pacman -Sy --noconfirm python python-pip xwallpaper i3-wm i3blocks dunst kitty
-            # Pillow dependencies
-            sudo pacman -S --noconfirm base-devel libjpeg-turbo zlib
-            ;;
-        "dnf")
-            sudo dnf install -y python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty
-            # Pillow dependencies
-            sudo dnf install -y python3-devel libjpeg-turbo-devel zlib-devel
-            ;;
-        "yum")
-            sudo yum install -y python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty
-            # Pillow dependencies
-            sudo yum install -y python3-devel libjpeg-turbo-devel zlib-devel
-            ;;
-        "zypper")
-            sudo zypper install -y python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty
-            # Pillow dependencies
-            sudo zypper install -y python3-devel libjpeg8-devel zlib-devel
-            ;;
-        "apk")
-            sudo apk add python3 py3-venv py3-pip xwallpaper i3wm i3blocks dunst kitty
-            # Pillow dependencies
-            sudo apk add python3-dev jpeg-dev zlib-dev
-            ;;
-        *)
-            echo "Unknown package manager. Please install manually:"
-            echo "- python3, python3-venv, python3-pip"
-            echo "- xwallpaper"
-            echo "- i3-wm, i3blocks, dunst, kitty"
-            echo "- Development packages for Python image processing (libjpeg, zlib)"
-            read -p "Press Enter when dependencies are installed..."
-            ;;
-    esac
+    # Install only missing packages
+    install_missing_packages "$pm"
 }
 
 # Create Python virtual environment
