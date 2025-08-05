@@ -40,6 +40,24 @@ check_system_packages() {
     command -v kitty &> /dev/null || missing+=("kitty")
     command -v scrot &> /dev/null || missing+=("scrot")
     
+    # Audio and system controls
+    command -v pamixer &> /dev/null || missing+=("pamixer")
+    command -v brightnessctl &> /dev/null || missing+=("brightnessctl")
+    command -v pactl &> /dev/null || missing+=("pulseaudio-utils")
+    
+    # Graphics and display
+    command -v picom &> /dev/null || missing+=("picom")
+    command -v xss-lock &> /dev/null || missing+=("xss-lock")
+    command -v i3lock &> /dev/null || missing+=("i3lock")
+    
+    # Network tools
+    command -v nm-applet &> /dev/null || missing+=("network-manager-gnome")
+    command -v iwgetid &> /dev/null || missing+=("wireless-tools")
+    
+    # System monitoring
+    command -v sensors &> /dev/null || missing+=("lm-sensors")
+    command -v acpi &> /dev/null || missing+=("acpi")
+    
     # Python tools
     python3 -c "import venv" 2>/dev/null || missing+=("python3-venv")
     python3 -c "import pip" 2>/dev/null || missing+=("python3-pip")
@@ -59,19 +77,19 @@ get_package_names() {
     local pm="$1"
     case "$pm" in
         "apt")
-            echo "python3 python3-venv python3-pip xwallpaper i3-wm i3blocks dunst kitty scrot"
+            echo "python3 python3-venv python3-pip xwallpaper i3-wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock network-manager-gnome wireless-tools lm-sensors acpi"
             ;;
         "pacman")
-            echo "python python-pip xwallpaper i3-wm i3blocks dunst kitty scrot"
+            echo "python python-pip xwallpaper i3-wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio picom xss-lock i3lock network-manager-applet wireless_tools lm_sensors acpi"
             ;;
         "dnf"|"yum")
-            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot"
+            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock NetworkManager-gnome wireless-tools lm_sensors acpi"
             ;;
         "zypper")
-            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot"
+            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock NetworkManager-gnome wireless-tools sensors acpi"
             ;;
         "apk")
-            echo "python3 py3-venv py3-pip xwallpaper i3wm i3blocks dunst kitty scrot"
+            echo "python3 py3-venv py3-pip xwallpaper i3wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio picom xss-lock i3lock networkmanager-gtk wireless-tools lm-sensors acpi"
             ;;
         *)
             echo ""
@@ -89,10 +107,10 @@ install_missing_packages() {
     # Map missing commands to package names
     for missing in "${missing_packages[@]}"; do
         case "$missing" in
-            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot")
+            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot"|"pamixer"|"brightnessctl"|"pulseaudio-utils"|"picom"|"xss-lock"|"i3lock"|"network-manager-gnome"|"wireless-tools"|"lm-sensors"|"acpi")
                 # Find the corresponding package in the distro list
                 for pkg in "${all_packages[@]}"; do
-                    if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && "$pkg" == "python" ]]; then
+                    if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && "$pkg" == "python" ]] || [[ "$missing" == "pulseaudio-utils" && ("$pkg" == "pulseaudio" || "$pkg" == "pulseaudio-utils") ]]; then
                         to_install+=("$pkg")
                         break
                     fi
@@ -197,9 +215,77 @@ setup_python_venv() {
     deactivate
 }
 
+# Check for font dependencies
+check_fonts() {
+    echo "Checking fonts..."
+    
+    # Check for VictorMono Nerd Font
+    if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+        echo "Warning: VictorMono Nerd Font not found."
+        echo "Download from: https://github.com/ryanoasis/nerd-fonts/releases"
+        echo "Or install via: sudo apt install fonts-victor-mono (if available)"
+        return 1
+    else
+        echo "✓ VictorMono Nerd Font found"
+        return 0
+    fi
+}
+
+# Install font if missing
+install_fonts() {
+    local pm="$1"
+    
+    echo "Installing fonts..."
+    case "$pm" in
+        "apt")
+            # Try to install nerd fonts if available
+            sudo apt update
+            if apt-cache search fonts-nerd &> /dev/null; then
+                sudo apt install -y fonts-nerd-font-victor-mono 2>/dev/null || echo "Nerd fonts not available in repository"
+            fi
+            ;;
+        "pacman")
+            # AUR might have nerd fonts
+            if command -v yay &> /dev/null; then
+                yay -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR"
+            elif command -v paru &> /dev/null; then
+                paru -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR"
+            fi
+            ;;
+    esac
+    
+    echo "Manual font installation may be required:"
+    echo "1. Download VictorMono Nerd Font from https://github.com/ryanoasis/nerd-fonts/releases"
+    echo "2. Extract to ~/.local/share/fonts/ or /usr/share/fonts/"
+    echo "3. Run: fc-cache -fv"
+}
+
 # Check for optional dependencies
 check_optional_deps() {
     echo "Checking optional dependencies..."
+    
+    # Check for Node.js (referenced in bashrc)
+    if ! command -v node &> /dev/null && [ -d "$HOME/.nvm" ]; then
+        echo "Warning: Node.js not found but NVM is installed."
+        echo "Run: nvm install --lts && nvm use --lts"
+    elif command -v node &> /dev/null; then
+        echo "✓ Node.js found: $(node --version)"
+    fi
+    
+    # Check for GPU tools
+    if ! command -v nvidia-smi &> /dev/null; then
+        echo "Warning: nvidia-smi not found. GPU monitoring will show 'Integrated'."
+        echo "Install NVIDIA drivers if you have an NVIDIA GPU."
+    else
+        echo "✓ nvidia-smi found"
+    fi
+    
+    if ! command -v prime-select &> /dev/null; then
+        echo "Warning: prime-select not found. GPU switching aliases won't work."
+        echo "Install nvidia-prime for GPU switching on laptops."
+    else
+        echo "✓ prime-select found"
+    fi
     
     if ! command -v polychromatic-cli &> /dev/null; then
         echo "Warning: polychromatic-cli not found. Razer keyboard RGB effects will be skipped."
@@ -213,6 +299,14 @@ check_optional_deps() {
         echo "Install libnotify-bin (apt) or libnotify (pacman) for notifications."
     else
         echo "✓ notify-send found"
+    fi
+    
+    # Check for chromium-browser (referenced in bashrc aliases)
+    if ! command -v chromium-browser &> /dev/null && ! command -v chromium &> /dev/null; then
+        echo "Warning: chromium-browser not found. Web aliases won't work."
+        echo "Install: sudo apt install chromium-browser"
+    else
+        echo "✓ Chromium browser found"
     fi
 }
 
@@ -233,6 +327,11 @@ main() {
     
     # Install system packages
     install_system_packages "$PM"
+    
+    # Check and install fonts
+    if ! check_fonts; then
+        install_fonts "$PM"
+    fi
     
     # Setup Python virtual environment
     setup_python_venv
