@@ -1,0 +1,10 @@
+[global]
+    geometry = "300x50-0-50"
+    horizontal_alignment = "center"
+    origin = "bottom-center"
+    timeout = 10000
+    
+[urgency_normal]
+    background = "#1f0c26"
+    foreground = "#f9efeb"
+    frame_color = "#76245b"

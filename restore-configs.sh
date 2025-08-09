@@ -3,6 +3,12 @@
 # Get script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Parse arguments
+SKIP_DEPS=false
+if [[ "$1" == "--skip-deps" ]]; then
+    SKIP_DEPS=true
+fi
+
 # Configuration directories with fallbacks
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 WALLPAPER_TARGET="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
@@ -26,20 +32,32 @@ mkdir -p "$WALLPAPER_TARGET"
 
 # Copy scripts to ~/.config/scripts/
 [ -f "$SCRIPT_DIR/wallpaper-cycler.sh" ] && cp "$SCRIPT_DIR/wallpaper-cycler.sh" "$CONFIG_DIR/scripts/"
+[ -f "$SCRIPT_DIR/color_processor.py" ] && cp "$SCRIPT_DIR/color_processor.py" "$CONFIG_DIR/scripts/"
 [ -f "$SCRIPT_DIR/install-dependencies.sh" ] && cp "$SCRIPT_DIR/install-dependencies.sh" "$CONFIG_DIR/scripts/"
 
 # Make scripts executable
 chmod +x "$CONFIG_DIR/scripts/wallpaper-cycler.sh" 2>/dev/null
+chmod +x "$CONFIG_DIR/scripts/color_processor.py" 2>/dev/null
 chmod +x "$CONFIG_DIR/scripts/install-dependencies.sh" 2>/dev/null
 
-# Install wallpaper cycler dependencies automatically
-echo "Setting up wallpaper cycler dependencies..."
-if [ -f "$CONFIG_DIR/scripts/install-dependencies.sh" ]; then
-    cd "$CONFIG_DIR/scripts"
-    ./install-dependencies.sh
-    cd - > /dev/null
+# Copy wallpaper-venv directory if it exists
+if [ -d "$SCRIPT_DIR/wallpaper-venv" ] && [ ! -d "$CONFIG_DIR/scripts/wallpaper-venv" ]; then
+    echo "Copying Python virtual environment..."
+    cp -r "$SCRIPT_DIR/wallpaper-venv" "$CONFIG_DIR/scripts/"
+fi
+
+# Install wallpaper cycler dependencies only if not skipping
+if [ "$SKIP_DEPS" = "false" ]; then
+    echo "Setting up wallpaper cycler dependencies..."
+    if [ -f "$CONFIG_DIR/scripts/install-dependencies.sh" ]; then
+        cd "$CONFIG_DIR/scripts"
+        ./install-dependencies.sh
+        cd - > /dev/null
+    else
+        echo "Warning: install-dependencies.sh not found, skipping dependency setup"
+    fi
 else
-    echo "Warning: install-dependencies.sh not found, skipping dependency setup"
+    echo "Skipping dependency installation (--skip-deps flag)"
 fi
 
 # Restore wallpapers with error handling

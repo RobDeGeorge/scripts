@@ -1,0 +1,509 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+import colorsys
+import json
+from PIL import Image
+from sklearn.cluster import KMeans
+import numpy as np
+
+
+class ColorProcessor:
+    """Advanced color extraction and theme generation system"""
+    
+    def __init__(self, config_paths):
+        self.config_paths = config_paths
+        self.backup_suffix = '.wallpaper-backup'
+    
+    def rgb_to_hex(self, r, g, b):
+        """Convert RGB to hex color"""
+        return f'#{r:02x}{g:02x}{b:02x}'
+    
+    def hex_to_rgb(self, hex_color):
+        """Convert hex to RGB tuple"""
+        hex_color = hex_color.lstrip('#')
+        return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    
+    def get_luminance(self, r, g, b):
+        """Calculate luminance using WCAG formula"""
+        def normalize(c):
+            c = c / 255.0
+            return c / 12.92 if c <= 0.03928 else pow((c + 0.055) / 1.055, 2.4)
+        
+        r, g, b = normalize(r), normalize(g), normalize(b)
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    
+    def get_contrast_ratio(self, color1, color2):
+        """Calculate contrast ratio between two colors"""
+        lum1 = self.get_luminance(*self.hex_to_rgb(color1))
+        lum2 = self.get_luminance(*self.hex_to_rgb(color2))
+        lighter = max(lum1, lum2)
+        darker = min(lum1, lum2)
+        return (lighter + 0.05) / (darker + 0.05)
+    
+    def ensure_text_contrast(self, bg_color, min_contrast=4.5):
+        """Ensure readable text color for background"""
+        white_contrast = self.get_contrast_ratio(bg_color, '#ffffff')
+        black_contrast = self.get_contrast_ratio(bg_color, '#000000')
+        
+        if white_contrast >= min_contrast:
+            return '#ffffff'
+        elif black_contrast >= min_contrast:
+            return '#000000'
+        else:
+            return '#ffffff' if white_contrast > black_contrast else '#000000'
+    
+    def create_readable_text_color(self, bg_color, accent_colors, min_contrast=4.5, prefer_color=True):
+        """Generate readable text color with optional color preference"""
+        bg_r, bg_g, bg_b = self.hex_to_rgb(bg_color)
+        bg_luminance = self.get_luminance(bg_r, bg_g, bg_b)
+        
+        candidates = []
+        
+        # Try color-based candidates if preferred
+        if prefer_color and min_contrast <= 3.0:
+            for accent in accent_colors:
+                accent_r, accent_g, accent_b = accent
+                h, l, s = colorsys.rgb_to_hls(accent_r/255.0, accent_g/255.0, accent_b/255.0)
+                
+                if bg_luminance < 0.3:
+                    ultra_bright = colorsys.hls_to_rgb(h, 0.8, min(s * 2.0, 1.0))
+                else:
+                    ultra_bright = colorsys.hls_to_rgb(h, 0.2, min(s * 2.0, 1.0))
+                
+                candidate = self.rgb_to_hex(int(ultra_bright[0]*255), int(ultra_bright[1]*255), int(ultra_bright[2]*255))
+                contrast = self.get_contrast_ratio(bg_color, candidate)
+                
+                if contrast >= min_contrast:
+                    candidates.append((candidate, contrast, 2.0, 0.8))
+        
+        # Generate brightness variations
+        for accent in accent_colors:
+            accent_hex = self.rgb_to_hex(*accent)
+            accent_r, accent_g, accent_b = accent
+            h, l, s = colorsys.rgb_to_hls(accent_r/255.0, accent_g/255.0, accent_b/255.0)
+            
+            brightness_range = [0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15, 0.1, 0.05]
+            
+            for brightness in brightness_range:
+                if bg_luminance < 0.3:
+                    target_l = max(brightness, 0.4)
+                elif bg_luminance < 0.7:
+                    target_l = brightness
+                else:
+                    target_l = min(brightness, 0.3)
+                
+                boosted_s = min(s * 1.6, 1.0)
+                r, g, b = colorsys.hls_to_rgb(h, target_l, boosted_s)
+                candidate = self.rgb_to_hex(int(r*255), int(g*255), int(b*255))
+                contrast = self.get_contrast_ratio(bg_color, candidate)
+                
+                if contrast >= min_contrast:
+                    color_distance = abs(target_l - 1.0) + abs(target_l - 0.0)
+                    candidates.append((candidate, contrast, color_distance, target_l))
+        
+        if not candidates:
+            return self.ensure_text_contrast(bg_color, min_contrast)
+        
+        if prefer_color:
+            candidates.sort(key=lambda x: (-x[2], -x[1]))
+        else:
+            candidates.sort(key=lambda x: (-x[1], -x[2]))
+        
+        if prefer_color and len(candidates) > 3:
+            top_colorful = [c for c in candidates if c[2] > 1.0]
+            if top_colorful:
+                return top_colorful[0][0]
+        
+        return candidates[0][0]
+    
+    def adjust_brightness(self, hex_color, factor):
+        """Adjust brightness of hex color by factor"""
+        hex_color = hex_color.lstrip('#')
+        r, g, b = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+        h, l, s = colorsys.rgb_to_hls(r/255.0, g/255.0, b/255.0)
+        l = max(0, min(1, l * factor))
+        r, g, b = colorsys.hls_to_rgb(h, l, s)
+        return self.rgb_to_hex(int(r*255), int(g*255), int(b*255))
+    
+    def ensure_minimum_brightness(self, hex_color, min_brightness=0.15):
+        """Ensure color has minimum brightness"""
+        r, g, b = self.hex_to_rgb(hex_color)
+        h, l, s = colorsys.rgb_to_hls(r/255.0, g/255.0, b/255.0)
+        if l < min_brightness:
+            l = min_brightness
+            r, g, b = colorsys.hls_to_rgb(h, l, s)
+            return self.rgb_to_hex(int(r*255), int(g*255), int(b*255))
+        return hex_color
+    
+    def extract_dominant_colors_kmeans(self, image_path, n_colors=5):
+        """Extract dominant colors using k-means clustering for better performance"""
+        try:
+            img = Image.open(image_path)
+            img = img.convert('RGB')
+            
+            # Resize for performance but keep reasonable quality
+            img = img.resize((100, 100))
+            
+            # Convert to numpy array
+            data = np.array(img)
+            data = data.reshape((-1, 3))
+            
+            # Sample random pixels for very large images
+            if len(data) > 10000:
+                indices = np.random.choice(len(data), 10000, replace=False)
+                data = data[indices]
+            
+            # Use k-means clustering
+            kmeans = KMeans(n_clusters=n_colors, random_state=42, n_init=10)
+            kmeans.fit(data)
+            
+            # Get cluster centers (dominant colors)
+            colors = kmeans.cluster_centers_.astype(int)
+            
+            # Filter out blacks and whites, ensure we have good colors
+            filtered_colors = []
+            for color in colors:
+                r, g, b = color
+                # Skip blacks and whites
+                if (r < 30 and g < 30 and b < 30) or (r > 225 and g > 225 and b > 225):
+                    continue
+                filtered_colors.append(tuple(color))
+            
+            # Fallback colors if not enough found
+            if len(filtered_colors) < n_colors:
+                fallback_colors = [(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)]
+                filtered_colors.extend(fallback_colors[:n_colors - len(filtered_colors)])
+            
+            return filtered_colors[:n_colors]
+            
+        except Exception as e:
+            print(f'Error extracting colors: {e}', file=sys.stderr)
+            return [(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)]
+    
+    def backup_config(self, config_path):
+        """Create backup of config file"""
+        if os.path.exists(config_path):
+            backup_path = config_path + self.backup_suffix
+            try:
+                with open(config_path, 'r') as src, open(backup_path, 'w') as dst:
+                    dst.write(src.read())
+                return backup_path
+            except Exception as e:
+                print(f'Warning: Failed to backup {config_path}: {e}', file=sys.stderr)
+        return None
+    
+    def restore_config(self, config_path):
+        """Restore config from backup"""
+        backup_path = config_path + self.backup_suffix
+        if os.path.exists(backup_path):
+            try:
+                with open(backup_path, 'r') as src, open(config_path, 'w') as dst:
+                    dst.write(src.read())
+                print(f'Restored {config_path} from backup', file=sys.stderr)
+                return True
+            except Exception as e:
+                print(f'Error restoring {config_path}: {e}', file=sys.stderr)
+        return False
+    
+    def update_config_safely(self, config_path, update_func, colors):
+        """Safely update config with backup and rollback on failure"""
+        # Create backup
+        backup_path = self.backup_config(config_path)
+        
+        try:
+            # Apply update
+            update_func(config_path, colors)
+            return True
+        except Exception as e:
+            print(f'Error updating {config_path}: {e}', file=sys.stderr)
+            # Restore from backup on failure
+            if backup_path:
+                self.restore_config(config_path)
+            return False
+    
+    def update_i3_config(self, config_path, colors):
+        """Update i3 window manager config"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        # Find most vibrant color for focused window
+        most_vibrant = colors[0]
+        max_vibrancy = 0
+        
+        for color in colors:
+            r, g, b = color
+            color_range = max(r, g, b) - min(r, g, b)
+            brightness = (r + g + b) / 3
+            vibrancy = color_range * (brightness / 255.0)
+            
+            if vibrancy > max_vibrancy:
+                max_vibrancy = vibrancy
+                most_vibrant = color
+        
+        primary = self.rgb_to_hex(*most_vibrant)
+        primary = self.ensure_minimum_brightness(primary, 0.25)
+        secondary = self.adjust_brightness(primary, 0.7)
+        tertiary = self.adjust_brightness(primary, 0.4)
+        quaternary = self.adjust_brightness(primary, 0.2)
+        
+        focused_text = self.create_readable_text_color(primary, colors, 3.5)
+        inactive_text = self.create_readable_text_color(secondary, colors, 2.5)
+        unfocused_text = self.create_readable_text_color(tertiary, colors, 2.0)
+        
+        new_window_colors = f'''# class                 border  backgr. text    indicator child_border
+client.focused          {primary} {primary} {focused_text} {primary}   {primary}
+client.focused_inactive {secondary} {secondary} {inactive_text} {secondary}   {secondary}
+client.unfocused        {tertiary} {tertiary} {unfocused_text} {tertiary}   {tertiary}
+client.urgent           #ff4444 #ff4444 #ffffff #ff4444   #ff4444
+client.placeholder      {quaternary} {quaternary} {self.create_readable_text_color(quaternary, colors, 1.8)} {quaternary}   {quaternary}'''
+        
+        import re
+        pattern = r'# class\s+border\s+backgr\.\s+text\s+indicator\s+child_border.*?client\.placeholder.*?#[0-9a-fA-F]{6}(?:\s+#[0-9a-fA-F]{6}\s+#[0-9a-fA-F]{6}\s+#[0-9a-fA-F]{6}\s+#[0-9a-fA-F]{6})*'
+        config = re.sub(pattern, new_window_colors, config, flags=re.DOTALL)
+        
+        bar_bg = self.adjust_brightness(primary, 0.15)
+        bar_bg = self.ensure_minimum_brightness(bar_bg, 0.1)
+        bar_text = self.create_readable_text_color(bar_bg, colors, 3.0)
+        bar_sep = self.adjust_brightness(primary, 0.3)
+        
+        workspace_text = self.create_readable_text_color(primary, colors, 3.0)
+        
+        new_bar_colors = f'''    colors {{
+        background {bar_bg}
+        statusline {bar_text}
+        separator {bar_sep}
+        focused_workspace  {primary} {primary} {workspace_text}
+        active_workspace   {secondary} {secondary} {self.create_readable_text_color(secondary, colors, 3.0)}
+        inactive_workspace {tertiary} {tertiary} {self.create_readable_text_color(tertiary, colors, 2.5)}
+        urgent_workspace   #f38ba8 #f38ba8 #000000
+        binding_mode       #f9e2af #f9e2af #000000
+    }}'''
+        
+        pattern = r'colors\s*\{[^}]*\}'
+        config = re.sub(pattern, new_bar_colors, config, flags=re.DOTALL)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated i3 config with primary color: {primary}', file=sys.stderr)
+    
+    def update_kitty_config(self, config_path, colors):
+        """Update kitty terminal config"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        primary = self.rgb_to_hex(*colors[0])
+        bg_color = self.adjust_brightness(primary, 0.08)
+        bg_color = self.ensure_minimum_brightness(bg_color, 0.05)
+        
+        fg_color = self.create_readable_text_color(bg_color, colors[1:3], 3.0, prefer_color=True)
+        selection_bg = self.adjust_brightness(primary, 0.3)
+        selection_bg = self.ensure_minimum_brightness(selection_bg, 0.2)
+        selection_fg = self.create_readable_text_color(selection_bg, colors, 3.0)
+        
+        cursor_color = self.adjust_brightness(primary, 0.7)
+        cursor_color = self.ensure_minimum_brightness(cursor_color, 0.4)
+        
+        import re
+        config = re.sub(r'foreground\s+#[0-9a-fA-F]{6}', f'foreground {fg_color}', config)
+        config = re.sub(r'background\s+#[0-9a-fA-F]{6}', f'background {bg_color}', config)
+        config = re.sub(r'selection_background\s+#[0-9a-fA-F]{6}', f'selection_background {selection_bg}', config)
+        config = re.sub(r'selection_foreground\s+#[0-9a-fA-F]{6}', f'selection_foreground {selection_fg}', config)
+        config = re.sub(r'cursor\s+#[0-9a-fA-F]{6}', f'cursor {cursor_color}', config)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated kitty config with contrast ratio: {self.get_contrast_ratio(bg_color, fg_color):.1f}:1', file=sys.stderr)
+    
+    def update_dunst_config(self, config_path, colors):
+        """Update dunst notification config"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        primary = self.rgb_to_hex(*colors[0])
+        secondary = self.rgb_to_hex(*colors[1]) if len(colors) > 1 else self.adjust_brightness(primary, 0.8)
+        
+        bg_color = self.adjust_brightness(primary, 0.15)
+        bg_color = self.ensure_minimum_brightness(bg_color, 0.1)
+        
+        fg_color = self.create_readable_text_color(bg_color, colors, 3.5, prefer_color=True)
+        frame_color = self.adjust_brightness(secondary, 0.6)
+        frame_color = self.ensure_minimum_brightness(frame_color, 0.3)
+        
+        import re
+        config = re.sub(r'background\s*=\s*"#[0-9a-fA-F]{6}"', f'background = "{bg_color}"', config)
+        config = re.sub(r'foreground\s*=\s*"#[0-9a-fA-F]{6}"', f'foreground = "{fg_color}"', config)
+        config = re.sub(r'frame_color\s*=\s*"#[0-9a-fA-F]{6}"', f'frame_color = "{frame_color}"', config)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated dunst config: bg={bg_color}, fg={fg_color}, frame={frame_color}', file=sys.stderr)
+    
+    def update_i3blocks_config(self, config_path, colors):
+        """Update i3blocks status bar config"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        # Generate gradient colors from wallpaper
+        primary = self.rgb_to_hex(*colors[0])
+        primary = self.ensure_minimum_brightness(primary, 0.3)
+        
+        # Create a smooth gradient from primary color
+        gradient_colors = []
+        base_h, base_l, base_s = colorsys.rgb_to_hls(*[c/255.0 for c in colors[0]])
+        
+        # Generate 12 colors in a gradient
+        for i in range(12):
+            hue_shift = (i * 30) % 360 / 360.0
+            new_h = (base_h + hue_shift * 0.3) % 1.0
+            new_l = 0.4 + (0.4 * (i / 11.0))
+            new_s = min(base_s * 1.4, 0.9)
+            
+            r, g, b = colorsys.hls_to_rgb(new_h, new_l, new_s)
+            color_hex = self.rgb_to_hex(int(r*255), int(g*255), int(b*255))
+            gradient_colors.append(color_hex)
+        
+        blocks = [
+            'wifi_info', 'cpu_info', 'gpu_info', 'memory_usage',
+            'disk_usage', 'volume', 'brightness', 'date',
+            'time', 'battery'
+        ]
+        
+        lines = config.split('\n')
+        new_lines = []
+        current_block = None
+        
+        for line in lines:
+            if line.startswith('[') and line.endswith(']'):
+                current_block = line[1:-1]
+            elif line.startswith('color=#') and current_block in blocks:
+                block_index = blocks.index(current_block)
+                if block_index < len(gradient_colors):
+                    line = f'color={gradient_colors[block_index]}'
+            new_lines.append(line)
+        
+        config = '\n'.join(new_lines)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated i3blocks config with gradient from {primary}', file=sys.stderr)
+    
+    def update_razer_keyboard(self, colors):
+        """Update Razer keyboard RGB colors"""
+        try:
+            # Turn off current effects
+            subprocess.run(['polychromatic-cli', '--device', 'laptop', '--zone', 'main', '--option', 'none'],
+                          capture_output=True)
+            
+            # Get primary colors and enhance for keyboard
+            primary_raw = self.rgb_to_hex(*colors[0])
+            primary_r, primary_g, primary_b = self.hex_to_rgb(primary_raw)
+            primary_h, primary_l, primary_s = colorsys.rgb_to_hls(primary_r/255.0, primary_g/255.0, primary_b/255.0)
+            
+            deep_s = min(primary_s * 1.8, 1.0)
+            deep_l = max(primary_l * 0.8, 0.25)
+            
+            deep_r, deep_g, deep_b = colorsys.hls_to_rgb(primary_h, deep_l, deep_s)
+            primary = self.rgb_to_hex(int(deep_r*255), int(deep_g*255), int(deep_b*255))
+            
+            secondary_raw = self.rgb_to_hex(*colors[1]) if len(colors) > 1 else self.adjust_brightness(primary_raw, 0.7)
+            secondary = self.adjust_brightness(secondary_raw, 0.6)
+            secondary = self.ensure_minimum_brightness(secondary, 0.25)
+            
+            # Try static color first
+            cmd = ['polychromatic-cli', '--device', 'laptop', '--zone', 'main',
+                   '--option', 'static', '--colours', primary]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                mode = 'static'
+            else:
+                cmd = ['polychromatic-cli', '--device', 'laptop', '--zone', 'main',
+                       '--option', 'wave', '--parameter', '1', '--colours', primary]
+                subprocess.run(cmd, capture_output=True)
+                mode = 'wave'
+            
+            # Set logo color
+            cmd2 = ['polychromatic-cli', '--device', 'laptop', '--zone', 'logo',
+                    '--option', 'static', '--colours', secondary]
+            subprocess.run(cmd2, capture_output=True)
+            
+            print(f'Updated Razer keyboard: {mode} mode with {primary}, logo={secondary}', file=sys.stderr)
+            
+        except Exception as e:
+            print(f'Error updating Razer keyboard: {e}', file=sys.stderr)
+    
+    def process_wallpaper(self, wallpaper_path):
+        """Main method to process wallpaper and update all configs"""
+        try:
+            # Extract colors using improved k-means method
+            colors = self.extract_dominant_colors_kmeans(wallpaper_path)
+            
+            # Track success/failure for each config update
+            results = {}
+            
+            # Update each config safely with backup/rollback
+            for config_name, config_path in self.config_paths.items():
+                if not os.path.exists(config_path):
+                    print(f'Warning: Config file not found: {config_path}', file=sys.stderr)
+                    continue
+                    
+                if config_name == 'i3':
+                    results[config_name] = self.update_config_safely(config_path, self.update_i3_config, colors)
+                elif config_name == 'kitty':
+                    results[config_name] = self.update_config_safely(config_path, self.update_kitty_config, colors)
+                elif config_name == 'dunst':
+                    results[config_name] = self.update_config_safely(config_path, self.update_dunst_config, colors)
+                elif config_name == 'i3blocks':
+                    results[config_name] = self.update_config_safely(config_path, self.update_i3blocks_config, colors)
+            
+            # Update Razer keyboard (doesn't need backup)
+            try:
+                self.update_razer_keyboard(colors)
+                results['razer'] = True
+            except Exception:
+                results['razer'] = False
+            
+            # Report results
+            successful = [k for k, v in results.items() if v]
+            failed = [k for k, v in results.items() if not v]
+            
+            if successful:
+                print(f'Successfully updated: {", ".join(successful)}', file=sys.stderr)
+            if failed:
+                print(f'Failed to update: {", ".join(failed)}', file=sys.stderr)
+                
+            return len(failed) == 0
+            
+        except Exception as e:
+            print(f'Critical error processing wallpaper: {e}', file=sys.stderr)
+            return False
+
+
+def main():
+    if len(sys.argv) != 6:
+        print("Usage: color_processor.py <wallpaper_path> <i3_config> <kitty_config> <dunst_config> <i3blocks_config>", file=sys.stderr)
+        sys.exit(1)
+    
+    wallpaper_path = sys.argv[1]
+    config_paths = {
+        'i3': sys.argv[2],
+        'kitty': sys.argv[3],
+        'dunst': sys.argv[4],
+        'i3blocks': sys.argv[5]
+    }
+    
+    processor = ColorProcessor(config_paths)
+    success = processor.process_wallpaper(wallpaper_path)
+    
+    sys.exit(0 if success else 1)
+
+
+if __name__ == '__main__':
+    main()

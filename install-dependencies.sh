@@ -207,7 +207,7 @@ setup_python_venv() {
     
     echo "Installing Python packages..."
     pip install --upgrade pip
-    pip install Pillow
+    pip install Pillow scikit-learn numpy
     
     echo "Virtual environment created at: $VENV_DIR"
     echo "Python packages installed: $(pip list --format=columns)"

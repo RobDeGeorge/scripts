@@ -99,6 +99,10 @@ alias youtube='chromium-browser http://www.youtube.com --new-window'
 alias reddit='chromium-browser http://www.reddit.com --new-window'
 alias gmail='chromium-browser http://gmail.com --new-window'
 alias perplexity='chromium-browser https://www.perplexity.ai/ --new-window'
+alias discord='chromium-browser https://www.discord.com --new-window'
+alias web='chromium-browser https://google.com --new-window'
+
+#games
 alias gameboy='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia mgba-qt'
 alias osrs='DRI_PRIME=1 $HOME/Downloads/RuneLite.AppImage'
 
