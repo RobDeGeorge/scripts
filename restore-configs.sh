@@ -23,56 +23,6 @@ mkdir -p "$CONFIG_DIR/scripts"
 # Create wallpaper directory if it doesn't exist
 mkdir -p "$WALLPAPER_TARGET"
 
-# Create restore point backup before overwriting existing configs
-create_restore_point() {
-    echo "Creating restore point before config restore..."
-    
-    # Copy the backup manager if it exists
-    if [ -f "$SCRIPT_DIR/backup_manager.py" ]; then
-        local temp_backup_manager="/tmp/backup_manager_temp.py"
-        cp "$SCRIPT_DIR/backup_manager.py" "$temp_backup_manager"
-        
-        # Create restore point using Python backup manager
-        python3 -c "
-import sys
-sys.path.insert(0, '/tmp')
-from backup_manager_temp import BackupManager
-
-backup_manager = BackupManager('$SCRIPT_DIR/backups')
-
-config_files = {
-    'i3-config': '$CONFIG_DIR/i3/config',
-    'i3blocks-config': '$CONFIG_DIR/i3blocks/config', 
-    'dunstrc': '$CONFIG_DIR/dunst/dunstrc',
-    'kitty.conf': '$CONFIG_DIR/kitty/kitty.conf',
-    'bashrc': '$HOME/.bashrc'
-}
-
-# Filter to only existing files
-existing_configs = {name: path for name, path in config_files.items() if os.path.exists(path)}
-
-if existing_configs:
-    backup_manager.backup_multiple_configs(
-        existing_configs, 
-        'restore-points', 
-        'Pre-restore backup created by restore-configs.sh'
-    )
-    print(f'Created restore point for {len(existing_configs)} config files')
-else:
-    print('No existing config files found to backup')
-" 2>/dev/null
-        
-        # Clean up temp file
-        rm -f "$temp_backup_manager"
-    else
-        echo "Warning: backup_manager.py not found, skipping restore point creation"
-    fi
-}
-
-# Create restore point if not in skip mode
-if [ "$SKIP_DEPS" = "false" ]; then
-    create_restore_point
-fi
 
 # Copy config files back to their correct locations
 echo "Copying config files..."
@@ -85,13 +35,11 @@ echo "Copying config files..."
 # Copy scripts to ~/.config/scripts/
 [ -f "$SCRIPT_DIR/wallpaper-cycler.sh" ] && cp "$SCRIPT_DIR/wallpaper-cycler.sh" "$CONFIG_DIR/scripts/"
 [ -f "$SCRIPT_DIR/color_processor.py" ] && cp "$SCRIPT_DIR/color_processor.py" "$CONFIG_DIR/scripts/"
-[ -f "$SCRIPT_DIR/backup_manager.py" ] && cp "$SCRIPT_DIR/backup_manager.py" "$CONFIG_DIR/scripts/"
 [ -f "$SCRIPT_DIR/install-dependencies.sh" ] && cp "$SCRIPT_DIR/install-dependencies.sh" "$CONFIG_DIR/scripts/"
 
 # Make scripts executable
 chmod +x "$CONFIG_DIR/scripts/wallpaper-cycler.sh" 2>/dev/null
 chmod +x "$CONFIG_DIR/scripts/color_processor.py" 2>/dev/null
-chmod +x "$CONFIG_DIR/scripts/backup_manager.py" 2>/dev/null
 chmod +x "$CONFIG_DIR/scripts/install-dependencies.sh" 2>/dev/null
 
 # Copy wallpaper-venv directory if it exists

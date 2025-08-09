@@ -39,51 +39,17 @@ while [[ $# -gt 0 ]]; do
             SPECIFIC_WALLPAPER="$2"
             shift 2
             ;;
-        --list-backups)
-            echo "Listing recent wallpaper-change backups..."
-            source "$VENV_DIR/bin/activate"
-            python3 "$SCRIPT_DIR/backup_manager.py" list --type wallpaper-changes
-            deactivate
-            exit 0
-            ;;
-        --cleanup-backups)
-            echo "Cleaning up old backups (keeping 20 most recent)..."
-            source "$VENV_DIR/bin/activate"
-            python3 "$SCRIPT_DIR/backup_manager.py" cleanup --type wallpaper-changes --keep 20
-            deactivate
-            exit 0
-            ;;
-        --restore-backup)
-            if [ -z "$2" ]; then
-                echo "Error: --restore-backup requires a backup file path"
-                exit 1
-            fi
-            BACKUP_FILE="$2"
-            echo "Restoring from backup: $BACKUP_FILE"
-            source "$VENV_DIR/bin/activate"
-            python3 "$SCRIPT_DIR/backup_manager.py" restore --backup-file "$BACKUP_FILE"
-            deactivate
-            exit 0
-            ;;
         --help)
             echo "Usage: $0 [OPTIONS]"
             echo ""
             echo "Options:"
             echo "  --dry-run           Test color extraction without applying changes"
             echo "  --wallpaper FILE    Use specific wallpaper file instead of cycling"
-            echo "  --list-backups      Show recent wallpaper-change backups"
-            echo "  --cleanup-backups   Remove old backups (keep 20 most recent)"
-            echo "  --restore-backup FILE  Restore a config from backup"
             echo "  --help              Show this help message"
             echo ""
             echo "Environment Variables:"
             echo "  WALLPAPER_DIR       Directory containing wallpapers (default: ~/Pictures/Wallpapers)"
             echo "  VENV_DIR           Python virtual environment path"
-            echo ""
-            echo "Backup Management:"
-            echo "  Backups are automatically created before each wallpaper change"
-            echo "  They are stored in scripts/backups/wallpaper-changes/"
-            echo "  Old backups are automatically cleaned up (keeping 20 recent)"
             exit 0
             ;;
         *)
