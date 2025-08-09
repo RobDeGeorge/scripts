@@ -52,11 +52,11 @@ bindsym $mod+Shift+w exec ~/.config/scripts/wallpaper-cycler.sh
 # ====================================
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #78503c #78503c #f9efeb #78503c   #78503c
-client.focused_inactive #543729 #543729 #eec0aa #543729   #543729
-client.unfocused        #302017 #302017 #eec0aa #302017   #302017
+client.focused          #8893ac #8893ac #000000 #8893ac   #8893ac
+client.focused_inactive #58647f #58647f #c5cad2 #58647f   #58647f
+client.unfocused        #323948 #323948 #c5cad2 #323948   #323948
 client.urgent           #ff4444 #ff4444 #ffffff #ff4444   #ff4444
-client.placeholder      #18100b #18100b #eec0aa #18100b   #18100b
+client.placeholder      #191c24 #191c24 #c5cad2 #191c24   #191c24
 
 # ====================================
 # Border Settings
@@ -234,13 +234,13 @@ bar {
     status_command i3blocks
     position top
     font pango:Victor Mono Bold 10
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        colors {
-        background #23150f
-        statusline #eec0aa
-        separator #241711
-        focused_workspace  #78503c #78503c #eec0aa
-        active_workspace   #543729 #543729 #eec0aa
-        inactive_workspace #302017 #302017 #eec0aa
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    colors {
+        background #14171e
+        statusline #c5cad2
+        separator #252a36
+        focused_workspace  #8893ac #8893ac #ffffff
+        active_workspace   #58647f #58647f #c5cad2
+        inactive_workspace #323948 #323948 #c5cad2
         urgent_workspace   #f38ba8 #f38ba8 #000000
         binding_mode       #f9e2af #f9e2af #000000
     }

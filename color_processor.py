@@ -8,6 +8,7 @@ import json
 from PIL import Image
 from sklearn.cluster import KMeans
 import numpy as np
+from backup_manager import BackupManager
 
 
 class ColorProcessor:
@@ -15,6 +16,8 @@ class ColorProcessor:
     
     def __init__(self, config_paths):
         self.config_paths = config_paths
+        self.backup_manager = BackupManager()
+        # Legacy backup suffix for compatibility
         self.backup_suffix = '.wallpaper-backup'
     
     def rgb_to_hex(self, r, g, b):
@@ -184,28 +187,31 @@ class ColorProcessor:
             return [(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)]
     
     def backup_config(self, config_path):
-        """Create backup of config file"""
+        """Create backup of config file using centralized backup system"""
         if os.path.exists(config_path):
-            backup_path = config_path + self.backup_suffix
-            try:
-                with open(config_path, 'r') as src, open(backup_path, 'w') as dst:
-                    dst.write(src.read())
-                return backup_path
-            except Exception as e:
-                print(f'Warning: Failed to backup {config_path}: {e}', file=sys.stderr)
+            backup_path = self.backup_manager.backup_config_file(
+                config_path, 
+                'wallpaper-changes', 
+                f"Pre-wallpaper-change backup of {os.path.basename(config_path)}"
+            )
+            return backup_path
         return None
     
     def restore_config(self, config_path):
-        """Restore config from backup"""
-        backup_path = config_path + self.backup_suffix
-        if os.path.exists(backup_path):
-            try:
-                with open(backup_path, 'r') as src, open(config_path, 'w') as dst:
-                    dst.write(src.read())
+        """Restore config from most recent backup"""
+        config_name = os.path.basename(config_path)
+        latest_backup = self.backup_manager.get_latest_backup(config_name, 'wallpaper-changes')
+        
+        if latest_backup:
+            success = self.backup_manager.restore_config_file(latest_backup['backup_file'], config_path)
+            if success:
                 print(f'Restored {config_path} from backup', file=sys.stderr)
                 return True
-            except Exception as e:
-                print(f'Error restoring {config_path}: {e}', file=sys.stderr)
+            else:
+                print(f'Error restoring {config_path}', file=sys.stderr)
+        else:
+            print(f'No backup found for {config_path}', file=sys.stderr)
+        
         return False
     
     def update_config_safely(self, config_path, update_func, colors):
@@ -478,6 +484,14 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
                 print(f'Successfully updated: {", ".join(successful)}', file=sys.stderr)
             if failed:
                 print(f'Failed to update: {", ".join(failed)}', file=sys.stderr)
+            
+            # Clean up old backups periodically (keep last 20 wallpaper changes)
+            try:
+                cleaned = self.backup_manager.cleanup_old_backups('wallpaper-changes', keep_count=20)
+                if cleaned > 0:
+                    print(f'Cleaned up {cleaned} old backups', file=sys.stderr)
+            except Exception as e:
+                print(f'Warning: Backup cleanup failed: {e}', file=sys.stderr)
                 
             return len(failed) == 0
             
