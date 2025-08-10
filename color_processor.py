@@ -8,7 +8,6 @@ import json
 from PIL import Image
 from sklearn.cluster import KMeans
 import numpy as np
-from backup_manager import BackupManager
 
 
 class ColorProcessor:
@@ -16,9 +15,6 @@ class ColorProcessor:
     
     def __init__(self, config_paths):
         self.config_paths = config_paths
-        self.backup_manager = BackupManager()
-        # Legacy backup suffix for compatibility
-        self.backup_suffix = '.wallpaper-backup'
     
     def rgb_to_hex(self, r, g, b):
         """Convert RGB to hex color"""
@@ -186,48 +182,13 @@ class ColorProcessor:
             print(f'Error extracting colors: {e}', file=sys.stderr)
             return [(120, 80, 60), (80, 120, 100), (100, 80, 120), (90, 90, 70), (70, 90, 90)]
     
-    def backup_config(self, config_path):
-        """Create backup of config file using centralized backup system"""
-        if os.path.exists(config_path):
-            backup_path = self.backup_manager.backup_config_file(
-                config_path, 
-                'wallpaper-changes', 
-                f"Pre-wallpaper-change backup of {os.path.basename(config_path)}"
-            )
-            return backup_path
-        return None
-    
-    def restore_config(self, config_path):
-        """Restore config from most recent backup"""
-        config_name = os.path.basename(config_path)
-        latest_backup = self.backup_manager.get_latest_backup(config_name, 'wallpaper-changes')
-        
-        if latest_backup:
-            success = self.backup_manager.restore_config_file(latest_backup['backup_file'], config_path)
-            if success:
-                print(f'Restored {config_path} from backup', file=sys.stderr)
-                return True
-            else:
-                print(f'Error restoring {config_path}', file=sys.stderr)
-        else:
-            print(f'No backup found for {config_path}', file=sys.stderr)
-        
-        return False
-    
     def update_config_safely(self, config_path, update_func, colors):
-        """Safely update config with backup and rollback on failure"""
-        # Create backup
-        backup_path = self.backup_config(config_path)
-        
+        """Update config file"""
         try:
-            # Apply update
             update_func(config_path, colors)
             return True
         except Exception as e:
             print(f'Error updating {config_path}: {e}', file=sys.stderr)
-            # Restore from backup on failure
-            if backup_path:
-                self.restore_config(config_path)
             return False
     
     def update_i3_config(self, config_path, colors):
@@ -485,13 +446,6 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
             if failed:
                 print(f'Failed to update: {", ".join(failed)}', file=sys.stderr)
             
-            # Clean up old backups periodically (keep last 20 wallpaper changes)
-            try:
-                cleaned = self.backup_manager.cleanup_old_backups('wallpaper-changes', keep_count=20)
-                if cleaned > 0:
-                    print(f'Cleaned up {cleaned} old backups', file=sys.stderr)
-            except Exception as e:
-                print(f'Warning: Backup cleanup failed: {e}', file=sys.stderr)
                 
             return len(failed) == 0
             
