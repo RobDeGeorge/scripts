@@ -4,24 +4,41 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_DIR="${VENV_DIR:-$SCRIPT_DIR/wallpaper-venv}"
 
+# Source window manager detection
+source "$SCRIPT_DIR/detect_wm.sh"
+
+# Detect window manager
+WM=$(detect_window_manager)
+echo "Detected window manager: $WM" >&2
+
+# Get window manager specific commands and config paths
+eval "$(get_wm_commands "$WM")"
+eval "$(get_config_paths "$WM")"
+
 # Configuration with fallbacks - detect if running from ~/.config/scripts or original location
 WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 INDEX_FILE="${INDEX_FILE:-${HOME}/.wallpaper_index}"
 
-# Check if we're running from ~/.config/scripts/ (i3 keybind) or original scripts folder
+# Check if we're running from ~/.config/scripts/ (keybind) or original scripts folder
 if [[ "$SCRIPT_DIR" == *"/.config/scripts"* ]]; then
     # Running from ~/.config/scripts, use the live config files directly
-    I3_CONFIG="${I3_CONFIG:-${HOME}/.config/i3/config}"
-    I3BLOCKS_CONFIG="${I3BLOCKS_CONFIG:-${HOME}/.config/i3blocks/config}"
-    KITTY_CONFIG="${KITTY_CONFIG:-${HOME}/.config/kitty/kitty.conf}"
-    DUNST_CONFIG="${DUNST_CONFIG:-${HOME}/.config/dunst/dunstrc}"
     SKIP_RESTORE=true
 else
     # Running from original scripts folder, use local copies
-    I3_CONFIG="${I3_CONFIG:-$SCRIPT_DIR/i3-config}"
-    I3BLOCKS_CONFIG="${I3BLOCKS_CONFIG:-$SCRIPT_DIR/i3blocks-config}"
-    KITTY_CONFIG="${KITTY_CONFIG:-$SCRIPT_DIR/kitty.conf}"
-    DUNST_CONFIG="${DUNST_CONFIG:-$SCRIPT_DIR/dunstrc}"
+    case "$WM" in
+        "hyprland")
+            WM_CONFIG="${WM_CONFIG:-$SCRIPT_DIR/hyprland.conf}"
+            BAR_CONFIG="${BAR_CONFIG:-$SCRIPT_DIR/waybar-config}"
+            BAR_STYLE_CONFIG="${BAR_STYLE_CONFIG:-$SCRIPT_DIR/waybar-style.css}"
+            NOTIFICATION_CONFIG="${NOTIFICATION_CONFIG:-$SCRIPT_DIR/mako-config}"
+            ;;
+        "i3")
+            WM_CONFIG="${WM_CONFIG:-$SCRIPT_DIR/i3-config}"
+            BAR_CONFIG="${BAR_CONFIG:-$SCRIPT_DIR/i3blocks-config}"
+            NOTIFICATION_CONFIG="${NOTIFICATION_CONFIG:-$SCRIPT_DIR/dunstrc}"
+            ;;
+    esac
+    TERMINAL_CONFIG="${TERMINAL_CONFIG:-$SCRIPT_DIR/kitty.conf}"
     SKIP_RESTORE=false
 fi
 
@@ -75,10 +92,21 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
     exit 1
 fi
 
-if ! command -v xwallpaper &> /dev/null; then
-    echo "Error: xwallpaper command not found" >&2
-    exit 1
-fi
+# Check for wallpaper command based on window manager
+case "$WM" in
+    "hyprland")
+        if ! command -v hyprpaper &> /dev/null && ! command -v swaybg &> /dev/null && ! command -v wpaperd &> /dev/null; then
+            echo "Error: No Wayland wallpaper tool found (hyprpaper, swaybg, or wpaperd)" >&2
+            exit 1
+        fi
+        ;;
+    "i3")
+        if ! command -v xwallpaper &> /dev/null; then
+            echo "Error: xwallpaper command not found" >&2
+            exit 1
+        fi
+        ;;
+esac
 
 extract_colors_and_update_configs() {
     local wallpaper_path="$1"
@@ -86,19 +114,28 @@ extract_colors_and_update_configs() {
     
     if [ "$dry_run" = "true" ]; then
         echo "DRY RUN: Would extract colors from: $wallpaper_path" >&2
-        echo "DRY RUN: Would update local configs in scripts folder, then apply to system" >&2
+        echo "DRY RUN: Would update configs for $WM window manager" >&2
         # Just test color extraction without updating configs
         python3 -c "
 import sys
 sys.path.insert(0, '$SCRIPT_DIR')
 from color_processor import ColorProcessor
 
-config_paths = {
-    'i3': '$I3_CONFIG',
-    'kitty': '$KITTY_CONFIG', 
-    'dunst': '$DUNST_CONFIG',
-    'i3blocks': '$I3BLOCKS_CONFIG'
-}
+# Build config paths based on window manager
+config_paths = {'kitty': '$TERMINAL_CONFIG'}
+if '$WM' == 'i3':
+    config_paths.update({
+        'i3': '$WM_CONFIG',
+        'dunst': '$NOTIFICATION_CONFIG',
+        'i3blocks': '$BAR_CONFIG'
+    })
+elif '$WM' == 'hyprland':
+    config_paths.update({
+        'hyprland': '$WM_CONFIG',
+        'mako': '$NOTIFICATION_CONFIG',
+        'waybar': '$BAR_CONFIG' if '$BAR_CONFIG' else None,
+        'waybar_style': '$BAR_STYLE_CONFIG' if '$BAR_STYLE_CONFIG' else None
+    })
 
 processor = ColorProcessor(config_paths)
 colors = processor.extract_dominant_colors_kmeans('$wallpaper_path')
@@ -106,8 +143,15 @@ print(f'Extracted colors: {[processor.rgb_to_hex(*c) for c in colors]}', file=sy
 "
         return 0
     else
-        # Use the new color processor script
-        python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "$I3_CONFIG" "$KITTY_CONFIG" "$DUNST_CONFIG" "$I3BLOCKS_CONFIG"
+        # Use the new color processor script with window manager detection
+        case "$WM" in
+            "i3")
+                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "i3" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG"
+                ;;
+            "hyprland")
+                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "hyprland" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG" "$BAR_STYLE_CONFIG"
+                ;;
+        esac
         
         if [ $? -ne 0 ]; then
             echo "Error: Color processing failed. Some configs may not have been updated." >&2
@@ -199,25 +243,74 @@ else
             fi
         fi
         
-        xwallpaper --zoom "$WALLPAPER" &
+        # Set wallpaper based on window manager
+        case "$WM" in
+            "hyprland")
+                # Kill existing wallpaper processes
+                pkill hyprpaper >/dev/null 2>&1
+                pkill swaybg >/dev/null 2>&1
+                pkill wpaperd >/dev/null 2>&1
+                sleep 0.2
+                
+                # Set wallpaper using available tool
+                if command -v hyprpaper &> /dev/null; then
+                    hyprpaper -c <(echo "preload = $WALLPAPER"; echo "wallpaper = ,$WALLPAPER") &
+                elif command -v swaybg &> /dev/null; then
+                    swaybg -i "$WALLPAPER" -m fill &
+                elif command -v wpaperd &> /dev/null; then
+                    wpaperd &
+                fi
+                
+                # Reload Hyprland config
+                hyprctl reload >/dev/null 2>&1
+                
+                # Restart waybar if it exists
+                if command -v waybar &> /dev/null; then
+                    # Send SIGUSR2 to reload CSS, then restart if that fails
+                    pkill -SIGUSR2 waybar >/dev/null 2>&1
+                    sleep 0.3
+                    
+                    # If waybar isn't running, start it fresh
+                    if ! pgrep waybar >/dev/null 2>&1; then
+                        waybar >/dev/null 2>&1 &
+                        sleep 0.5
+                    fi
+                fi
+                
+                # Restart mako notifications
+                pkill mako >/dev/null 2>&1
+                sleep 0.3
+                if command -v mako &> /dev/null; then
+                    mako &
+                    sleep 0.5
+                fi
+                ;;
+            "i3")
+                xwallpaper --zoom "$WALLPAPER" &
+                
+                # First kill i3blocks before reloading i3
+                pkill i3blocks >/dev/null 2>&1
+                sleep 0.2
+                
+                # Reload i3 config which should restart i3blocks with new config
+                i3-msg reload >/dev/null 2>&1
+                
+                # If i3blocks didn't restart automatically, start it manually
+                sleep 0.5
+                if ! pgrep i3blocks >/dev/null 2>&1; then
+                    i3blocks &
+                fi
+                
+                pkill dunst >/dev/null 2>&1
+                dunst &
+                ;;
+        esac
         
-        # First kill i3blocks before reloading i3
-        pkill i3blocks >/dev/null 2>&1
-        sleep 0.2
-        
-        # Reload i3 config which should restart i3blocks with new config
-        i3-msg reload >/dev/null 2>&1
-        
-        # If i3blocks didn't restart automatically, start it manually
+        # Send notification - wait a bit for notification daemon to be ready
         sleep 0.5
-        if ! pgrep i3blocks >/dev/null 2>&1; then
-            i3blocks &
+        if command -v notify-send &> /dev/null; then
+            notify-send "Wallpaper Updated" "New color scheme applied! 🎨" >/dev/null 2>&1 &
         fi
-        
-        pkill dunst >/dev/null 2>&1
-        dunst &
-        
-        notify-send "Wallpaper Updated" "New color scheme applied! 🎨" >/dev/null 2>&1 &
         
         echo "Wallpaper and color scheme updated successfully" >&2
     else

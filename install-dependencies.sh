@@ -6,7 +6,14 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_DIR="$SCRIPT_DIR/wallpaper-venv"
 
+# Source window manager detection
+source "$SCRIPT_DIR/detect_wm.sh"
+
 echo "Installing wallpaper cycler dependencies..."
+
+# Detect current window manager
+WM=$(detect_window_manager)
+echo "Detected window manager: $WM"
 
 # Detect package manager and distro
 detect_package_manager() {
@@ -29,16 +36,31 @@ detect_package_manager() {
 
 # Check if packages are already installed
 check_system_packages() {
+    local wm="$1"
     local missing=()
     
     # Core system packages
     command -v python3 &> /dev/null || missing+=("python3")
-    command -v xwallpaper &> /dev/null || missing+=("xwallpaper")
-    command -v i3 &> /dev/null || missing+=("i3")
-    command -v i3blocks &> /dev/null || missing+=("i3blocks")
-    command -v dunst &> /dev/null || missing+=("dunst")
     command -v kitty &> /dev/null || missing+=("kitty")
-    command -v scrot &> /dev/null || missing+=("scrot")
+    
+    # Window manager specific packages
+    case "$wm" in
+        "hyprland")
+            command -v hyprland &> /dev/null || missing+=("hyprland")
+            command -v waybar &> /dev/null || missing+=("waybar")
+            command -v mako &> /dev/null || missing+=("mako")
+            command -v hyprpaper &> /dev/null || missing+=("hyprpaper")
+            command -v grim &> /dev/null || missing+=("grim")
+            command -v slurp &> /dev/null || missing+=("slurp")
+            ;;
+        "i3")
+            command -v xwallpaper &> /dev/null || missing+=("xwallpaper")
+            command -v i3 &> /dev/null || missing+=("i3")
+            command -v i3blocks &> /dev/null || missing+=("i3blocks")
+            command -v dunst &> /dev/null || missing+=("dunst")
+            command -v scrot &> /dev/null || missing+=("scrot")
+            ;;
+    esac
     
     # Audio and system controls
     command -v pamixer &> /dev/null || missing+=("pamixer")
@@ -75,33 +97,80 @@ check_system_packages() {
 # Map package names for different distros
 get_package_names() {
     local pm="$1"
+    local wm="$2"
+    
+    # Base packages for all systems
+    local base_packages=""
     case "$pm" in
         "apt")
-            echo "python3 python3-venv python3-pip xwallpaper i3-wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock network-manager-gnome wireless-tools lm-sensors acpi"
+            base_packages="python3 python3-venv python3-pip kitty pamixer brightnessctl pulseaudio-utils network-manager-gnome wireless-tools lm-sensors acpi"
             ;;
         "pacman")
-            echo "python python-pip xwallpaper i3-wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio picom xss-lock i3lock network-manager-applet wireless_tools lm_sensors acpi"
+            base_packages="python python-pip kitty pamixer brightnessctl pulseaudio network-manager-applet wireless_tools lm_sensors acpi"
             ;;
         "dnf"|"yum")
-            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock NetworkManager-gnome wireless-tools lm_sensors acpi"
+            base_packages="python3 python3-venv python3-pip kitty pamixer brightnessctl pulseaudio-utils NetworkManager-gnome wireless-tools lm_sensors acpi"
             ;;
         "zypper")
-            echo "python3 python3-venv python3-pip xwallpaper i3 i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio-utils picom xss-lock i3lock NetworkManager-gnome wireless-tools sensors acpi"
+            base_packages="python3 python3-venv python3-pip kitty pamixer brightnessctl pulseaudio-utils NetworkManager-gnome wireless-tools sensors acpi"
             ;;
         "apk")
-            echo "python3 py3-venv py3-pip xwallpaper i3wm i3blocks dunst kitty scrot pamixer brightnessctl pulseaudio picom xss-lock i3lock networkmanager-gtk wireless-tools lm-sensors acpi"
-            ;;
-        *)
-            echo ""
+            base_packages="python3 py3-venv py3-pip kitty pamixer brightnessctl pulseaudio networkmanager-gtk wireless-tools lm-sensors acpi"
             ;;
     esac
+    
+    # Window manager specific packages
+    local wm_packages=""
+    case "$wm" in
+        "hyprland")
+            case "$pm" in
+                "apt")
+                    wm_packages="hyprland waybar mako-notifier hyprpaper grim slurp"
+                    ;;
+                "pacman")
+                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    ;;
+                "dnf"|"yum")
+                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    ;;
+                "zypper")
+                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    ;;
+                "apk")
+                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    ;;
+            esac
+            ;;
+        "i3")
+            case "$pm" in
+                "apt")
+                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock"
+                    ;;
+                "pacman")
+                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock"
+                    ;;
+                "dnf"|"yum")
+                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock"
+                    ;;
+                "zypper")
+                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock"
+                    ;;
+                "apk")
+                    wm_packages="xwallpaper i3wm i3blocks dunst scrot picom xss-lock i3lock"
+                    ;;
+            esac
+            ;;
+    esac
+    
+    echo "$base_packages $wm_packages"
 }
 
 # Install only missing packages
 install_missing_packages() {
     local pm="$1"
+    local wm="$2"
     local missing_packages=("${MISSING_PACKAGES[@]}")
-    local all_packages=($(get_package_names "$pm"))
+    local all_packages=($(get_package_names "$pm" "$wm"))
     local to_install=()
     
     # Map missing commands to package names
@@ -179,14 +248,15 @@ install_missing_packages() {
 # Install system packages
 install_system_packages() {
     local pm="$1"
+    local wm="$2"
     
     # Check which packages are missing
-    if check_system_packages; then
+    if check_system_packages "$wm"; then
         return 0
     fi
     
     # Install only missing packages
-    install_missing_packages "$pm"
+    install_missing_packages "$pm" "$wm"
 }
 
 # Create Python virtual environment
@@ -326,7 +396,7 @@ main() {
     echo "Detected package manager: $PM"
     
     # Install system packages
-    install_system_packages "$PM"
+    install_system_packages "$PM" "$WM"
     
     # Check and install fonts
     if ! check_fonts; then

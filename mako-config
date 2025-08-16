@@ -1,0 +1,13 @@
+# Mako notification daemon config
+background-color=#151b1d
+text-color=#e5f9ff
+border-color=#928075
+border-size=2
+border-radius=5
+default-timeout=5000
+font=Victor Mono 11
+padding=10
+margin=10
+anchor=top-right
+max-visible=5
+sort=-time

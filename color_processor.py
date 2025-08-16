@@ -361,6 +361,151 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
         
         print(f'Updated i3blocks config with gradient from {primary}', file=sys.stderr)
     
+    def update_hyprland_config(self, config_path, colors):
+        """Update Hyprland window manager config"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        # Find most vibrant color for focused window
+        most_vibrant = colors[0]
+        max_vibrancy = 0
+        
+        for color in colors:
+            r, g, b = color
+            color_range = max(r, g, b) - min(r, g, b)
+            brightness = (r + g + b) / 3
+            vibrancy = color_range * (brightness / 255.0)
+            
+            if vibrancy > max_vibrancy:
+                max_vibrancy = vibrancy
+                most_vibrant = color
+        
+        primary = self.rgb_to_hex(*most_vibrant)
+        primary = self.ensure_minimum_brightness(primary, 0.25)
+        secondary = self.adjust_brightness(primary, 0.7)
+        
+        # Convert hex to rgba format for Hyprland
+        def hex_to_rgba(hex_color, alpha="ee"):
+            hex_color = hex_color.lstrip('#')
+            return f"rgba({hex_color}{alpha})"
+        
+        primary_rgba = hex_to_rgba(primary, "ee")
+        secondary_rgba = hex_to_rgba(secondary, "aa")
+        
+        import re
+        
+        # Update active border
+        config = re.sub(r'col\.active_border\s*=\s*rgba\([0-9a-fA-F]{8}\)\s*rgba\([0-9a-fA-F]{8}\)\s*\d+deg',
+                       f'col.active_border = {primary_rgba} {primary_rgba} 45deg', config)
+        
+        # Update inactive border  
+        config = re.sub(r'col\.inactive_border\s*=\s*rgba\([0-9a-fA-F]{8}\)',
+                       f'col.inactive_border = {secondary_rgba}', config)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated Hyprland config with primary color: {primary}', file=sys.stderr)
+    
+    def update_waybar_config(self, config_path, colors):
+        """Update Waybar config"""
+        if not os.path.exists(config_path):
+            print(f'Warning: Waybar config not found at {config_path}', file=sys.stderr)
+            return
+            
+        try:
+            with open(config_path, 'r') as f:
+                waybar_config = json.load(f)
+        except Exception as e:
+            print(f'Warning: Could not parse Waybar config: {e}', file=sys.stderr)
+            return
+        
+        # Update waybar config if needed
+        print(f'Waybar config exists but no color updates needed (handled by CSS)', file=sys.stderr)
+    
+    def update_waybar_style(self, style_path, colors):
+        """Update Waybar CSS style"""
+        if not os.path.exists(style_path):
+            print(f'Warning: Waybar style not found at {style_path}', file=sys.stderr)
+            return
+            
+        try:
+            with open(style_path, 'r') as f:
+                css = f.read()
+        except Exception as e:
+            print(f'Warning: Could not read Waybar style: {e}', file=sys.stderr)
+            return
+        
+        primary = self.rgb_to_hex(*colors[0])
+        primary = self.ensure_minimum_brightness(primary, 0.3)
+        secondary = self.adjust_brightness(primary, 0.7)
+        tertiary = self.adjust_brightness(primary, 0.4)
+        
+        bg_color = self.adjust_brightness(primary, 0.1)
+        bg_color = self.ensure_minimum_brightness(bg_color, 0.05)
+        
+        text_color = self.create_readable_text_color(bg_color, colors, 3.0)
+        
+        import re
+        
+        # Update CSS custom properties if they exist
+        css = re.sub(r'--primary:\s*#[0-9a-fA-F]{6};', f'--primary: {primary};', css)
+        css = re.sub(r'--secondary:\s*#[0-9a-fA-F]{6};', f'--secondary: {secondary};', css)
+        css = re.sub(r'--background:\s*#[0-9a-fA-F]{6};', f'--background: {bg_color};', css)
+        css = re.sub(r'--text:\s*#[0-9a-fA-F]{6};', f'--text: {text_color};', css)
+        
+        # Update common background colors
+        css = re.sub(r'background-color:\s*#[0-9a-fA-F]{6};', f'background-color: {bg_color};', css)
+        css = re.sub(r'background:\s*#[0-9a-fA-F]{6};', f'background: {bg_color};', css)
+        css = re.sub(r'color:\s*#[0-9a-fA-F]{6};', f'color: {text_color};', css)
+        
+        try:
+            with open(style_path, 'w') as f:
+                f.write(css)
+            print(f'Updated Waybar style with primary color: {primary}', file=sys.stderr)
+        except Exception as e:
+            print(f'Warning: Could not write Waybar style: {e}', file=sys.stderr)
+    
+    def update_mako_config(self, config_path, colors):
+        """Update Mako notification config"""
+        primary = self.rgb_to_hex(*colors[0])
+        secondary = self.rgb_to_hex(*colors[1]) if len(colors) > 1 else self.adjust_brightness(primary, 0.8)
+        
+        bg_color = self.adjust_brightness(primary, 0.15)
+        bg_color = self.ensure_minimum_brightness(bg_color, 0.1)
+        
+        fg_color = self.create_readable_text_color(bg_color, colors, 3.5, prefer_color=True)
+        border_color = self.adjust_brightness(secondary, 0.6)
+        border_color = self.ensure_minimum_brightness(border_color, 0.3)
+        
+        if not os.path.exists(config_path):
+            # Create a basic mako config if it doesn't exist
+            config_dir = os.path.dirname(config_path)
+            os.makedirs(config_dir, exist_ok=True)
+            
+            config_content = f"""# Mako notification daemon config
+background-color={bg_color}
+text-color={fg_color}
+border-color={border_color}
+border-size=2
+border-radius=5
+default-timeout=5000
+font=Victor Mono 11
+"""
+        else:
+            with open(config_path, 'r') as f:
+                config_content = f.read()
+            
+            import re
+            config_content = re.sub(r'background-color\s*=\s*#[0-9a-fA-F]{6}', f'background-color={bg_color}', config_content)
+            config_content = re.sub(r'text-color\s*=\s*#[0-9a-fA-F]{6}', f'text-color={fg_color}', config_content)
+            config_content = re.sub(r'border-color\s*=\s*#[0-9a-fA-F]{6}', f'border-color={border_color}', config_content)
+        
+        with open(config_path, 'w') as f:
+            f.write(config_content)
+        
+        print(f'Updated Mako config: bg={bg_color}, fg={fg_color}, border={border_color}', file=sys.stderr)
+    
     def update_razer_keyboard(self, colors):
         """Update Razer keyboard RGB colors"""
         try:
@@ -417,18 +562,27 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
             
             # Update each config safely with backup/rollback
             for config_name, config_path in self.config_paths.items():
-                if not os.path.exists(config_path):
-                    print(f'Warning: Config file not found: {config_path}', file=sys.stderr)
+                if not config_path or not os.path.exists(config_path):
+                    if config_path:  # Only warn if path was specified
+                        print(f'Warning: Config file not found: {config_path}', file=sys.stderr)
                     continue
                     
                 if config_name == 'i3':
                     results[config_name] = self.update_config_safely(config_path, self.update_i3_config, colors)
+                elif config_name == 'hyprland':
+                    results[config_name] = self.update_config_safely(config_path, self.update_hyprland_config, colors)
                 elif config_name == 'kitty':
                     results[config_name] = self.update_config_safely(config_path, self.update_kitty_config, colors)
                 elif config_name == 'dunst':
                     results[config_name] = self.update_config_safely(config_path, self.update_dunst_config, colors)
+                elif config_name == 'mako':
+                    results[config_name] = self.update_config_safely(config_path, self.update_mako_config, colors)
                 elif config_name == 'i3blocks':
                     results[config_name] = self.update_config_safely(config_path, self.update_i3blocks_config, colors)
+                elif config_name == 'waybar':
+                    results[config_name] = self.update_config_safely(config_path, self.update_waybar_config, colors)
+                elif config_name == 'waybar_style':
+                    results[config_name] = self.update_config_safely(config_path, self.update_waybar_style, colors)
             
             # Update Razer keyboard (doesn't need backup)
             try:
@@ -455,17 +609,40 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
 
 
 def main():
-    if len(sys.argv) != 6:
-        print("Usage: color_processor.py <wallpaper_path> <i3_config> <kitty_config> <dunst_config> <i3blocks_config>", file=sys.stderr)
+    if len(sys.argv) < 3:
+        print("Usage: color_processor.py <wallpaper_path> <wm_type> [config_paths...]", file=sys.stderr)
+        print("  wm_type: 'i3' or 'hyprland'", file=sys.stderr)
+        print("  For i3: <wallpaper_path> i3 <i3_config> <kitty_config> <dunst_config> <i3blocks_config>", file=sys.stderr)
+        print("  For hyprland: <wallpaper_path> hyprland <hyprland_config> <kitty_config> <mako_config> [waybar_config] [waybar_style]", file=sys.stderr)
         sys.exit(1)
     
     wallpaper_path = sys.argv[1]
-    config_paths = {
-        'i3': sys.argv[2],
-        'kitty': sys.argv[3],
-        'dunst': sys.argv[4],
-        'i3blocks': sys.argv[5]
-    }
+    wm_type = sys.argv[2]
+    
+    if wm_type == "i3":
+        if len(sys.argv) != 7:
+            print("Usage for i3: color_processor.py <wallpaper_path> i3 <i3_config> <kitty_config> <dunst_config> <i3blocks_config>", file=sys.stderr)
+            sys.exit(1)
+        config_paths = {
+            'i3': sys.argv[3],
+            'kitty': sys.argv[4],
+            'dunst': sys.argv[5],
+            'i3blocks': sys.argv[6]
+        }
+    elif wm_type == "hyprland":
+        if len(sys.argv) < 6:
+            print("Usage for hyprland: color_processor.py <wallpaper_path> hyprland <hyprland_config> <kitty_config> <mako_config> [waybar_config] [waybar_style]", file=sys.stderr)
+            sys.exit(1)
+        config_paths = {
+            'hyprland': sys.argv[3],
+            'kitty': sys.argv[4],
+            'mako': sys.argv[5],
+            'waybar': sys.argv[6] if len(sys.argv) > 6 else None,
+            'waybar_style': sys.argv[7] if len(sys.argv) > 7 else None
+        }
+    else:
+        print(f"Error: Unknown window manager type '{wm_type}'. Use 'i3' or 'hyprland'", file=sys.stderr)
+        sys.exit(1)
     
     processor = ColorProcessor(config_paths)
     success = processor.process_wallpaper(wallpaper_path)

@@ -13,13 +13,13 @@ setenv VIRTUAL_ENV /home/rexx/scripts/wallpaper-venv
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
+setenv VIRTUAL_ENV_PROMPT wallpaper-venv
 
 
 set _OLD_VIRTUAL_PROMPT="$prompt"
 
 if (! "$?VIRTUAL_ENV_DISABLE_PROMPT") then
-    set prompt = '(wallpaper-venv) '"$prompt"
-    setenv VIRTUAL_ENV_PROMPT '(wallpaper-venv) '
+    set prompt = "("wallpaper-venv") $prompt:q"
 endif
 
 alias pydoc python -m pydoc

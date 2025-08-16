@@ -1,6 +1,6 @@
 # Linux Desktop Theme Kit
 
-🎨 A portable Linux desktop setup that automatically changes your entire system theme based on your wallpaper! Works on any Linux distro with i3wm.
+🎨 A portable Linux desktop setup that automatically changes your entire system theme based on your wallpaper! Works on any Linux distro with **i3wm** or **Hyprland**.
 
 ## What It Does
 
@@ -10,11 +10,10 @@
 🎯 **One-Click Setup** - Everything installs automatically
 
 **What gets themed:**
-- i3 window manager (borders, gaps, workspace colors)
-- Terminal (kitty with matching colors)  
-- Status bar (i3blocks with color gradients)
-- Notifications (dunst styling)
-- Razer keyboard RGB (if you have one)
+- **i3wm**: Window borders, gaps, workspace colors, i3blocks status bar, dunst notifications
+- **Hyprland**: Window borders, gaps, waybar status bar, mako notifications
+- **Terminal**: kitty with matching colors  
+- **Keyboard RGB**: Razer keyboard support (if you have one)
 
 ## Quick Start
 
@@ -27,21 +26,21 @@ chmod +x *.sh
 
 # 3. Add your wallpapers to ~/Pictures/Wallpapers/
 
-# 4. Restart i3 (Mod+Shift+R) or reboot
+# 4. Restart your window manager or reboot
 ```
 
-That's it! Press `Mod+Shift+W` to cycle wallpapers and watch your theme change.
+That's it! The setup automatically detects if you're using i3 or Hyprland and installs the appropriate components. Press `Mod+Shift+W` to cycle wallpapers and watch your theme change.
 
 ## How It Works
 
 The system extracts dominant colors from each wallpaper and calculates contrast-safe color schemes for all your applications. Everything updates in real-time when you change wallpapers.
 
 **Includes configs for:**
-- `i3` - Window manager with gaps and custom keybinds
-- `kitty` - Terminal emulator  
-- `i3blocks` - Status bar
-- `dunst` - Notifications
-- `bashrc` - Shell configuration
+- **Window Managers**: `i3` or `hyprland` with gaps and custom keybinds
+- **Terminal**: `kitty` emulator  
+- **Status Bars**: `i3blocks` (i3) or `waybar` (Hyprland)
+- **Notifications**: `dunst` (i3) or `mako` (Hyprland)
+- **Shell**: `bashrc` configuration
 
 ## Compatibility
 
@@ -54,6 +53,7 @@ Works on any Linux distribution:
 
 ## Tips
 
-- **Backup existing configs:** The installer automatically backs up your current settings
-- **Customize colors:** Edit color functions in `wallpaper-cycler.sh` 
+- **Automatic detection:** The system detects i3 or Hyprland and sets up accordingly
+- **Backup existing configs:** The installer automatically backs up your current settings  
+- **Customize colors:** Edit color functions in `wallpaper-cycler.sh`
 - **Sync changes:** Use `./sync-configs.sh` to save modifications back to this folder

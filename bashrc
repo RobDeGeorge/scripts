@@ -94,13 +94,13 @@ alias l='ls -CF'
 alias octave='git clone https://github.com/waybetterengineering/octave.git'
 
 #chromium
-alias homeassistant='chromium-browser http://homeassistant.local:8123/dashboard-michgan/0 --new-window'
-alias youtube='chromium-browser http://www.youtube.com --new-window'
-alias reddit='chromium-browser http://www.reddit.com --new-window'
-alias gmail='chromium-browser http://gmail.com --new-window'
-alias perplexity='chromium-browser https://www.perplexity.ai/ --new-window'
-alias discord='chromium-browser https://www.discord.com --new-window'
-alias web='chromium-browser https://google.com --new-window'
+alias homeassistant='chromium http://homeassistant.local:8123/dashboard-michgan/0 --new-window'
+alias youtube='chromium http://www.youtube.com --new-window'
+alias reddit='chromium http://www.reddit.com --new-window'
+alias gmail='chromium http://gmail.com --new-window'
+alias perplexity='chromium https://www.perplexity.ai/ --new-window'
+alias discord='chromium https://www.discord.com --new-window'
+alias web='chromium https://google.com --new-window'
 
 #games
 alias gameboy='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia mgba-qt'
