@@ -7,55 +7,55 @@
 [wifi_info]
 command=wifi_name=$(iwgetid -r 2>/dev/null); if [ -n "$wifi_name" ]; then signal=$(cat /proc/net/wireless | grep -v 'Inter-' | grep -v 'face' | awk '{print int($3 * 100 / 70)}' | head -1); echo " $wifi_name ${signal}%"; else echo " disconnected"; fi
 interval=5
-color=#4e607d
+color=#0ab5c1
 
 # Hardware Monitoring
 [cpu_info]
 command=cpu_name=$(cat /proc/cpuinfo | grep 'model name' | head -1 | cut -d':' -f2 | sed 's/^ *//' | awk '{print $1" "$2" "$3}'); cpu_usage=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {printf "%.1f%%", usage}'); cpu_temp=$(sensors 2>/dev/null | grep 'Core 0' | awk '{print $3}' | sed 's/+//;s/°C/°/' || echo "N/A"); echo " $cpu_name $cpu_usage $cpu_temp"
 interval=1
-color=#566288
+color=#0ba8d3
 
 [gpu_info]
 command=gpu_name=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | awk '{print $1" "$2}' || echo "Integrated"); gpu_usage=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo "N/A"); gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null || echo "N/A"); if [ "$gpu_usage" = "N/A" ]; then echo "󰢮 $gpu_name N/A"; else echo "󰢮 $gpu_name ${gpu_usage}% ${gpu_temp}°"; fi
 interval=2
-color=#5d6293
+color=#0c95e5
 
 # Memory & Storage
 [memory_usage]
 command=free | awk '/^Mem:/ {printf " DDR4 %.1fGB/%.1fGB", $3/1024/1024, $2/1024/1024}'
 interval=2
-color=#68659e
+color=#117ef2
 
 [disk_usage]
 command=device=$(df / | awk 'NR==2{print $1}' | sed 's|/dev/||'); df / | awk -v dev="$device" 'NR==2{printf " "dev" %.1fGB/%.1fGB", $3/1024/1024, $2/1024/1024}'
 interval=30
-color=#7b70a5
+color=#2268f3
 
 [volume]
 command=audio_device=$(pactl info 2>/dev/null | grep "Default Sink:" | cut -d' ' -f3- | sed 's/.*\.//;s/_/ /g' || echo "Audio"); volume=$(pamixer --get-volume-human); if [ "$volume" = "muted" ]; then echo "󰝟 $audio_device muted"; else echo "󰕾 $audio_device $volume"; fi
 interval=1
 signal=10
-color=#8d7cac
+color=#3457f4
 
 [brightness]
 command=brightness=$(brightnessctl get 2>/dev/null); max_brightness=$(brightnessctl max 2>/dev/null); if [ -n "$brightness" ] && [ -n "$max_brightness" ]; then percent=$((brightness * 100 / max_brightness)); echo "󰃞 ${percent}%"; else echo "󰃞 N/A"; fi
 interval=1
 signal=11
-color=#9e87b3
+color=#464bf5
 
 # Date and Time
 [date]
 command=date '+󰃭 %m/%d'
 interval=60
-color=#ad92ba
+color=#6a57f6
 
 [time]
 command=date '+󰥔 %H:%M'
 interval=1
-color=#bb9ec2
+color=#8e69f7
 
 # Power & Battery
 [battery]
 command=acpi -b 2>/dev/null | awk -F'[,:]' '{gsub(/ /, "", $2); gsub(/ /, "", $3); if($2=="Charging") icon="󰂄"; else if($2=="Discharging") icon="󰁹"; else icon="󱐋"; print icon" "$3}' || echo "󰂄 AC"
 interval=5
-color=#c7a9c9
+color=#ae7af8

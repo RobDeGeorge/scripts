@@ -5,6 +5,6 @@
     timeout = 10000
     
 [urgency_normal]
-    background = "#14181e"
-    foreground = "#f9efeb"
-    frame_color = "#3c4b5c"
+    background = "#003233"
+    foreground = "#e5fdff"
+    frame_color = "#735a3e"

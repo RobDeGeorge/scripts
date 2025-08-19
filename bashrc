@@ -101,6 +101,7 @@ alias gmail='chromium http://gmail.com --new-window'
 alias perplexity='chromium https://www.perplexity.ai/ --new-window'
 alias discord='chromium https://www.discord.com --new-window'
 alias web='chromium https://google.com --new-window'
+alias github='chromium https://github.com --new-window'
 
 #games
 alias gameboy='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia mgba-qt'
