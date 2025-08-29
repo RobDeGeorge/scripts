@@ -306,6 +306,12 @@ else
                 ;;
         esac
         
+        # Update lockscreen with current wallpaper using simple approach
+        echo "Updating lockscreen cache..." >&2
+        mkdir -p ~/.cache/betterlockscreen/current/
+        RESOLUTION=$(xrandr | grep ' connected' | head -1 | awk '{print $4}' | cut -d'+' -f1)
+        convert "$WALLPAPER" -resize "${RESOLUTION}^" -gravity center -extent "$RESOLUTION" -blur 0x8 ~/.cache/betterlockscreen/current/lock_blur.png 2>/dev/null || echo "Warning: Failed to update lockscreen"
+        
         # Send notification - wait a bit for notification daemon to be ready
         sleep 0.5
         if command -v notify-send &> /dev/null; then

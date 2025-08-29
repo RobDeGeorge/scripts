@@ -23,6 +23,7 @@ WALLPAPER_TARGET="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 # Create config directories based on window manager
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/scripts"
+mkdir -p ~/.cache/betterlockscreen/current
 
 case "$WM" in
     "hyprland")

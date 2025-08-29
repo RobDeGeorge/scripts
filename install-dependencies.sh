@@ -71,6 +71,7 @@ check_system_packages() {
     command -v picom &> /dev/null || missing+=("picom")
     command -v xss-lock &> /dev/null || missing+=("xss-lock")
     command -v i3lock &> /dev/null || missing+=("i3lock")
+    command -v convert &> /dev/null || missing+=("imagemagick")
     
     # Network tools
     command -v nm-applet &> /dev/null || missing+=("network-manager-gnome")
@@ -144,19 +145,19 @@ get_package_names() {
         "i3")
             case "$pm" in
                 "apt")
-                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock"
+                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock imagemagick"
                     ;;
                 "pacman")
-                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock"
+                    wm_packages="xwallpaper i3-wm i3blocks dunst scrot picom xss-lock i3lock imagemagick"
                     ;;
                 "dnf"|"yum")
-                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock"
+                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock imagemagick"
                     ;;
                 "zypper")
-                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock"
+                    wm_packages="xwallpaper i3 i3blocks dunst scrot picom xss-lock i3lock imagemagick"
                     ;;
                 "apk")
-                    wm_packages="xwallpaper i3wm i3blocks dunst scrot picom xss-lock i3lock"
+                    wm_packages="xwallpaper i3wm i3blocks dunst picom xss-lock i3lock imagemagick"
                     ;;
             esac
             ;;
@@ -176,7 +177,7 @@ install_missing_packages() {
     # Map missing commands to package names
     for missing in "${missing_packages[@]}"; do
         case "$missing" in
-            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot"|"pamixer"|"brightnessctl"|"pulseaudio-utils"|"picom"|"xss-lock"|"i3lock"|"network-manager-gnome"|"wireless-tools"|"lm-sensors"|"acpi")
+            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot"|"pamixer"|"brightnessctl"|"pulseaudio-utils"|"picom"|"xss-lock"|"i3lock"|"imagemagick"|"network-manager-gnome"|"wireless-tools"|"lm-sensors"|"acpi")
                 # Find the corresponding package in the distro list
                 for pkg in "${all_packages[@]}"; do
                     if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && "$pkg" == "python" ]] || [[ "$missing" == "pulseaudio-utils" && ("$pkg" == "pulseaudio" || "$pkg" == "pulseaudio-utils") ]]; then
