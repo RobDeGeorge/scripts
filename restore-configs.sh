@@ -53,6 +53,7 @@ echo "Copying config files for $WM..."
 case "$WM" in
     "hyprland")
         [ -f "$SCRIPT_DIR/hyprland.conf" ] && cp "$SCRIPT_DIR/hyprland.conf" "$CONFIG_DIR/hypr/hyprland.conf"
+        [ -f "$SCRIPT_DIR/hyprlock.conf" ] && cp "$SCRIPT_DIR/hyprlock.conf" "$CONFIG_DIR/hypr/hyprlock.conf"
         [ -f "$SCRIPT_DIR/waybar-config" ] && cp "$SCRIPT_DIR/waybar-config" "$CONFIG_DIR/waybar/config"
         [ -f "$SCRIPT_DIR/waybar-style.css" ] && cp "$SCRIPT_DIR/waybar-style.css" "$CONFIG_DIR/waybar/style.css"
         [ -f "$SCRIPT_DIR/mako-config" ] && cp "$SCRIPT_DIR/mako-config" "$CONFIG_DIR/mako/config"

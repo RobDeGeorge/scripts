@@ -22,6 +22,7 @@ WALLPAPER_SOURCE="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 case "$WM" in
     "hyprland")
         [ -f "$CONFIG_DIR/hypr/hyprland.conf" ] && cp "$CONFIG_DIR/hypr/hyprland.conf" "$SCRIPT_DIR/hyprland.conf"
+        [ -f "$CONFIG_DIR/hypr/hyprlock.conf" ] && cp "$CONFIG_DIR/hypr/hyprlock.conf" "$SCRIPT_DIR/hyprlock.conf"
         [ -f "$CONFIG_DIR/waybar/config" ] && cp "$CONFIG_DIR/waybar/config" "$SCRIPT_DIR/waybar-config"
         [ -f "$CONFIG_DIR/waybar/style.css" ] && cp "$CONFIG_DIR/waybar/style.css" "$SCRIPT_DIR/waybar-style.css"
         [ -f "$CONFIG_DIR/mako/config" ] && cp "$CONFIG_DIR/mako/config" "$SCRIPT_DIR/mako-config"

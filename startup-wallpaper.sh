@@ -15,8 +15,8 @@ if [ ! -d "$WALLPAPER_DIR" ] || [ -z "$(ls -A "$WALLPAPER_DIR" 2>/dev/null)" ]; 
     exit 0
 fi
 
-# Get the first available wallpaper
-FIRST_WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.bmp" \) | head -1)
+# Get a random wallpaper
+FIRST_WALLPAPER=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.bmp" \) | shuf | head -1)
 
 if [ -n "$FIRST_WALLPAPER" ]; then
     echo "Loading startup wallpaper: $FIRST_WALLPAPER" >&2

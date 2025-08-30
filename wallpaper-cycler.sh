@@ -277,6 +277,13 @@ else
                     fi
                 fi
                 
+                # Update hyprlock config with current wallpaper
+                HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
+                if [ -f "$HYPRLOCK_CONFIG" ]; then
+                    sed -i "s|path = .*|path = $WALLPAPER|g" "$HYPRLOCK_CONFIG"
+                    echo "Updated hyprlock with: $WALLPAPER" >&2
+                fi
+                
                 # Restart mako notifications
                 pkill mako >/dev/null 2>&1
                 sleep 0.3
