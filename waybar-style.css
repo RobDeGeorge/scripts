@@ -7,7 +7,7 @@
 window#waybar {
     background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 3px solid #668389;
-    color: #eec0aa;
+    color: #c5cad2;
     transition-property: border-bottom-color, color;
     transition-duration: .5s;
 }
@@ -30,7 +30,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #workspaces button:hover {
@@ -40,18 +40,18 @@ button:hover {
 #workspaces button.focused {
     background-color: transparent;
     box-shadow: inset 0 -3px #668389;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #workspaces button.urgent {
     background-color: rgba(255, 100, 100, 0.3);
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #mode {
     background-color: transparent;
     border-bottom: 3px solid #668389;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #clock,
@@ -66,7 +66,7 @@ button:hover {
 #mode,
 #window {
     padding: 0 10px;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #window,
@@ -84,29 +84,29 @@ button:hover {
 
 #clock {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #battery {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #battery.charging, #battery.plugged {
-    color: #eec0aa;
+    color: #c5cad2;
     background-color: transparent;
 }
 
 @keyframes blink {
     to {
         background-color: rgba(255, 0, 0, 0.5);
-        color: #eec0aa;
+        color: #c5cad2;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: rgba(255, 0, 0, 0.3);
-    color: #eec0aa;
+    color: #c5cad2;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -120,37 +120,37 @@ label:focus {
 
 #cpu {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #memory {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #disk {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #network {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #network.disconnected {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #pulseaudio {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #pulseaudio.muted {
     background-color: transparent;
-    color: #eec0aa;
+    color: #c5cad2;
 }
 
 #tray {

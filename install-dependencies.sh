@@ -290,14 +290,28 @@ setup_python_venv() {
 check_fonts() {
     echo "Checking fonts..."
     
+    local victor_found=false
+    local bilbo_found=false
+    
     # Check for VictorMono Nerd Font
-    if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+    if fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+        echo "✓ VictorMono Nerd Font found"
+        victor_found=true
+    else
         echo "Warning: VictorMono Nerd Font not found."
-        echo "Download from: https://github.com/ryanoasis/nerd-fonts/releases"
-        echo "Or install via: sudo apt install fonts-victor-mono (if available)"
+    fi
+    
+    # Check for Bilbo font
+    if fc-list | grep -i "bilbo" &> /dev/null; then
+        echo "✓ Bilbo font found"
+        bilbo_found=true
+    else
+        echo "Warning: Bilbo font not found."
+    fi
+    
+    if [ "$victor_found" = false ] || [ "$bilbo_found" = false ]; then
         return 1
     else
-        echo "✓ VictorMono Nerd Font found"
         return 0
     fi
 }
@@ -307,28 +321,42 @@ install_fonts() {
     local pm="$1"
     
     echo "Installing fonts..."
-    case "$pm" in
-        "apt")
-            # Try to install nerd fonts if available
-            sudo apt update
-            if apt-cache search fonts-nerd &> /dev/null; then
-                sudo apt install -y fonts-nerd-font-victor-mono 2>/dev/null || echo "Nerd fonts not available in repository"
-            fi
-            ;;
-        "pacman")
-            # AUR might have nerd fonts
-            if command -v yay &> /dev/null; then
-                yay -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR"
-            elif command -v paru &> /dev/null; then
-                paru -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR"
-            fi
-            ;;
-    esac
     
-    echo "Manual font installation may be required:"
-    echo "1. Download VictorMono Nerd Font from https://github.com/ryanoasis/nerd-fonts/releases"
-    echo "2. Extract to ~/.local/share/fonts/ or /usr/share/fonts/"
-    echo "3. Run: fc-cache -fv"
+    # Create fonts directory
+    mkdir -p ~/.local/share/fonts
+    
+    # Install VictorMono Nerd Font
+    if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+        echo "Installing VictorMono Nerd Font..."
+        case "$pm" in
+            "pacman")
+                if command -v yay &> /dev/null; then
+                    yay -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR, installing manually..."
+                elif command -v paru &> /dev/null; then
+                    paru -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR, installing manually..."
+                fi
+                ;;
+        esac
+        
+        # Fallback to manual installation if package manager failed
+        if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+            echo "Downloading VictorMono Nerd Font manually..."
+            curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/VictorMono.zip" -o /tmp/victormono.zip
+            cd /tmp && unzip -q victormono.zip && cp *.ttf ~/.local/share/fonts/ 2>/dev/null || echo "VictorMono manual install failed"
+        fi
+    fi
+    
+    # Install Bilbo font
+    if ! fc-list | grep -i "bilbo" &> /dev/null; then
+        echo "Installing Bilbo font..."
+        curl -L "https://github.com/google/fonts/raw/main/ofl/bilbo/Bilbo-Regular.ttf" -o ~/.local/share/fonts/Bilbo-Regular.ttf
+    fi
+    
+    # Update font cache
+    echo "Updating font cache..."
+    fc-cache -fv
+    
+    echo "Font installation complete!"
 }
 
 # Check for optional dependencies
