@@ -16,8 +16,26 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+# Clean terminal logging
+HISTTIMEFORMAT=""
+
+# Function to log user commands only
+log_user_command() {
+    local last_cmd=$(history 1 | tail -1 | sed 's/^[ ]*[0-9]*[ ]*//')
+    # Filter out kitty integration and internal commands
+    if [[ -n "$last_cmd" && "$last_cmd" != "$PREV_CMD" && 
+          "$last_cmd" != *"printf"* && "$last_cmd" != *"builtin"* && 
+          "$last_cmd" != *"_ksi_"* && "$last_cmd" != *"declare"* ]]; then
+        echo "$(date '+%F %T') [$(pwd)] $last_cmd" >> "$HOME/scripts/docs/terminal_history.log"
+        PREV_CMD="$last_cmd"
+    fi
+}
+
+PROMPT_COMMAND="log_user_command"
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -147,9 +165,11 @@ fi
 
 # Source greeting script
 source ~/scripts/terminal-shell/greetings/wizard.sh
+#source ~/scripts/terminal-shell/greetings/tree.sh
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-# Function to show tree on demand
-alias tree='system_greeting'
+# Terminal session logging aliases
+alias log-session='script -a ~/scripts/session_$(date +%Y%m%d_%H%M%S).log'
+alias view-logs='ls -la ~/scripts/*.log'
 
 # Only show tree automatically on first shell startup
 if [ -z "$SYSTEM_GREETING_SHOWN" ]; then

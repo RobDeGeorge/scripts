@@ -1,0 +1,17 @@
+2025-09-01 22:18:35 [/home/rexx] ll
+2025-09-01 22:18:37 [/home/rexx/scripts] cd scripts/
+2025-09-01 22:18:40 [/home/rexx/scripts] code .
+2025-09-01 22:18:43 [/home/rexx/scripts] ll
+2025-09-01 22:18:53 [/home/rexx/scripts] ll
+2025-09-01 22:19:57 [/home/rexx/scripts] lol
+2025-09-01 22:31:00 [/home/rexx/scripts] ./restore-configs.sh 
+2025-09-01 22:31:18 [/home/rexx/scripts] ll
+2025-09-01 22:31:51 [/home/rexx/scripts] start-full-log
+2025-09-01 22:31:57 [/home/rexx] start-full-log
+2025-09-01 22:32:00 [/home/rexx] ll
+2025-09-01 22:32:08 [/home/rexx] start-full-log
+2025-09-01 22:32:13 [/home/rexx] ll
+2025-09-01 22:32:26 [/home/rexx] hello
+2025-09-01 22:36:43 [/home/rexx] osrs
+2025-09-01 22:36:56 [/home/rexx] osrs
+2025-09-01 22:36:58 [/home/rexx/scripts] cd scripts/
