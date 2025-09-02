@@ -146,7 +146,7 @@ if ! shopt -oq posix; then
 fi
 
 # Source greeting script
-source ~/scripts/greetings/tree.sh
+source ~/scripts/terminal-shell/greetings/wizard.sh
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 # Function to show tree on demand
 alias tree='system_greeting'

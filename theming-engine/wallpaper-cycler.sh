@@ -2,10 +2,12 @@
 
 # Get script directory for relative paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Get root kit directory (parent of theming-engine)
+KIT_DIR="$(dirname "$SCRIPT_DIR")"
 VENV_DIR="${VENV_DIR:-$SCRIPT_DIR/wallpaper-venv}"
 
 # Source window manager detection
-source "$SCRIPT_DIR/detect_wm.sh"
+source "$KIT_DIR/detect_wm.sh"
 
 # Detect window manager
 WM=$(detect_window_manager)
@@ -19,28 +21,25 @@ eval "$(get_config_paths "$WM")"
 WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 INDEX_FILE="${INDEX_FILE:-${HOME}/.wallpaper_index}"
 
-# Check if we're running from ~/.config/scripts/ (keybind) or original scripts folder
-if [[ "$SCRIPT_DIR" == *"/.config/scripts"* ]]; then
-    # Running from ~/.config/scripts, use the live config files directly
-    SKIP_RESTORE=true
-else
-    # Running from original scripts folder, use local copies
-    case "$WM" in
-        "hyprland")
-            WM_CONFIG="${WM_CONFIG:-$SCRIPT_DIR/hyprland.conf}"
-            BAR_CONFIG="${BAR_CONFIG:-$SCRIPT_DIR/waybar-config}"
-            BAR_STYLE_CONFIG="${BAR_STYLE_CONFIG:-$SCRIPT_DIR/waybar-style.css}"
-            NOTIFICATION_CONFIG="${NOTIFICATION_CONFIG:-$SCRIPT_DIR/mako-config}"
-            ;;
-        "i3")
-            WM_CONFIG="${WM_CONFIG:-$SCRIPT_DIR/i3-config}"
-            BAR_CONFIG="${BAR_CONFIG:-$SCRIPT_DIR/i3blocks-config}"
-            NOTIFICATION_CONFIG="${NOTIFICATION_CONFIG:-$SCRIPT_DIR/dunstrc}"
-            ;;
-    esac
-    TERMINAL_CONFIG="${TERMINAL_CONFIG:-$SCRIPT_DIR/kitty.conf}"
-    SKIP_RESTORE=false
-fi
+# Always update system config files directly (no copying needed)
+SKIP_RESTORE=true
+
+# Use system config file locations directly
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+case "$WM" in
+    "hyprland")
+        WM_CONFIG="$CONFIG_DIR/hypr/hyprland.conf"
+        BAR_CONFIG="$CONFIG_DIR/waybar/config"
+        BAR_STYLE_CONFIG="$CONFIG_DIR/waybar/style.css"
+        NOTIFICATION_CONFIG="$CONFIG_DIR/mako/config"
+        ;;
+    "i3")
+        WM_CONFIG="$CONFIG_DIR/i3/config"
+        BAR_CONFIG="$CONFIG_DIR/i3blocks/config"
+        NOTIFICATION_CONFIG="$CONFIG_DIR/dunst/dunstrc"
+        ;;
+esac
+TERMINAL_CONFIG="$CONFIG_DIR/kitty/kitty.conf"
 
 # Parse command line arguments
 DRY_RUN=false
@@ -235,7 +234,7 @@ else
         else
             # Running from scripts folder, need to copy to system locations
             echo "Applying config changes to system..." >&2
-            "$SCRIPT_DIR/restore-configs.sh" --skip-deps > /dev/null 2>&1
+            "$KIT_DIR/restore-configs.sh" --skip-deps > /dev/null 2>&1
             
             if [ $? -ne 0 ]; then
                 echo "Error: Failed to apply config changes to system" >&2

@@ -2,9 +2,10 @@
 
 set -e
 
-# Get script directory
+# Get script directory (root kit directory)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV_DIR="$SCRIPT_DIR/wallpaper-venv"
+KIT_DIR="$SCRIPT_DIR"
+VENV_DIR="$KIT_DIR/theming-engine/wallpaper-venv"
 
 # Source window manager detection
 source "$SCRIPT_DIR/detect_wm.sh"

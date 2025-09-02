@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Get script directory
+# Get script directory (root kit directory)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+KIT_DIR="$SCRIPT_DIR"
 
 # Source window manager detection
 source "$SCRIPT_DIR/detect_wm.sh"
@@ -14,30 +15,30 @@ echo "Detected window manager: $WM"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 WALLPAPER_SOURCE="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 
-# Copy common config files to script directory
-[ -f "$CONFIG_DIR/kitty/kitty.conf" ] && cp "$CONFIG_DIR/kitty/kitty.conf" "$SCRIPT_DIR/kitty.conf"
-[ -f "$HOME/.bashrc" ] && cp "$HOME/.bashrc" "$SCRIPT_DIR/bashrc"
+# Copy common config files to kit directory
+[ -f "$CONFIG_DIR/kitty/kitty.conf" ] && cp "$CONFIG_DIR/kitty/kitty.conf" "$KIT_DIR/terminal-shell/kitty.conf"
+[ -f "$HOME/.bashrc" ] && cp "$HOME/.bashrc" "$KIT_DIR/terminal-shell/bashrc"
 
 # Copy window manager specific configs
 case "$WM" in
     "hyprland")
-        [ -f "$CONFIG_DIR/hypr/hyprland.conf" ] && cp "$CONFIG_DIR/hypr/hyprland.conf" "$SCRIPT_DIR/hyprland.conf"
-        [ -f "$CONFIG_DIR/hypr/hyprlock.conf" ] && cp "$CONFIG_DIR/hypr/hyprlock.conf" "$SCRIPT_DIR/hyprlock.conf"
-        [ -f "$CONFIG_DIR/waybar/config" ] && cp "$CONFIG_DIR/waybar/config" "$SCRIPT_DIR/waybar-config"
-        [ -f "$CONFIG_DIR/waybar/style.css" ] && cp "$CONFIG_DIR/waybar/style.css" "$SCRIPT_DIR/waybar-style.css"
-        [ -f "$CONFIG_DIR/mako/config" ] && cp "$CONFIG_DIR/mako/config" "$SCRIPT_DIR/mako-config"
+        [ -f "$CONFIG_DIR/hypr/hyprland.conf" ] && cp "$CONFIG_DIR/hypr/hyprland.conf" "$KIT_DIR/hyprland-ecosystem/hyprland.conf"
+        [ -f "$CONFIG_DIR/hypr/hyprlock.conf" ] && cp "$CONFIG_DIR/hypr/hyprlock.conf" "$KIT_DIR/hyprland-ecosystem/hyprlock.conf"
+        [ -f "$CONFIG_DIR/waybar/config" ] && cp "$CONFIG_DIR/waybar/config" "$KIT_DIR/hyprland-ecosystem/waybar-config"
+        [ -f "$CONFIG_DIR/waybar/style.css" ] && cp "$CONFIG_DIR/waybar/style.css" "$KIT_DIR/hyprland-ecosystem/waybar-style.css"
+        [ -f "$CONFIG_DIR/mako/config" ] && cp "$CONFIG_DIR/mako/config" "$KIT_DIR/hyprland-ecosystem/mako-config"
         ;;
     "i3")
-        [ -f "$CONFIG_DIR/i3/config" ] && cp "$CONFIG_DIR/i3/config" "$SCRIPT_DIR/i3-config"
-        [ -f "$CONFIG_DIR/i3blocks/config" ] && cp "$CONFIG_DIR/i3blocks/config" "$SCRIPT_DIR/i3blocks-config"
-        [ -f "$CONFIG_DIR/dunst/dunstrc" ] && cp "$CONFIG_DIR/dunst/dunstrc" "$SCRIPT_DIR/dunstrc"
+        [ -f "$CONFIG_DIR/i3/config" ] && cp "$CONFIG_DIR/i3/config" "$KIT_DIR/i3-ecosystem/i3-config"
+        [ -f "$CONFIG_DIR/i3blocks/config" ] && cp "$CONFIG_DIR/i3blocks/config" "$KIT_DIR/i3-ecosystem/i3blocks-config"
+        [ -f "$CONFIG_DIR/dunst/dunstrc" ] && cp "$CONFIG_DIR/dunst/dunstrc" "$KIT_DIR/i3-ecosystem/dunstrc"
         ;;
 esac
 
 # Sync wallpapers
 if [ -d "$WALLPAPER_SOURCE" ]; then
-    mkdir -p "$SCRIPT_DIR/wallpapers"
-    cp "$WALLPAPER_SOURCE"/* "$SCRIPT_DIR/wallpapers/" 2>/dev/null || echo "Warning: No wallpapers found to sync"
+    mkdir -p "$KIT_DIR/assets/wallpapers"
+    cp "$WALLPAPER_SOURCE"/* "$KIT_DIR/assets/wallpapers/" 2>/dev/null || echo "Warning: No wallpapers found to sync"
 else
     echo "Warning: $WALLPAPER_SOURCE directory not found"
 fi
