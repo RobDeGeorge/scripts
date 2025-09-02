@@ -24,3 +24,8 @@
 2025-09-01 22:38:20 [/home/rexx/scripts] git pull
 2025-09-01 22:38:25 [/home/rexx/scripts] git push -u origin main
 2025-09-01 22:38:48 [/home/rexx/scripts] git config pull.rebase false 
+2025-09-01 22:38:56 [/home/rexx/scripts] git add .
+2025-09-01 22:39:05 [/home/rexx/scripts] git commit -m "added logging"
+2025-09-01 22:39:13 [/home/rexx/scripts] git push -u origin main
+2025-09-01 22:39:23 [/home/rexx/scripts] ll
+2025-09-01 22:39:44 [/home/rexx/scripts] git pull
