@@ -1,7 +1,7 @@
 # Mako notification daemon config
-background-color=#27230b
-text-color=#fdf9e7
-border-color=#756923
+background-color=#230f14
+text-color=#edf0f7
+border-color=#c81c0f
 border-size=2
 border-radius=5
 default-timeout=5000

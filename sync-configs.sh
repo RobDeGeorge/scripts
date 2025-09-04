@@ -18,6 +18,7 @@ WALLPAPER_SOURCE="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 # Copy common config files to kit directory
 [ -f "$CONFIG_DIR/kitty/kitty.conf" ] && cp "$CONFIG_DIR/kitty/kitty.conf" "$KIT_DIR/terminal-shell/kitty.conf"
 [ -f "$HOME/.bashrc" ] && cp "$HOME/.bashrc" "$KIT_DIR/terminal-shell/bashrc"
+[ -f "$CONFIG_DIR/nvim/init.vim" ] && cp "$CONFIG_DIR/nvim/init.vim" "$KIT_DIR/terminal-shell/init.vim"
 
 # Copy window manager specific configs
 case "$WM" in

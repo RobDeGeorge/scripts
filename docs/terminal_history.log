@@ -29,3 +29,65 @@
 2025-09-01 22:39:13 [/home/rexx/scripts] git push -u origin main
 2025-09-01 22:39:23 [/home/rexx/scripts] ll
 2025-09-01 22:39:44 [/home/rexx/scripts] git pull
+2025-09-01 22:39:59 [/home/rexx/scripts] git add .
+2025-09-01 22:40:02 [/home/rexx/scripts] git commit -m "added logging"
+2025-09-01 22:40:08 [/home/rexx/scripts] git push -u origin main
+2025-09-01 22:45:20 [/home/rexx] claude
+2025-09-01 22:46:12 [/home/rexx] claude
+2025-09-01 22:46:14 [/home/rexx/scripts] cd scripts/
+2025-09-01 22:56:24 [/home/rexx] claude
+2025-09-01 22:56:26 [/home/rexx/scripts] cd scripts/
+2025-09-01 22:56:30 [/home/rexx/scripts] code .
+2025-09-01 22:56:33 [/home/rexx/scripts] claude
+2025-09-01 22:58:56 [/home/rexx] claude
+2025-09-01 22:59:06 [/home/rexx] claude
+2025-09-01 22:59:50 [/home/rexx] shutdown now
+2025-09-03 17:53:16 [/home/rexx] shutdown now
+2025-09-03 17:54:53 [/home/rexx] shutdown now
+2025-09-03 17:55:02 [/home/rexx/scripts] cd scripts/
+2025-09-03 17:56:04 [/home/rexx] shutdown now
+2025-09-03 17:56:05 [/home/rexx] shutdown now
+2025-09-03 17:56:06 [/home/rexx] shutdown now
+2025-09-03 17:56:08 [/home/rexx] shutdown now
+2025-09-03 17:56:10 [/home/rexx] shutdown now
+2025-09-03 18:19:16 [/home/rexx/scripts] claude
+2025-09-03 18:19:23 [/home/rexx] claude
+2025-09-03 18:19:58 [/home/rexx] claude 
+2025-09-03 18:20:00 [/home/rexx/scripts] cd scripts/
+2025-09-03 18:32:38 [/home/rexx] claude 
+2025-09-03 18:33:07 [/home/rexx] claude 
+2025-09-03 18:33:09 [/home/rexx] ll
+2025-09-03 18:33:23 [/home/rexx/scripts] cd scripts/
+2025-09-03 18:33:24 [/home/rexx/scripts] ll
+2025-09-03 18:34:00 [/home/rexx] code .
+2025-09-03 18:34:02 [/home/rexx] claude 
+2025-09-03 18:40:59 [/home/rexx] claude 
+2025-09-03 18:41:08 [/home/rexx] claude 
+2025-09-03 18:44:17 [/home/rexx] claude 
+2025-09-03 18:45:08 [/home/rexx] code rexx/.config/hypr/hyprland.conf
+2025-09-03 18:47:40 [/home/rexx] ll
+2025-09-03 18:47:48 [/home/rexx] sudo shutdown now
+2025-09-03 19:40:23 [/home/rexx] sudo shutdown now
+2025-09-03 19:40:33 [/home/rexx/scripts] cd scripts/
+2025-09-03 19:40:37 [/home/rexx/scripts] ./sync-configs.sh 
+2025-09-03 19:40:47 [/home/rexx] sudo shutdown now
+2025-09-03 19:40:51 [/home/rexx/scripts] cd scripts/
+2025-09-03 19:41:17 [/home/rexx/scripts] nvim
+2025-09-03 19:41:26 [/home/rexx/scripts] ll
+2025-09-03 19:43:05 [/home/rexx/scripts/docs] cd docs/
+2025-09-03 19:43:05 [/home/rexx/scripts/docs] ll
+2025-09-03 19:44:59 [/home/rexx/scripts/docs] d ..
+2025-09-03 19:45:01 [/home/rexx/scripts] cd ..
+2025-09-03 19:45:17 [/home/rexx/scripts] ./restore-configs.sh --skip-deps
+2025-09-03 19:51:53 [/home/rexx/scripts] ll
+2025-09-03 19:52:54 [/home/rexx/scripts/terminal-shell] cd terminal-shell/
+2025-09-03 19:52:55 [/home/rexx/scripts/terminal-shell] ll
+2025-09-03 19:59:05 [/home/rexx/scripts] cd ..
+2025-09-03 19:59:16 [/home/rexx/scripts] ./restore-configs.sh --skip-deps
+2025-09-03 20:01:26 [/home/rexx] ./restore-configs.sh --skip-deps
+2025-09-03 20:01:29 [/home/rexx/scripts] cd scripts/
+2025-09-03 20:01:32 [/home/rexx/scripts] ll
+2025-09-03 20:03:02 [/home/rexx/scripts/theming-engine] cd theming-engine/
+2025-09-03 20:03:03 [/home/rexx/scripts/theming-engine] ll
+2025-09-03 20:08:18 [/home/rexx/scripts] cd ..
+2025-09-03 20:08:37 [/home/rexx/scripts] ./restore-configs.sh --skip-deps

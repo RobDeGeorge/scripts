@@ -506,6 +506,101 @@ font=Victor Mono 11
         
         print(f'Updated Mako config: bg={bg_color}, fg={fg_color}, border={border_color}', file=sys.stderr)
     
+    def update_nvim_config(self, config_path, colors):
+        """Update Neovim config with extracted colors"""
+        with open(config_path, 'r') as f:
+            config = f.read()
+        
+        primary = self.rgb_to_hex(*colors[0])
+        secondary = self.rgb_to_hex(*colors[1]) if len(colors) > 1 else self.adjust_brightness(primary, 0.8)
+        tertiary = self.rgb_to_hex(*colors[2]) if len(colors) > 2 else self.adjust_brightness(primary, 0.6)
+        
+        # Generate background and UI colors
+        bg_color = self.adjust_brightness(primary, 0.08)
+        bg_color = self.ensure_minimum_brightness(bg_color, 0.05)
+        
+        cursor_line_bg = self.adjust_brightness(bg_color, 1.5)
+        line_nr_bg = bg_color
+        
+        # Generate foreground and text colors
+        fg_color = self.create_readable_text_color(bg_color, colors, 3.0, prefer_color=True)
+        line_nr_fg = self.adjust_brightness(primary, 0.4)
+        cursor_line_nr_fg = primary
+        
+        # Selection colors
+        selection_bg = self.adjust_brightness(primary, 0.3)
+        selection_bg = self.ensure_minimum_brightness(selection_bg, 0.2)
+        selection_fg = self.create_readable_text_color(selection_bg, colors, 3.0)
+        
+        # Search highlighting
+        search_bg = primary
+        search_fg = self.create_readable_text_color(search_bg, colors, 4.0, prefer_color=False)
+        inc_search_bg = secondary
+        inc_search_fg = self.create_readable_text_color(inc_search_bg, colors, 4.0, prefer_color=False)
+        
+        # UI elements
+        status_line_bg = self.adjust_brightness(primary, 0.2)
+        status_line_fg = self.create_readable_text_color(status_line_bg, colors, 3.0)
+        status_line_nc_bg = self.adjust_brightness(bg_color, 1.2)
+        status_line_nc_fg = self.adjust_brightness(primary, 0.4)
+        
+        vert_split_fg = selection_bg
+        
+        # Popup menu
+        pmenu_bg = status_line_bg
+        pmenu_fg = status_line_fg
+        pmenu_sel_bg = selection_bg
+        pmenu_sel_fg = selection_fg
+        
+        # Syntax highlighting colors
+        comment_fg = self.adjust_brightness(primary, 0.5)
+        string_fg = tertiary
+        number_fg = primary
+        function_fg = secondary
+        keyword_fg = self.adjust_brightness(secondary, 1.2)
+        type_fg = self.adjust_brightness(tertiary, 1.1)
+        special_fg = primary
+        
+        # Error and warning colors
+        error_fg = "#ff6b6b"
+        error_bg = "#2a0a0a"
+        warning_fg = "#ffa500" 
+        warning_bg = "#2a1a00"
+        
+        # Build the new color scheme block
+        new_colors = f'''\" Custom color scheme to match kitty Deep Space theme
+highlight Normal guifg={fg_color} guibg={bg_color}
+highlight CursorLine guibg={cursor_line_bg}
+highlight LineNr guifg={line_nr_fg} guibg={line_nr_bg}
+highlight CursorLineNr guifg={cursor_line_nr_fg} guibg={cursor_line_bg} gui=bold
+highlight Visual guifg={selection_fg} guibg={selection_bg}
+highlight Search guifg={search_fg} guibg={search_bg}
+highlight IncSearch guifg={inc_search_fg} guibg={inc_search_bg}
+highlight StatusLine guifg={status_line_fg} guibg={status_line_bg}
+highlight StatusLineNC guifg={status_line_nc_fg} guibg={status_line_nc_bg}
+highlight VertSplit guifg={vert_split_fg} guibg={bg_color}
+highlight Pmenu guifg={pmenu_fg} guibg={pmenu_bg}
+highlight PmenuSel guifg={pmenu_sel_fg} guibg={pmenu_sel_bg}
+highlight Comment guifg={comment_fg} gui=italic
+highlight String guifg={string_fg}
+highlight Number guifg={number_fg}
+highlight Function guifg={function_fg}
+highlight Keyword guifg={keyword_fg} gui=bold
+highlight Type guifg={type_fg}
+highlight Special guifg={special_fg}
+highlight Error guifg={error_fg} guibg={error_bg}
+highlight Warning guifg={warning_fg} guibg={warning_bg}'''
+        
+        import re
+        # Replace the entire color scheme block
+        pattern = r'\" Custom color scheme to match kitty Deep Space theme.*?highlight Warning guifg=#[0-9a-fA-F]{6} guibg=#[0-9a-fA-F]{6}'
+        config = re.sub(pattern, new_colors, config, flags=re.DOTALL)
+        
+        with open(config_path, 'w') as f:
+            f.write(config)
+        
+        print(f'Updated nvim config: bg={bg_color}, fg={fg_color}, accent={primary}', file=sys.stderr)
+    
     def update_razer_keyboard(self, colors):
         """Update Razer keyboard RGB colors"""
         try:
@@ -583,6 +678,8 @@ font=Victor Mono 11
                     results[config_name] = self.update_config_safely(config_path, self.update_waybar_config, colors)
                 elif config_name == 'waybar_style':
                     results[config_name] = self.update_config_safely(config_path, self.update_waybar_style, colors)
+                elif config_name == 'nvim':
+                    results[config_name] = self.update_config_safely(config_path, self.update_nvim_config, colors)
             
             # Update Razer keyboard (doesn't need backup)
             try:
@@ -620,25 +717,27 @@ def main():
     wm_type = sys.argv[2]
     
     if wm_type == "i3":
-        if len(sys.argv) != 7:
-            print("Usage for i3: color_processor.py <wallpaper_path> i3 <i3_config> <kitty_config> <dunst_config> <i3blocks_config>", file=sys.stderr)
+        if len(sys.argv) != 8:
+            print("Usage for i3: color_processor.py <wallpaper_path> i3 <i3_config> <kitty_config> <dunst_config> <i3blocks_config> <nvim_config>", file=sys.stderr)
             sys.exit(1)
         config_paths = {
             'i3': sys.argv[3],
             'kitty': sys.argv[4],
             'dunst': sys.argv[5],
-            'i3blocks': sys.argv[6]
+            'i3blocks': sys.argv[6],
+            'nvim': sys.argv[7]
         }
     elif wm_type == "hyprland":
-        if len(sys.argv) < 6:
-            print("Usage for hyprland: color_processor.py <wallpaper_path> hyprland <hyprland_config> <kitty_config> <mako_config> [waybar_config] [waybar_style]", file=sys.stderr)
+        if len(sys.argv) < 7:
+            print("Usage for hyprland: color_processor.py <wallpaper_path> hyprland <hyprland_config> <kitty_config> <mako_config> [waybar_config] [waybar_style] <nvim_config>", file=sys.stderr)
             sys.exit(1)
         config_paths = {
             'hyprland': sys.argv[3],
             'kitty': sys.argv[4],
             'mako': sys.argv[5],
-            'waybar': sys.argv[6] if len(sys.argv) > 6 else None,
-            'waybar_style': sys.argv[7] if len(sys.argv) > 7 else None
+            'waybar': sys.argv[6] if len(sys.argv) > 6 and sys.argv[6] != 'None' else None,
+            'waybar_style': sys.argv[7] if len(sys.argv) > 7 and sys.argv[7] != 'None' else None,
+            'nvim': sys.argv[8] if len(sys.argv) > 8 else (sys.argv[6] if len(sys.argv) == 7 else None)
         }
     else:
         print(f"Error: Unknown window manager type '{wm_type}'. Use 'i3' or 'hyprland'", file=sys.stderr)

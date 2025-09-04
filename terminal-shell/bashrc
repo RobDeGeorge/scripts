@@ -36,6 +36,8 @@ log_user_command() {
 
 PROMPT_COMMAND="log_user_command"
 
+# Alias for full session logging with output
+alias start-full-log='script -a ~/scripts/docs/session_$(date +%Y%m%d_%H%M%S).log'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

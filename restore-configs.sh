@@ -23,6 +23,7 @@ WALLPAPER_TARGET="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 
 # Create config directories based on window manager
 mkdir -p "$CONFIG_DIR/kitty"
+mkdir -p "$CONFIG_DIR/nvim"
 mkdir -p ~/.cache/betterlockscreen/current
 
 case "$WM" in
@@ -48,6 +49,7 @@ echo "Copying config files for $WM..."
 # Copy common configs
 [ -f "$KIT_DIR/terminal-shell/kitty.conf" ] && cp "$KIT_DIR/terminal-shell/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
 [ -f "$KIT_DIR/terminal-shell/bashrc" ] && cp "$KIT_DIR/terminal-shell/bashrc" "$HOME/.bashrc"
+[ -f "$KIT_DIR/terminal-shell/init.vim" ] && cp "$KIT_DIR/terminal-shell/init.vim" "$CONFIG_DIR/nvim/init.vim"
 
 # Copy window manager specific configs
 case "$WM" in

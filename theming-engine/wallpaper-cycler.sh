@@ -40,6 +40,7 @@ case "$WM" in
         ;;
 esac
 TERMINAL_CONFIG="$CONFIG_DIR/kitty/kitty.conf"
+NVIM_CONFIG="$CONFIG_DIR/nvim/init.vim"
 
 # Parse command line arguments
 DRY_RUN=false
@@ -121,7 +122,7 @@ sys.path.insert(0, '$SCRIPT_DIR')
 from color_processor import ColorProcessor
 
 # Build config paths based on window manager
-config_paths = {'kitty': '$TERMINAL_CONFIG'}
+config_paths = {'kitty': '$TERMINAL_CONFIG', 'nvim': '$NVIM_CONFIG'}
 if '$WM' == 'i3':
     config_paths.update({
         'i3': '$WM_CONFIG',
@@ -145,10 +146,10 @@ print(f'Extracted colors: {[processor.rgb_to_hex(*c) for c in colors]}', file=sy
         # Use the new color processor script with window manager detection
         case "$WM" in
             "i3")
-                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "i3" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG"
+                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "i3" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG" "$NVIM_CONFIG"
                 ;;
             "hyprland")
-                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "hyprland" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG" "$BAR_STYLE_CONFIG"
+                python3 "$SCRIPT_DIR/color_processor.py" "$wallpaper_path" "hyprland" "$WM_CONFIG" "$TERMINAL_CONFIG" "$NOTIFICATION_CONFIG" "$BAR_CONFIG" "$BAR_STYLE_CONFIG" "$NVIM_CONFIG"
                 ;;
         esac
         
