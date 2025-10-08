@@ -91,3 +91,17 @@
 2025-09-03 20:03:03 [/home/rexx/scripts/theming-engine] ll
 2025-09-03 20:08:18 [/home/rexx/scripts] cd ..
 2025-09-03 20:08:37 [/home/rexx/scripts] ./restore-configs.sh --skip-deps
+2025-10-07 19:42:07 [/home/rhea/scripts] osrs
+2025-10-07 19:42:31 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-07 19:43:51 [/home/rhea] osrs
+2025-10-07 19:45:16 [/home/rhea] osrs
+2025-10-07 19:45:20 [/home/rhea] test
+2025-10-07 19:49:34 [/home/rhea] nvim -R ~/scripts/docs/terminal_history.log
+2025-10-07 19:49:46 [/home/rhea] nvim -R ~/scripts/docs/terminal_history.log
+2025-10-07 19:49:48 [/home/rhea] code .
+2025-10-07 19:53:44 [/home/rhea] code .
+2025-10-07 19:55:46 [/home/rhea/scripts] cd scripts/
+2025-10-07 19:55:59 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-07 19:58:45 [/home/rhea] ./restore-configs.sh 
+2025-10-07 19:58:48 [/home/rhea/scripts] cd scripts/
+2025-10-07 19:59:13 [/home/rhea/scripts] git commit -m "i3 fixes"

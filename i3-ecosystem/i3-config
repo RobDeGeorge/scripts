@@ -97,6 +97,7 @@ bindsym $mod+x exec code
 bindsym $mod+c exec chromium-browser
 bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+b exec gnome-calculator
+bindsym $mod+ctrl+Shift+l exec kitty -e nvim -R ~/scripts/docs/terminal_history.log
 
 
 # ====================================
