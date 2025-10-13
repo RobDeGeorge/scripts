@@ -7,7 +7,7 @@
 window#waybar {
     background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 3px solid #668389;
-    color: #deb9d0;
+    color: #eed8a9;
     transition-property: border-bottom-color, color;
     transition-duration: .5s;
 }
@@ -30,7 +30,7 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #workspaces button:hover {
@@ -40,24 +40,25 @@ button:hover {
 #workspaces button.focused {
     background-color: transparent;
     box-shadow: inset 0 -3px #668389;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #workspaces button.urgent {
     background-color: rgba(255, 100, 100, 0.3);
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #mode {
     background-color: transparent;
     border-bottom: 3px solid #668389;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #clock,
 #battery,
 #cpu,
 #memory,
+#custom-vram,
 #disk,
 #temperature,
 #network,
@@ -66,7 +67,7 @@ button:hover {
 #mode,
 #window {
     padding: 0 10px;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #window,
@@ -84,29 +85,29 @@ button:hover {
 
 #clock {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #battery {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #battery.charging, #battery.plugged {
-    color: #deb9d0;
+    color: #eed8a9;
     background-color: transparent;
 }
 
 @keyframes blink {
     to {
         background-color: rgba(255, 0, 0, 0.5);
-        color: #deb9d0;
+        color: #eed8a9;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: rgba(255, 0, 0, 0.3);
-    color: #deb9d0;
+    color: #eed8a9;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -120,37 +121,42 @@ label:focus {
 
 #cpu {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #memory {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
+}
+
+#custom-vram {
+    background-color: transparent;
+    color: #eed8a9;
 }
 
 #disk {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #network {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #network.disconnected {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #pulseaudio {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #pulseaudio.muted {
     background-color: transparent;
-    color: #deb9d0;
+    color: #eed8a9;
 }
 
 #tray {

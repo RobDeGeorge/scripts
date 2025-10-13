@@ -166,7 +166,8 @@ if ! shopt -oq posix; then
 fi
 
 # Source greeting script
-source ~/scripts/terminal-shell/greetings/wizard.sh
+source ~/scripts/terminal-shell/greetings/constellation.sh
+#source ~/scripts/terminal-shell/greetings/wizard.sh
 #source ~/scripts/terminal-shell/greetings/tree.sh
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 # Terminal session logging aliases

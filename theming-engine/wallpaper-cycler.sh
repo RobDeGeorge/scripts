@@ -251,12 +251,19 @@ else
                 pkill swaybg >/dev/null 2>&1
                 pkill wpaperd >/dev/null 2>&1
                 sleep 0.2
-                
+
                 # Set wallpaper using available tool
-                if command -v hyprpaper &> /dev/null; then
-                    hyprpaper -c <(echo "preload = $WALLPAPER"; echo "wallpaper = ,$WALLPAPER") &
-                elif command -v swaybg &> /dev/null; then
+                # Prefer swaybg as it's simpler and more reliable
+                if command -v swaybg &> /dev/null; then
                     swaybg -i "$WALLPAPER" -m fill &
+                elif command -v hyprpaper &> /dev/null; then
+                    # Create temporary config file for hyprpaper
+                    HYPRPAPER_CONF="/tmp/hyprpaper-$$.conf"
+                    echo "preload = $WALLPAPER" > "$HYPRPAPER_CONF"
+                    echo "wallpaper = ,$WALLPAPER" >> "$HYPRPAPER_CONF"
+                    hyprpaper -c "$HYPRPAPER_CONF" &
+                    sleep 0.5
+                    rm -f "$HYPRPAPER_CONF"
                 elif command -v wpaperd &> /dev/null; then
                     wpaperd &
                 fi

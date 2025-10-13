@@ -105,3 +105,325 @@
 2025-10-07 19:58:45 [/home/rhea] ./restore-configs.sh 
 2025-10-07 19:58:48 [/home/rhea/scripts] cd scripts/
 2025-10-07 19:59:13 [/home/rhea/scripts] git commit -m "i3 fixes"
+2025-10-11 19:43:33 [/home/rhea] ./restore-configs.sh 
+2025-10-11 19:43:45 [/home/rhea] code .
+2025-10-11 19:44:31 [/home/rhea] sudo pacman -S code
+2025-10-11 19:44:34 [/home/rhea] code .
+2025-10-11 19:46:16 [/home/rhea] code .
+2025-10-11 19:46:22 [/home/rhea] sudo reboot
+2025-10-11 19:49:05 [/home/rhea] sudo reboot
+2025-10-11 19:49:13 [/home/rhea] code .
+2025-10-11 19:49:57 [/home/rhea/scripts] cd scripts/
+2025-10-11 19:49:58 [/home/rhea/scripts] ll
+2025-10-11 19:50:16 [/home/rhea/scripts] ./install-dependencies.sh 
+2025-10-11 19:51:28 [/home/rhea/scripts/theming-engine] cd theming-engine/
+2025-10-11 19:51:39 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 19:52:37 [/home/rhea/scripts/theming-engine] sudo pacman -S hyprpaper
+2025-10-11 19:52:42 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 19:53:07 [/home/rhea/scripts/theming-engine] sudo pacman -S xrandr
+2025-10-11 19:54:01 [/home/rhea/scripts/theming-engine] sudo pacman -S polychromatic-cli
+2025-10-11 19:54:51 [/home/rhea/scripts/theming-engine] python -v
+2025-10-11 19:55:37 [/home/rhea/scripts/theming-engine] sudo pacman -S mako
+2025-10-11 19:55:56 [/home/rhea/scripts/theming-engine] sudo pacman -S swaybg
+2025-10-11 19:56:20 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 19:57:36 [/home/rhea/scripts/theming-engine] sudo pacman -S xorg-xrandr
+2025-10-11 19:57:41 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 19:58:10 [/home/rhea/scripts] cd ..
+2025-10-11 19:58:24 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-11 19:58:50 [/home/rhea/scripts] ./sync-configs.sh 
+2025-10-11 19:59:20 [/home/rhea/scripts/theming-engine] cd theming-engine/
+2025-10-11 19:59:28 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 20:00:07 [/home/rhea/scripts/theming-engine] sudo pacman -S hyprpaper
+2025-10-11 20:00:13 [/home/rhea/scripts/theming-engine] ./wallpaper-cycler.sh 
+2025-10-11 20:01:18 [/home/rhea/scripts/theming-engine] sudo pacman -S chromium
+2025-10-11 20:01:40 [/home/rhea/scripts] cd ..
+2025-10-11 20:01:45 [/home/rhea/scripts] npm install -g
+2025-10-11 20:04:02 [/home/rhea/scripts] sudo pacman -S nodejs npm
+2025-10-11 20:04:07 [/home/rhea/scripts] npm install -g
+2025-10-11 20:04:20 [/home/rhea/scripts] npm install -g @anthropic-ai/claude-code
+2025-10-11 20:05:40 [/home/rhea/scripts] sudo npm install -g @anthropic-ai/claude-code
+2025-10-11 20:05:47 [/home/rhea/scripts] npm fund
+2025-10-11 20:10:59 [/home/rhea] claude
+2025-10-11 20:11:08 [/home/rhea] code .
+2025-10-11 20:12:36 [/home/rhea] xrandr
+2025-10-11 20:13:04 [/home/rhea] claude
+2025-10-11 20:13:07 [/home/rhea/scripts] cd scripts/
+2025-10-11 20:15:53 [/home/rhea] claude
+2025-10-11 20:15:56 [/home/rhea/scripts] cd scripts/
+2025-10-11 20:16:30 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-11 20:16:59 [/home/rhea] claude
+2025-10-11 20:17:24 [/home/rhea] code .
+2025-10-11 20:18:41 [/home/rhea] code .
+2025-10-11 20:18:44 [/home/rhea] code .
+2025-10-11 20:18:45 [/home/rhea] code .
+2025-10-11 20:18:46 [/home/rhea] code .
+2025-10-11 20:18:46 [/home/rhea] code .
+2025-10-11 20:18:46 [/home/rhea] code .
+2025-10-11 20:18:46 [/home/rhea] code .
+2025-10-11 20:18:46 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:47 [/home/rhea] code .
+2025-10-11 20:18:57 [/home/rhea] code .
+2025-10-11 20:19:00 [/home/rhea/scripts] cd scripts/
+2025-10-11 20:19:47 [/home/rhea] code .
+2025-10-11 20:20:00 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:20:23 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:20:31 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:20:37 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:20:42 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:20:45 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:21:02 [/home/rhea] sudo pacman -S waybar
+2025-10-11 20:21:43 [/home/rhea/Downloads] sudo pacman -S waybar
+2025-10-11 20:22:03 [/home/rhea] osrs
+2025-10-11 20:22:10 [/home/rhea] dolphin
+2025-10-11 20:22:15 [/home/rhea/scripts] cd scripts/
+2025-10-11 20:22:22 [/home/rhea/scripts] cd..
+2025-10-11 20:22:23 [/home/rhea] cd ..
+2025-10-11 20:22:26 [/home/rhea/Downloads] cd Downloads/
+2025-10-11 20:22:42 [/home/rhea/Downloads] chmod +x RuneLite.AppImage 
+2025-10-11 20:23:56 [/home/rhea] dolphin
+2025-10-11 20:25:40 [/home/rhea] osrs
+2025-10-11 20:27:56 [/home/rhea] osrs
+2025-10-11 20:29:23 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:17 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:18 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:19 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:19 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:19 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:19 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:30:24 [/home/rhea] code .
+2025-10-11 20:31:17 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:33:47 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:33:56 [/home/rhea] code .
+2025-10-11 20:34:00 [/home/rhea] sudo pacman -S nvim
+2025-10-11 20:34:26 [/home/rhea] code .
+2025-10-11 20:34:50 [/home/rhea] code .
+2025-10-11 20:35:02 [/home/rhea] code .
+2025-10-11 20:35:21 [/home/rhea] code .
+2025-10-11 20:35:45 [/home/rhea/scripts] cd scripts/
+2025-10-11 20:37:15 [/home/rhea] code .
+2025-10-11 20:37:35 [/home/rhea] sudo pacman -S openrazer-meta python-openrazer
+2025-10-11 20:38:37 [/home/rhea] yay -S openrazer-meta python-openrazer polychromatic
+2025-10-11 20:38:46 [/home/rhea] sudo pacman -S --needed base-devel git
+2025-10-11 20:38:54 [/tmp] cd /tmp
+2025-10-11 20:39:08 [/tmp] git clone https://aur.archlinux.org/yay.git
+2025-10-11 20:39:10 [/tmp/yay] cd yay/
+2025-10-11 20:40:17 [/tmp/yay] makepkg -si
+2025-10-11 20:40:20 [/tmp] cd ..
+2025-10-11 20:44:03 [/] yay -S openrazer-meta python-openrazer polychromatic
+2025-10-11 20:45:29 [/home/rhea] yay -S openrazer-meta python-openrazer polychromatic
+2025-10-11 20:45:34 [/home/rhea] shutdown now
+2025-10-12 03:33:59 [/home/rhea] shutdown now
+2025-10-12 03:34:01 [/home/rhea] openrazer-daemon -Fv
+2025-10-12 03:34:30 [/home/rhea] sudo gpasswd -a $USER plugdev
+2025-10-12 03:34:34 [/home/rhea] reboot
+2025-10-12 03:36:24 [/home/rhea] reboot
+2025-10-12 03:37:56 [/home/rhea/scripts] cd scripts/
+2025-10-12 03:38:00 [/home/rhea] reboot
+2025-10-12 03:40:07 [/home/rhea/scripts] cd scripts/
+2025-10-12 03:40:42 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-12 03:41:40 [/home/rhea] reboot
+2025-10-12 03:41:46 [/home/rhea] reboot
+2025-10-12 03:43:48 [/home/rhea/scripts] sudo pacman -S ncdu
+2025-10-12 03:45:39 [/home/rhea] reboot
+2025-10-12 03:46:14 [/home/rhea] reboot
+2025-10-12 03:46:17 [/home/rhea] reboot
+2025-10-12 03:46:21 [/home/rhea] reboot
+2025-10-12 03:46:26 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:27 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:28 [/home/rhea] reboot
+2025-10-12 03:46:29 [/home/rhea] reboot
+2025-10-12 03:46:29 [/home/rhea] reboot
+2025-10-12 03:46:29 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:46:35 [/home/rhea] reboot
+2025-10-12 03:50:43 [/home/rhea] reboot
+2025-10-12 03:52:04 [/home/rhea] claude
+2025-10-12 03:52:08 [/home/rhea/scripts] cd scripts/
+2025-10-12 03:56:14 [/home/rhea] claude
+2025-10-12 03:56:17 [/home/rhea/scripts] cd scripts/
+2025-10-12 03:56:28 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-12 03:56:33 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:37 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:38 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:39 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:40 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:40 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:41 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:41 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:44 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:49 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:50 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:54 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:57 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:56:59 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:01 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:02 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:05 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:06 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:08 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:11 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:13 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:15 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:15 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:15 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:16 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:18 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:20 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:20 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:21 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:25 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:26 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:26 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:33 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:57:35 [/home/rhea] ./restore-configs.sh 
+2025-10-12 03:59:05 [/home/rhea] ./restore-configs.sh 
+2025-10-12 04:00:33 [/home/rhea] ./restore-configs.sh 
+2025-10-12 04:01:57 [/home/rhea] sudo pacman -S ollama-cuda
+2025-10-12 04:02:11 [/home/rhea] sudo systemctl enable ollama
+2025-10-12 04:02:21 [/home/rhea] sudo systemctl start ollama
+2025-10-12 04:12:51 [/home/rhea] ./restore-configs.sh 
+2025-10-12 04:24:28 [/home/rhea] claude
+2025-10-12 04:24:32 [/home/rhea/scripts] cd scripts/
+2025-10-12 04:33:58 [/home/rhea] claude
+2025-10-12 04:34:04 [/home/rhea] osrs
+2025-10-12 04:48:04 [/home/rhea] claude
+2025-10-12 04:48:08 [/home/rhea] shutdown now
+2025-10-12 16:42:41 [/home/rhea] shutdown now
+2025-10-12 16:42:43 [/home/rhea] shutdown now
+2025-10-12 16:42:44 [/home/rhea] shutdown now
+2025-10-12 16:42:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:44 [/home/rhea] shutdown now
+2025-10-12 16:44:45 [/home/rhea] shutdown now
+2025-10-12 16:44:45 [/home/rhea] shutdown now
+2025-10-12 16:44:49 [/home/rhea] shutdown now
+2025-10-12 16:44:52 [/home/rhea] shutdown now
+2025-10-12 16:44:54 [/home/rhea] shutdown now
+2025-10-12 16:44:56 [/home/rhea] shutdown now
+2025-10-12 16:44:58 [/home/rhea] shutdown now
+2025-10-12 16:45:01 [/home/rhea] shutdown now
+2025-10-12 16:45:25 [/home/rhea] tree
+2025-10-12 16:45:31 [/home/rhea] perplexity
+2025-10-12 16:45:48 [/home/rhea] sudo pacman -S tree
+2025-10-12 16:45:51 [/home/rhea] tree
+2025-10-12 16:46:00 [/home/rhea] shutdown now
+2025-10-12 16:46:02 [/home/rhea] tree
+2025-10-12 16:46:07 [/home/rhea] tree --v
+2025-10-12 16:46:10 [/home/rhea] tree -v
+2025-10-12 16:47:05 [/home/rhea] tree -v
+2025-10-12 16:47:05 [/home/rhea] tree -v
+2025-10-12 16:47:05 [/home/rhea] tree -v
+2025-10-12 16:47:05 [/home/rhea] tree -v
+2025-10-12 16:47:19 [/home/rhea] tree -v
+2025-10-12 16:47:52 [/home/rhea] sudo pacman -S freecad
+2025-10-12 16:48:23 [/home/rhea] freecad
+2025-10-12 16:48:26 [/home/rhea] tree -v
+2025-10-12 16:48:40 [/home/rhea] tree -v
+2025-10-12 16:48:42 [/home/rhea] code .
+2025-10-12 16:48:44 [/home/rhea] tree -v
+2025-10-12 16:51:12 [/home/rhea] freecad
+2025-10-12 16:51:26 [/home/rhea] tree -v
+2025-10-12 16:52:07 [/home/rhea] sudo pacman -S blender
+2025-10-12 16:53:05 [/home/rhea] blender
+2025-10-12 16:53:14 [/home/rhea] sudo pacman -S obs
+2025-10-12 16:53:35 [/home/rhea] osrs
+2025-10-12 16:55:15 [/home/rhea] tree
+2025-10-12 16:55:41 [/home/rhea] tree
+2025-10-12 17:19:31 [/home/rhea] tree
+2025-10-12 17:19:37 [/home/rhea/scripts] cd scripts/
+2025-10-12 17:28:18 [/home/rhea] tree
+2025-10-12 17:34:14 [/home/rhea/scripts] cd scripts/
+2025-10-12 17:34:21 [/home/rhea/scripts] ./sync-configs.sh 
+2025-10-12 17:34:42 [/home/rhea] freecad
+2025-10-12 17:47:05 [/home/rhea] freecad
+2025-10-12 17:47:17 [/home/rhea] ollama list
+2025-10-12 17:49:25 [/home/rhea] ollama run gemma3:27b
+2025-10-12 17:49:33 [/home/rhea] ollama run gemma3:27b
+2025-10-12 17:49:44 [/home/rhea] htpo
+2025-10-12 17:51:07 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-12 17:56:36 [/home/rhea] freecad
+2025-10-12 17:57:54 [/home/rhea] ollama run llama3.2
+2025-10-12 17:58:03 [/home/rhea] ollama list
+2025-10-12 17:58:11 [/home/rhea] ollama run gemma3:27d
+2025-10-12 17:59:23 [/home/rhea] ollama run gemma3:27b
+2025-10-12 17:59:52 [/home/rhea] ollama run llama3.2
+2025-10-12 17:59:54 [/home/rhea] htpo
+2025-10-12 18:00:04 [/home/rhea] ollama run llama3.2
+2025-10-12 18:08:38 [/home/rhea] htop
+2025-10-12 18:10:44 [/home/rhea] ollama run llama3.2
+2025-10-12 18:10:49 [/home/rhea] osrs
+2025-10-12 18:33:23 [/home/rhea] ollama run llama3.2
+2025-10-12 18:33:42 [/home/rhea/scripts] cd scripts/
+2025-10-12 18:37:58 [/home/rhea] ollama run llama3.2
+2025-10-12 18:38:02 [/home/rhea/scripts] cd scripts/
+2025-10-12 18:38:18 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-12 18:42:28 [/home/rhea] ollama run llama3.2
+2025-10-12 18:42:41 [/home/rhea] ollama run llama3.2
+2025-10-12 18:42:45 [/home/rhea/scripts] cd scripts/
+2025-10-12 18:43:02 [/home/rhea/scripts] ./restore-configs.sh 
+2025-10-12 18:44:03 [/home/rhea] ollama run llama3.2
+2025-10-12 18:44:06 [/home/rhea] code .
+2025-10-12 18:44:09 [/home/rhea] ollama run llama3.2
+2025-10-12 18:44:34 [/home/rhea] ollama run llama3.2
+2025-10-12 18:47:54 [/home/rhea] claude
+2025-10-12 18:48:00 [/home/rhea] reboot now
+2025-10-12 18:48:09 [/home/rhea] sudo !
+2025-10-12 18:48:20 [/home/rhea] sudo reboot now
+2025-10-12 18:49:42 [/home/rhea] osrs
+2025-10-12 18:59:59 [/home/rhea/Downloads] osrs
+2025-10-12 19:00:23 [/home/rhea] sudo pacman -S dropbox
+2025-10-12 19:00:32 [/home/rhea/scripts] cd scripts/
+2025-10-12 19:00:43 [/home/rhea/Downloads] dolphin
+2025-10-12 19:00:44 [/home/rhea] dolphin
+2025-10-12 19:00:48 [/home/rhea] shutdown now
+2025-10-13 02:39:13 [/home/rhea] shutdown now
+2025-10-13 02:39:17 [/home/rhea/scripts] cd scripts/
+2025-10-13 02:39:21 [/home/rhea/scripts] git add .
+2025-10-13 02:39:37 [/home/rhea/scripts] git commit -m "mako update"
+2025-10-13 02:41:16 [/home/rhea] shutdown now
+2025-10-13 02:41:35 [/home/rhea] sudo pacman -S github-cli --noconfirm
+2025-10-13 02:41:43 [/home/rhea/scripts] cd scripts/
+2025-10-13 02:43:26 [/home/rhea/scripts] gh auth login
+2025-10-13 02:43:30 [/home/rhea/scripts] git status
+2025-10-13 02:43:43 [/home/rhea] claude
+2025-10-13 02:43:45 [/home/rhea/scripts] cd scripts/
+2025-10-13 02:43:48 [/home/rhea/scripts] git add .
+2025-10-13 02:43:58 [/home/rhea/scripts] git commit -m "mako update"
+2025-10-13 02:44:11 [/home/rhea/scripts] git status
+2025-10-13 02:44:25 [/home/rhea/scripts] git commit -m "mako update"
+2025-10-13 02:44:58 [/home/rhea/scripts] git config --global user.email "rob.degeorge@gmail.com"
+2025-10-13 02:45:01 [/home/rhea/scripts] git commit -m "mako update"
+2025-10-13 02:47:25 [/home/rhea] claude
+2025-10-13 02:47:29 [/home/rhea/scripts] cd scripts/
