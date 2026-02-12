@@ -56,6 +56,16 @@ check_system_packages() {
             command -v slurp &> /dev/null || missing+=("slurp")
             command -v xrandr &> /dev/null || missing+=("xrandr")
             command -v unzip &> /dev/null || missing+=("unzip")
+            command -v wofi &> /dev/null || missing+=("wofi")
+            command -v jq &> /dev/null || missing+=("jq")
+            command -v wl-copy &> /dev/null || missing+=("wl-clipboard")
+            command -v notify-send &> /dev/null || missing+=("libnotify")
+            command -v playerctl &> /dev/null || missing+=("playerctl")
+            command -v pavucontrol &> /dev/null || missing+=("pavucontrol")
+            command -v blueman-manager &> /dev/null || missing+=("blueman")
+            command -v dolphin &> /dev/null || missing+=("dolphin")
+            command -v /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &> /dev/null || missing+=("polkit-gnome")
+            python3 -c "from PyQt6.QtWidgets import QApplication" 2>/dev/null || missing+=("python-pyqt6")
             ;;
         "i3")
             command -v xwallpaper &> /dev/null || missing+=("xwallpaper")
@@ -63,28 +73,26 @@ check_system_packages() {
             command -v i3blocks &> /dev/null || missing+=("i3blocks")
             command -v dunst &> /dev/null || missing+=("dunst")
             command -v scrot &> /dev/null || missing+=("scrot")
+            command -v picom &> /dev/null || missing+=("picom")
+            command -v xss-lock &> /dev/null || missing+=("xss-lock")
+            command -v i3lock &> /dev/null || missing+=("i3lock")
+            command -v convert &> /dev/null || missing+=("imagemagick")
             ;;
     esac
-    
+
     # Audio and system controls
     command -v pamixer &> /dev/null || missing+=("pamixer")
     command -v brightnessctl &> /dev/null || missing+=("brightnessctl")
     command -v pactl &> /dev/null || missing+=("pulseaudio-utils")
-    
-    # Graphics and display
-    command -v picom &> /dev/null || missing+=("picom")
-    command -v xss-lock &> /dev/null || missing+=("xss-lock")
-    command -v i3lock &> /dev/null || missing+=("i3lock")
-    command -v convert &> /dev/null || missing+=("imagemagick")
-    
+
     # Network tools
     command -v nm-applet &> /dev/null || missing+=("network-manager-gnome")
     command -v iwgetid &> /dev/null || missing+=("wireless-tools")
-    
+
     # System monitoring
     command -v sensors &> /dev/null || missing+=("lm-sensors")
     command -v acpi &> /dev/null || missing+=("acpi")
-    
+
     # Python tools
     python3 -c "import venv" 2>/dev/null || missing+=("python3-venv")
     python3 -c "import pip" 2>/dev/null || missing+=("python3-pip")
@@ -178,19 +186,14 @@ install_missing_packages() {
     local all_packages=($(get_package_names "$pm" "$wm"))
     local to_install=()
     
-    # Map missing commands to package names
+    # Map missing package identifiers to distro-specific package names
     for missing in "${missing_packages[@]}"; do
-        case "$missing" in
-            "python3"|"python3-venv"|"python3-pip"|"xwallpaper"|"i3"|"i3blocks"|"dunst"|"kitty"|"scrot"|"pamixer"|"brightnessctl"|"pulseaudio-utils"|"picom"|"xss-lock"|"i3lock"|"imagemagick"|"network-manager-gnome"|"wireless-tools"|"lm-sensors"|"acpi")
-                # Find the corresponding package in the distro list
-                for pkg in "${all_packages[@]}"; do
-                    if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && "$pkg" == "python" ]] || [[ "$missing" == "pulseaudio-utils" && ("$pkg" == "pulseaudio" || "$pkg" == "pulseaudio-utils") ]]; then
-                        to_install+=("$pkg")
-                        break
-                    fi
-                done
-                ;;
-        esac
+        for pkg in "${all_packages[@]}"; do
+            if [[ "$pkg" == *"$missing"* ]] || [[ "$missing" == "i3" && "$pkg" == "i3-wm" ]] || [[ "$missing" == "python3" && ("$pkg" == "python" || "$pkg" == "python3") ]] || [[ "$missing" == "pulseaudio-utils" && ("$pkg" == "pulseaudio" || "$pkg" == "pulseaudio-utils") ]] || [[ "$missing" == "libnotify" && ("$pkg" == "libnotify" || "$pkg" == "libnotify-bin") ]] || [[ "$missing" == "python-pyqt6" && ("$pkg" == "python-pyqt6" || "$pkg" == "python3-pyqt6") ]]; then
+                to_install+=("$pkg")
+                break
+            fi
+        done
     done
     
     # Remove duplicates
