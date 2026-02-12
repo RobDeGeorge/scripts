@@ -130,10 +130,10 @@ get_package_names() {
         "hyprland")
             case "$pm" in
                 "apt")
-                    wm_packages="hyprland waybar mako-notifier swaybg hyprlock grim slurp xwayland"
+                    wm_packages="hyprland waybar mako-notifier swaybg hyprlock grim slurp xwayland wofi jq wl-clipboard libnotify-bin playerctl pavucontrol blueman dolphin polkit-gnome python3-pyqt6"
                     ;;
                 "pacman")
-                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xorg-xwayland xorg-xrandr unzip"
+                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xorg-xwayland xorg-xrandr unzip wofi jq wl-clipboard libnotify playerctl pavucontrol blueman dolphin polkit-gnome python-pyqt6"
                     ;;
                 "dnf"|"yum")
                     wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xorg-x11-server-Xwayland"
@@ -309,17 +309,13 @@ setup_python_venv() {
         python3 -m venv "$VENV_DIR"
     fi
 
-    # Activate and install packages
-    source "$VENV_DIR/bin/activate"
-
+    # Install packages using venv's pip directly
     echo "Installing Python packages..."
-    pip install --upgrade pip --quiet
-    pip install Pillow scikit-learn numpy --quiet
+    "$VENV_DIR/bin/pip" install --upgrade pip --quiet
+    "$VENV_DIR/bin/pip" install Pillow scikit-learn numpy --quiet
 
     echo "✓ Virtual environment ready at: $VENV_DIR"
     echo "  Packages: Pillow, scikit-learn, numpy"
-
-    deactivate
 }
 
 # Check for font dependencies
