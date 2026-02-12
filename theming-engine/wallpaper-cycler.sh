@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Force correct DBus session for OpenRazer communication (systemd user session)
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+
 # Get script directory for relative paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Get root kit directory (parent of theming-engine)
@@ -257,13 +260,13 @@ else
                 if command -v swaybg &> /dev/null; then
                     swaybg -i "$WALLPAPER" -m fill &
                 elif command -v hyprpaper &> /dev/null; then
-                    # Create temporary config file for hyprpaper
-                    HYPRPAPER_CONF="/tmp/hyprpaper-$$.conf"
+                    # Update permanent hyprpaper config
+                    HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
+                    mkdir -p "$(dirname "$HYPRPAPER_CONF")"
                     echo "preload = $WALLPAPER" > "$HYPRPAPER_CONF"
                     echo "wallpaper = ,$WALLPAPER" >> "$HYPRPAPER_CONF"
-                    hyprpaper -c "$HYPRPAPER_CONF" &
+                    hyprpaper &
                     sleep 0.5
-                    rm -f "$HYPRPAPER_CONF"
                 elif command -v wpaperd &> /dev/null; then
                     wpaperd &
                 fi

@@ -50,9 +50,12 @@ check_system_packages() {
             command -v hyprland &> /dev/null || missing+=("hyprland")
             command -v waybar &> /dev/null || missing+=("waybar")
             command -v mako &> /dev/null || missing+=("mako")
-            command -v hyprpaper &> /dev/null || missing+=("hyprpaper")
+            command -v swaybg &> /dev/null || missing+=("swaybg")
+            command -v hyprlock &> /dev/null || missing+=("hyprlock")
             command -v grim &> /dev/null || missing+=("grim")
             command -v slurp &> /dev/null || missing+=("slurp")
+            command -v xrandr &> /dev/null || missing+=("xrandr")
+            command -v unzip &> /dev/null || missing+=("unzip")
             ;;
         "i3")
             command -v xwallpaper &> /dev/null || missing+=("xwallpaper")
@@ -127,19 +130,19 @@ get_package_names() {
         "hyprland")
             case "$pm" in
                 "apt")
-                    wm_packages="hyprland waybar mako-notifier hyprpaper grim slurp"
+                    wm_packages="hyprland waybar mako-notifier swaybg hyprlock grim slurp xwayland"
                     ;;
                 "pacman")
-                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xorg-xwayland xorg-xrandr unzip"
                     ;;
                 "dnf"|"yum")
-                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xorg-x11-server-Xwayland"
                     ;;
                 "zypper")
-                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xwayland"
                     ;;
                 "apk")
-                    wm_packages="hyprland waybar mako hyprpaper grim slurp"
+                    wm_packages="hyprland waybar mako swaybg hyprlock grim slurp xwayland"
                     ;;
             esac
             ;;
@@ -264,26 +267,58 @@ install_system_packages() {
 # Create Python virtual environment
 setup_python_venv() {
     echo "Setting up Python virtual environment..."
-    
-    # Remove existing venv if it exists
+
+    local need_recreate=false
+    local system_python_version=$(python3 --version 2>&1 | cut -d' ' -f2 | cut -d'.' -f1,2)
+
+    # Check if venv exists and is compatible
     if [ -d "$VENV_DIR" ]; then
-        echo "Removing existing virtual environment..."
+        if [ -f "$VENV_DIR/bin/python" ]; then
+            local venv_python_version=$("$VENV_DIR/bin/python" --version 2>&1 | cut -d' ' -f2 | cut -d'.' -f1,2 2>/dev/null || echo "unknown")
+
+            if [ "$venv_python_version" = "$system_python_version" ]; then
+                # Check if packages are installed
+                if "$VENV_DIR/bin/python" -c "import PIL; import sklearn; import numpy" 2>/dev/null; then
+                    echo "✓ Virtual environment exists and is compatible (Python $venv_python_version)"
+                    return 0
+                else
+                    echo "Virtual environment exists but packages missing, reinstalling..."
+                    need_recreate=false
+                fi
+            else
+                echo "Python version mismatch (venv: $venv_python_version, system: $system_python_version)"
+                need_recreate=true
+            fi
+        else
+            echo "Virtual environment corrupted, recreating..."
+            need_recreate=true
+        fi
+    else
+        need_recreate=true
+    fi
+
+    # Remove existing venv if needed
+    if [ "$need_recreate" = true ] && [ -d "$VENV_DIR" ]; then
+        echo "Removing incompatible virtual environment..."
         rm -rf "$VENV_DIR"
     fi
-    
-    # Create new venv
-    python3 -m venv "$VENV_DIR"
-    
+
+    # Create new venv if needed
+    if [ ! -d "$VENV_DIR" ]; then
+        echo "Creating virtual environment (Python $system_python_version)..."
+        python3 -m venv "$VENV_DIR"
+    fi
+
     # Activate and install packages
     source "$VENV_DIR/bin/activate"
-    
+
     echo "Installing Python packages..."
-    pip install --upgrade pip
-    pip install Pillow scikit-learn numpy
-    
-    echo "Virtual environment created at: $VENV_DIR"
-    echo "Python packages installed: $(pip list --format=columns)"
-    
+    pip install --upgrade pip --quiet
+    pip install Pillow scikit-learn numpy --quiet
+
+    echo "✓ Virtual environment ready at: $VENV_DIR"
+    echo "  Packages: Pillow, scikit-learn, numpy"
+
     deactivate
 }
 
@@ -320,43 +355,57 @@ check_fonts() {
 # Install font if missing
 install_fonts() {
     local pm="$1"
-    
+
     echo "Installing fonts..."
-    
+
     # Create fonts directory
     mkdir -p ~/.local/share/fonts
-    
+
     # Install VictorMono Nerd Font
-    if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
+    if ! fc-list | grep -qi "victormono\|victor mono" &> /dev/null; then
         echo "Installing VictorMono Nerd Font..."
-        case "$pm" in
-            "pacman")
-                if command -v yay &> /dev/null; then
-                    yay -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR, installing manually..."
-                elif command -v paru &> /dev/null; then
-                    paru -S --noconfirm ttf-victor-mono-nerd 2>/dev/null || echo "Font not available via AUR, installing manually..."
-                fi
-                ;;
-        esac
-        
-        # Fallback to manual installation if package manager failed
-        if ! fc-list | grep -i "victor.*mono.*nerd" &> /dev/null; then
-            echo "Downloading VictorMono Nerd Font manually..."
-            curl -L "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/VictorMono.zip" -o /tmp/victormono.zip
-            cd /tmp && unzip -q victormono.zip && cp *.ttf ~/.local/share/fonts/ 2>/dev/null || echo "VictorMono manual install failed"
+
+        # Try AUR first on Arch
+        local font_installed=false
+        if [ "$pm" = "pacman" ]; then
+            if command -v yay &> /dev/null; then
+                yay -S --noconfirm ttf-victor-mono-nerd 2>/dev/null && font_installed=true
+            elif command -v paru &> /dev/null; then
+                paru -S --noconfirm ttf-victor-mono-nerd 2>/dev/null && font_installed=true
+            fi
         fi
+
+        # Fallback to manual installation
+        if [ "$font_installed" = false ]; then
+            echo "Downloading VictorMono Nerd Font manually..."
+            local font_tmp="/tmp/victormono_$$"
+            mkdir -p "$font_tmp"
+            curl -fL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/VictorMono.zip" -o "$font_tmp/VictorMono.zip"
+            if [ -f "$font_tmp/VictorMono.zip" ]; then
+                unzip -qo "$font_tmp/VictorMono.zip" -d "$font_tmp"
+                cp "$font_tmp"/*.ttf ~/.local/share/fonts/ 2>/dev/null || true
+                rm -rf "$font_tmp"
+                echo "VictorMono Nerd Font installed manually"
+            else
+                echo "Warning: Failed to download VictorMono Nerd Font"
+            fi
+        fi
+    else
+        echo "✓ VictorMono Nerd Font already installed"
     fi
-    
+
     # Install Bilbo font
-    if ! fc-list | grep -i "bilbo" &> /dev/null; then
+    if ! fc-list | grep -qi "bilbo" &> /dev/null; then
         echo "Installing Bilbo font..."
-        curl -L "https://github.com/google/fonts/raw/main/ofl/bilbo/Bilbo-Regular.ttf" -o ~/.local/share/fonts/Bilbo-Regular.ttf
+        curl -fL "https://github.com/google/fonts/raw/main/ofl/bilbo/Bilbo-Regular.ttf" -o ~/.local/share/fonts/Bilbo-Regular.ttf
+    else
+        echo "✓ Bilbo font already installed"
     fi
-    
+
     # Update font cache
     echo "Updating font cache..."
-    fc-cache -fv
-    
+    fc-cache -f
+
     echo "Font installation complete!"
 }
 
@@ -410,38 +459,182 @@ check_optional_deps() {
     fi
 }
 
+# Install AUR helper (Arch Linux only)
+install_aur_helper() {
+    local pm="$1"
+
+    if [ "$pm" != "pacman" ]; then
+        return 0
+    fi
+
+    if command -v yay &> /dev/null; then
+        echo "✓ yay (AUR helper) already installed"
+        return 0
+    fi
+
+    if command -v paru &> /dev/null; then
+        echo "✓ paru (AUR helper) already installed"
+        return 0
+    fi
+
+    echo "Installing yay (AUR helper)..."
+    sudo pacman -S --needed --noconfirm base-devel git
+
+    local yay_tmp="/tmp/yay_install_$$"
+    git clone https://aur.archlinux.org/yay.git "$yay_tmp"
+    cd "$yay_tmp" && makepkg -si --noconfirm
+    cd - > /dev/null
+    rm -rf "$yay_tmp"
+
+    if command -v yay &> /dev/null; then
+        echo "✓ yay installed successfully"
+    else
+        echo "Warning: yay installation failed"
+        return 1
+    fi
+}
+
+# Install OpenRazer and Polychromatic (for Razer RGB devices)
+install_razer_support() {
+    local pm="$1"
+
+    echo ""
+    echo "Razer RGB Support"
+    echo "-----------------"
+
+    # Check if already installed
+    if command -v polychromatic-cli &> /dev/null && systemctl --user is-active openrazer-daemon &> /dev/null; then
+        echo "✓ OpenRazer and Polychromatic already installed and running"
+        return 0
+    fi
+
+    read -p "Do you want to install Razer RGB support (OpenRazer + Polychromatic)? [y/N] " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Skipping Razer RGB support"
+        return 0
+    fi
+
+    case "$pm" in
+        "pacman")
+            if ! command -v yay &> /dev/null && ! command -v paru &> /dev/null; then
+                echo "Error: AUR helper (yay/paru) required for OpenRazer on Arch"
+                return 1
+            fi
+
+            local aur_helper="yay"
+            command -v paru &> /dev/null && aur_helper="paru"
+
+            echo "Installing OpenRazer and Polychromatic from AUR..."
+            $aur_helper -S --noconfirm openrazer-daemon openrazer-driver-dkms polychromatic
+
+            # Create plugdev group if it doesn't exist
+            if ! getent group plugdev &> /dev/null; then
+                sudo groupadd plugdev
+            fi
+
+            # Add user to required groups
+            sudo gpasswd -a "$USER" plugdev
+            if getent group openrazer &> /dev/null; then
+                sudo gpasswd -a "$USER" openrazer
+            fi
+
+            # Enable the daemon
+            systemctl --user enable openrazer-daemon
+
+            echo ""
+            echo "OpenRazer installed! You need to REBOOT for the driver to load."
+            echo "After reboot, run: systemctl --user start openrazer-daemon"
+            ;;
+        "apt")
+            echo "Adding OpenRazer PPA..."
+            sudo add-apt-repository -y ppa:openrazer/stable
+            sudo apt update
+            sudo apt install -y openrazer-daemon openrazer-driver-dkms polychromatic
+            sudo gpasswd -a "$USER" plugdev
+            systemctl --user enable openrazer-daemon
+            echo "OpenRazer installed! You need to REBOOT for the driver to load."
+            ;;
+        *)
+            echo "Please install OpenRazer manually for your distro:"
+            echo "https://openrazer.github.io/#download"
+            ;;
+    esac
+}
+
 # Main installation process
 main() {
-    echo "Wallpaper Cycler Dependency Installer"
-    echo "====================================="
-    
+    echo "============================================="
+    echo "  Linux Desktop Theme Kit - Setup Script"
+    echo "============================================="
+    echo ""
+
     # Check if running as root
     if [ "$EUID" -eq 0 ]; then
         echo "Error: Don't run this script as root (sudo will be used when needed)"
         exit 1
     fi
-    
+
     # Detect package manager
     PM=$(detect_package_manager)
     echo "Detected package manager: $PM"
-    
+    echo "Detected window manager: $WM"
+    echo ""
+
+    # Install AUR helper first (Arch only) - needed for some packages
+    if [ "$PM" = "pacman" ]; then
+        install_aur_helper "$PM"
+    fi
+
     # Install system packages
+    echo ""
+    echo "System Packages"
+    echo "---------------"
     install_system_packages "$PM" "$WM"
-    
+
     # Check and install fonts
+    echo ""
+    echo "Fonts"
+    echo "-----"
     if ! check_fonts; then
         install_fonts "$PM"
     fi
-    
+
     # Setup Python virtual environment
+    echo ""
+    echo "Python Environment"
+    echo "------------------"
     setup_python_venv
-    
+
+    # Optional: Razer RGB support
+    install_razer_support "$PM"
+
     # Check optional dependencies
+    echo ""
+    echo "Optional Dependencies"
+    echo "---------------------"
     check_optional_deps
-    
-    echo "Installation complete!"
-    echo "Virtual environment created at: $VENV_DIR"
-    echo "Run ./wallpaper-cycler.sh to test the setup"
+
+    echo ""
+    echo "============================================="
+    echo "  Installation Complete!"
+    echo "============================================="
+    echo ""
+    echo "Next steps:"
+    echo "  1. Run: ./restore-configs.sh"
+    echo "     (Deploys your saved configs to ~/.config)"
+    echo ""
+    echo "  2. Test wallpaper cycling:"
+    echo "     ./theming-engine/wallpaper-cycler.sh"
+    echo ""
+    echo "  3. Keybind (after config restore):"
+    echo "     Super + Shift + W = Cycle wallpaper & theme"
+    echo ""
+    echo "Virtual environment: $VENV_DIR"
+    echo ""
+    if [ "$PM" = "pacman" ]; then
+        echo "Note: If you installed OpenRazer, REBOOT is required!"
+    fi
 }
 
 # Run main function

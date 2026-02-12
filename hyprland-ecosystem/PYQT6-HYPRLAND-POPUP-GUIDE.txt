@@ -1,0 +1,115 @@
+PyQt6 Popup Windows on Hyprland/Wayland - Lessons Learned
+==========================================================
+Created: 2026-02-07
+Context: Building screenshot-bar.py popup overlay
+
+This documents every problem we hit and what actually worked when building
+a PyQt6 floating popup bar for Hyprland. Use this as reference for any
+future popup/overlay/toolbar work.
+
+
+1. WINDOW FLAGS THAT WORK
+-------------------------
+Use:  FramelessWindowHint | WindowStaysOnTopHint
+NOT:  ToolTip (invisible on Wayland), Dialog (eats clicks)
+
+You MUST also add Hyprland windowrules targeting the window title:
+
+    windowrule = float 1, match:title myapp
+    windowrule = pin 1, match:title myapp
+    windowrule = border_size 0, match:title myapp
+    windowrule = no_shadow on, match:title myapp
+    windowrule = no_anim on, match:title myapp
+
+
+2. HYPRLAND WINDOWRULE SYNTAX (0.53+)
+--------------------------------------
+Boolean fields REQUIRE explicit values:
+    WRONG:  float, match:title foo
+    RIGHT:  float 1, match:title foo
+
+Correct field names:
+    border_size  (not "bordersize")
+    no_shadow    (not "noshadow")
+    no_anim      (not "noanim")
+
+Move rule:  move X Y, match:title foo
+
+
+3. POSITIONING WITHOUT FLASH
+-----------------------------
+The problem: Hyprland places floating windows at a default position (center)
+on the first frame. Any post-show repositioning (movewindowpixel, setprop
+alpha, Qt opacity, title swapping) causes a visible flash.
+
+THE SOLUTION: Set a move windowrule via hyprctl keyword BEFORE showing:
+
+    subprocess.run(["hyprctl", "keyword", "windowrule",
+        f"move {x} {y}, match:title myapp"])
+    bar.show()
+
+Then clean up the rule ~200ms later so it doesn't persist:
+
+    subprocess.run(["hyprctl", "keyword", "windowrule",
+        "unset move, match:title myapp"])
+
+This makes Hyprland place the window correctly on the very first frame.
+
+
+4. QT DPI vs HYPRLAND PHYSICAL PIXELS
+--------------------------------------
+Qt sizeHint() returns LOGICAL pixels.
+Hyprland positions in PHYSICAL pixels.
+
+On this system devicePixelRatio = 1.5, so a Qt-reported 509x72 window
+is actually 764x108 in Hyprland. You must scale:
+
+    dpr = app.primaryScreen().devicePixelRatio()
+    w = int(bar.sizeHint().width() * dpr)
+    h = int(bar.sizeHint().height() * dpr)
+
+Without this, centering math will be wrong.
+
+
+5. PROCESS TOGGLE (PRESS TO OPEN, PRESS AGAIN TO CLOSE)
+--------------------------------------------------------
+DON'T use pgrep -f — it matches the parent shell/hyprland exec process
+and kills the new instance before it shows.
+
+USE a PID lock file:
+    - On start: read lock file, kill old PID if alive, else continue
+    - Write own PID to lock file
+    - Clean up on app.aboutToQuit
+
+Lock file location: ~/.cache/myapp.pid
+
+
+6. DISMISS BEHAVIOR ON WAYLAND
+-------------------------------
+WindowDeactivate event filter fires erratically on Wayland (sometimes
+immediately on show, sometimes on mouse move). Don't use it.
+
+Instead, only dismiss on:
+    - keyPressEvent (any key)
+    - Button clicks (which trigger their action then quit)
+
+
+7. MONITOR GEOMETRY
+-------------------
+    hyprctl monitors -j   -> physical resolution + scale
+    hyprctl clients -j    -> actual rendered window size
+
+For positioning: use physical resolution directly (divide by scale if
+scale != 1.0 for logical coords, but our system is scale=1.0).
+
+
+8. STYLE MATCHING (WOFI THEME)
+------------------------------
+Wofi theme values used for consistency:
+    Background: rgba(20, 22, 28, 180)   (0.7 opacity)
+    Border:     rgba(100, 110, 130, 77)  (0.3 opacity)
+    Text:       #b0b8c4
+    Hover bg:   rgba(80, 100, 130, 51)
+    Hover text: #e0e4ea
+    Font:       VictorMono Nerd Font, 14px
+    Radius:     12px outer, 8px buttons

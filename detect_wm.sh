@@ -55,25 +55,25 @@ get_wm_commands() {
     
     case "$wm" in
         "hyprland")
-            echo "RELOAD_CMD=hyprctl reload"
-            echo "WALLPAPER_CMD=hyprpaper"
-            echo "NOTIFICATION_CMD=mako"
-            echo "TERMINAL_CMD=kitty"
-            echo "BAR_CMD=waybar"
+            echo 'RELOAD_CMD="hyprctl reload"'
+            echo 'WALLPAPER_CMD="hyprpaper"'
+            echo 'NOTIFICATION_CMD="mako"'
+            echo 'TERMINAL_CMD="kitty"'
+            echo 'BAR_CMD="waybar"'
             ;;
         "i3")
-            echo "RELOAD_CMD=i3-msg reload"
-            echo "WALLPAPER_CMD=xwallpaper"
-            echo "NOTIFICATION_CMD=dunst"
-            echo "TERMINAL_CMD=kitty"
-            echo "BAR_CMD=i3blocks"
+            echo 'RELOAD_CMD="i3-msg reload"'
+            echo 'WALLPAPER_CMD="xwallpaper"'
+            echo 'NOTIFICATION_CMD="dunst"'
+            echo 'TERMINAL_CMD="kitty"'
+            echo 'BAR_CMD="i3blocks"'
             ;;
         *)
-            echo "RELOAD_CMD=echo"
-            echo "WALLPAPER_CMD=echo"
-            echo "NOTIFICATION_CMD=echo"
-            echo "TERMINAL_CMD=kitty"
-            echo "BAR_CMD=echo"
+            echo 'RELOAD_CMD="echo"'
+            echo 'WALLPAPER_CMD="echo"'
+            echo 'NOTIFICATION_CMD="echo"'
+            echo 'TERMINAL_CMD="kitty"'
+            echo 'BAR_CMD="echo"'
             ;;
     esac
 }
@@ -85,25 +85,25 @@ get_config_paths() {
     
     case "$wm" in
         "hyprland")
-            echo "WM_CONFIG=$config_dir/hypr/hyprland.conf"
-            echo "BAR_CONFIG=$config_dir/waybar/config"
-            echo "BAR_STYLE_CONFIG=$config_dir/waybar/style.css"
-            echo "NOTIFICATION_CONFIG=$config_dir/mako/config"
-            echo "TERMINAL_CONFIG=$config_dir/kitty/kitty.conf"
+            echo "WM_CONFIG=\"$config_dir/hypr/hyprland.conf\""
+            echo "BAR_CONFIG=\"$config_dir/waybar/config\""
+            echo "BAR_STYLE_CONFIG=\"$config_dir/waybar/style.css\""
+            echo "NOTIFICATION_CONFIG=\"$config_dir/mako/config\""
+            echo "TERMINAL_CONFIG=\"$config_dir/kitty/kitty.conf\""
             ;;
         "i3")
-            echo "WM_CONFIG=$config_dir/i3/config"
-            echo "BAR_CONFIG=$config_dir/i3blocks/config"
-            echo "BAR_STYLE_CONFIG="
-            echo "NOTIFICATION_CONFIG=$config_dir/dunst/dunstrc"
-            echo "TERMINAL_CONFIG=$config_dir/kitty/kitty.conf"
+            echo "WM_CONFIG=\"$config_dir/i3/config\""
+            echo "BAR_CONFIG=\"$config_dir/i3blocks/config\""
+            echo "BAR_STYLE_CONFIG=\"\""
+            echo "NOTIFICATION_CONFIG=\"$config_dir/dunst/dunstrc\""
+            echo "TERMINAL_CONFIG=\"$config_dir/kitty/kitty.conf\""
             ;;
         *)
-            echo "WM_CONFIG="
-            echo "BAR_CONFIG="
-            echo "BAR_STYLE_CONFIG="
-            echo "NOTIFICATION_CONFIG="
-            echo "TERMINAL_CONFIG=$config_dir/kitty/kitty.conf"
+            echo "WM_CONFIG=\"\""
+            echo "BAR_CONFIG=\"\""
+            echo "BAR_STYLE_CONFIG=\"\""
+            echo "NOTIFICATION_CONFIG=\"\""
+            echo "TERMINAL_CONFIG=\"$config_dir/kitty/kitty.conf\""
             ;;
     esac
 }

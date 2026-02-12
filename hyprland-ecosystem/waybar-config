@@ -1,11 +1,11 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "spacing": 4,
+    "height": 34,
+    "spacing": 0,
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "custom/vram", "disk", "battery", "tray"],
+    "modules-right": ["mpris", "backlight", "pulseaudio", "network", "cpu", "temperature", "custom/gpu-usage", "custom/gpu-temp", "memory", "custom/vram", "disk", "battery", "custom/pacman", "tray"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -13,7 +13,7 @@
         "format": "{icon}",
         "format-icons": {
             "1": "1",
-            "2": "2", 
+            "2": "2",
             "3": "3",
             "4": "4",
             "5": "5",
@@ -28,40 +28,104 @@
         }
     },
 
-
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50
+        "max-length": 50,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹  $1",
+            "(.*) - Visual Studio Code": "󰨞  $1",
+            "(.*) - kitty": "  $1"
+        }
     },
 
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%a %b %d  %I:%M %p}",
         "format-alt": "{:%Y-%m-%d}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
 
+    "mpris": {
+        "format": "󰎈  {artist} - {title}",
+        "format-paused": "󰏤  {artist} - {title}",
+        "format-stopped": "",
+        "max-length": 35,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next"
+    },
+
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip-format": "Brightness: {percent}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟  muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
+    },
+
+    "network": {
+        "format-wifi": "󰤨  {essid}",
+        "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+        "format-linked": "󰈀  {ifname}",
+        "format-disconnected": "󰤭  disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
     "cpu": {
-        "format": "CPU {usage}%",
+        "format": "  {usage}%",
+        "tooltip-format": "CPU: {usage}%\n{avg_frequency} GHz",
+        "interval": 2
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°",
+        "format-critical": "{temperatureC}°",
         "tooltip": false
     },
 
     "memory": {
-        "format": "RAM {used:0.1f}G/{total:0.1f}G",
-        "tooltip-format": "RAM: {percentage}% used"
+        "format": "󰍛  {used:0.1f}/{total:0.1f}G",
+        "tooltip-format": "RAM: {percentage}% used\nSwap: {swapUsed:0.1f}/{swapTotal:0.1f}G",
+        "interval": 5
     },
 
     "custom/vram": {
         "exec": "~/scripts/hyprland-ecosystem/vram-monitor.sh",
         "return-type": "json",
         "interval": 2,
-        "format": "{}"
+        "format": "󰘚  {}"
+    },
+
+    "custom/gpu-usage": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo 'N/A'",
+        "interval": 2,
+        "format": "󰘚  {}%"
+    },
+
+    "custom/gpu-temp": {
+        "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null",
+        "interval": 5,
+        "format": "{}°"
     },
 
     "disk": {
         "interval": 30,
-        "format": "DISK {used}/{total}",
+        "format": "󰋊  {used}/{total}",
         "path": "/",
-        "tooltip-format": "Disk: {percentage_used}% used"
+        "tooltip-format": "Disk: {percentage_used}% used\n{free} free"
     },
 
     "battery": {
@@ -70,26 +134,22 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "BAT {capacity}%",
-        "format-charging": "CHG {capacity}%",
-        "format-plugged": "PLG {capacity}%"
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged": "󰚥  {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "Battery: {capacity}% — {timeTo}"
     },
 
-    "network": {
-        "format-wifi": "WIFI {essid}",
-        "format-ethernet": "ETH {ipaddr}",
-        "format-linked": "LINK {ifname}",
-        "format-disconnected": "DISCONNECTED"
-    },
-
-    "pulseaudio": {
-        "format": "VOL {volume}%",
-        "format-muted": "MUTED",
-        "on-click": "pavucontrol"
+    "custom/pacman": {
+        "format": "󰏗  {}",
+        "exec": "count=$(checkupdates 2>/dev/null | wc -l); [ \"$count\" -gt 0 ] && echo \"$count\"",
+        "interval": 600,
+        "on-click": "kitty -e sudo pacman -Syu"
     },
 
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 8
     }
 }

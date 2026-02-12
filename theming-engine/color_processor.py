@@ -438,26 +438,45 @@ client.placeholder      {quaternary} {quaternary} {self.create_readable_text_col
         
         primary = self.rgb_to_hex(*colors[0])
         primary = self.ensure_minimum_brightness(primary, 0.3)
-        secondary = self.adjust_brightness(primary, 0.7)
-        tertiary = self.adjust_brightness(primary, 0.4)
-        
+
+        # Background colors
         bg_color = self.adjust_brightness(primary, 0.1)
         bg_color = self.ensure_minimum_brightness(bg_color, 0.05)
-        
+        bg_module = self.adjust_brightness(bg_color, 2.0)
+        bg_module = self.ensure_minimum_brightness(bg_module, 0.08)
+
+        # Text colors
         text_color = self.create_readable_text_color(bg_color, colors, 3.0)
-        
+        text_dim = self.adjust_brightness(text_color, 0.6)
+
+        # Find most vibrant color for accent
+        most_vibrant = colors[0]
+        max_vibrancy = 0
+        for color in colors:
+            r, g, b = color
+            color_range = max(r, g, b) - min(r, g, b)
+            brightness = (r + g + b) / 3
+            vibrancy = color_range * (brightness / 255.0)
+            if vibrancy > max_vibrancy:
+                max_vibrancy = vibrancy
+                most_vibrant = color
+
+        accent_color = self.rgb_to_hex(*most_vibrant)
+        accent_color = self.ensure_minimum_brightness(accent_color, 0.3)
+        border_color = self.adjust_brightness(accent_color, 0.8)
+        border_color = self.ensure_minimum_brightness(border_color, 0.25)
+
         import re
-        
-        # Update CSS custom properties if they exist
-        css = re.sub(r'--primary:\s*#[0-9a-fA-F]{6};', f'--primary: {primary};', css)
-        css = re.sub(r'--secondary:\s*#[0-9a-fA-F]{6};', f'--secondary: {secondary};', css)
-        css = re.sub(r'--background:\s*#[0-9a-fA-F]{6};', f'--background: {bg_color};', css)
-        css = re.sub(r'--text:\s*#[0-9a-fA-F]{6};', f'--text: {text_color};', css)
-        
-        # Update common background colors
-        css = re.sub(r'background-color:\s*#[0-9a-fA-F]{6};', f'background-color: {bg_color};', css)
-        css = re.sub(r'background:\s*#[0-9a-fA-F]{6};', f'background: {bg_color};', css)
-        css = re.sub(r'color:\s*#[0-9a-fA-F]{6};', f'color: {text_color};', css)
+
+        # Update @define-color declarations (GTK CSS variables)
+        # Only targets the variable definitions — all other colors use @references
+        css = re.sub(r'@define-color bg_color #[0-9a-fA-F]{6};', f'@define-color bg_color {bg_color};', css)
+        css = re.sub(r'@define-color bg_module #[0-9a-fA-F]{6};', f'@define-color bg_module {bg_module};', css)
+        css = re.sub(r'@define-color text_color #[0-9a-fA-F]{6};', f'@define-color text_color {text_color};', css)
+        css = re.sub(r'@define-color text_dim #[0-9a-fA-F]{6};', f'@define-color text_dim {text_dim};', css)
+        css = re.sub(r'@define-color accent_color #[0-9a-fA-F]{6};', f'@define-color accent_color {accent_color};', css)
+        css = re.sub(r'@define-color border_color #[0-9a-fA-F]{6};', f'@define-color border_color {border_color};', css)
+        # Note: urgent_color and charging_color are intentionally not updated — they stay fixed
         
         try:
             with open(style_path, 'w') as f:
@@ -602,47 +621,68 @@ highlight Warning guifg={warning_fg} guibg={warning_bg}'''
         print(f'Updated nvim config: bg={bg_color}, fg={fg_color}, accent={primary}', file=sys.stderr)
     
     def update_razer_keyboard(self, colors):
-        """Update Razer keyboard RGB colors"""
+        """Update Razer keyboard RGB colors using OpenRazer Python API"""
         try:
-            # Turn off current effects
-            subprocess.run(['polychromatic-cli', '--device', 'laptop', '--zone', 'main', '--option', 'none'],
-                          capture_output=True)
-            
-            # Get primary colors and enhance for keyboard
+            from openrazer.client import DeviceManager
+
+            # Get primary colors and enhance for keyboard visibility
             primary_raw = self.rgb_to_hex(*colors[0])
             primary_r, primary_g, primary_b = self.hex_to_rgb(primary_raw)
             primary_h, primary_l, primary_s = colorsys.rgb_to_hls(primary_r/255.0, primary_g/255.0, primary_b/255.0)
-            
+
+            # Boost saturation and adjust brightness for keyboard LEDs
             deep_s = min(primary_s * 1.8, 1.0)
             deep_l = max(primary_l * 0.8, 0.25)
-            
+
             deep_r, deep_g, deep_b = colorsys.hls_to_rgb(primary_h, deep_l, deep_s)
-            primary = self.rgb_to_hex(int(deep_r*255), int(deep_g*255), int(deep_b*255))
-            
+            primary_rgb = (int(deep_r*255), int(deep_g*255), int(deep_b*255))
+
+            # Secondary color for logo
             secondary_raw = self.rgb_to_hex(*colors[1]) if len(colors) > 1 else self.adjust_brightness(primary_raw, 0.7)
             secondary = self.adjust_brightness(secondary_raw, 0.6)
             secondary = self.ensure_minimum_brightness(secondary, 0.25)
-            
-            # Try static color first
-            cmd = ['polychromatic-cli', '--device', 'laptop', '--zone', 'main',
-                   '--option', 'static', '--colours', primary]
-            result = subprocess.run(cmd, capture_output=True, text=True)
-            
-            if result.returncode == 0:
-                mode = 'static'
-            else:
-                cmd = ['polychromatic-cli', '--device', 'laptop', '--zone', 'main',
-                       '--option', 'wave', '--parameter', '1', '--colours', primary]
-                subprocess.run(cmd, capture_output=True)
-                mode = 'wave'
-            
-            # Set logo color
-            cmd2 = ['polychromatic-cli', '--device', 'laptop', '--zone', 'logo',
-                    '--option', 'static', '--colours', secondary]
-            subprocess.run(cmd2, capture_output=True)
-            
-            print(f'Updated Razer keyboard: {mode} mode with {primary}, logo={secondary}', file=sys.stderr)
-            
+            secondary_rgb = self.hex_to_rgb(secondary)
+
+            # Connect to OpenRazer daemon
+            device_manager = DeviceManager()
+
+            if not device_manager.devices:
+                print('No Razer devices found', file=sys.stderr)
+                return
+
+            for device in device_manager.devices:
+                device_name = device.name
+
+                # Set keyboard brightness (15% on startup for subtle lighting)
+                if hasattr(device, 'brightness'):
+                    device.brightness = 15.0
+                    brightness_set = True
+                else:
+                    brightness_set = False
+
+                # Set keyboard backlight to static color
+                if device.fx.has('static'):
+                    device.fx.static(*primary_rgb)
+                    mode = 'static'
+                elif device.fx.has('breath_single'):
+                    device.fx.breath_single(*primary_rgb)
+                    mode = 'breath'
+                else:
+                    print(f'Device {device_name} does not support static or breath effects', file=sys.stderr)
+                    continue
+
+                # Set logo if available
+                if hasattr(device, 'fx') and hasattr(device.fx, 'misc') and hasattr(device.fx.misc, 'logo'):
+                    try:
+                        device.fx.misc.logo.static(*secondary_rgb)
+                    except Exception:
+                        pass
+
+                brightness_info = ', brightness=15%' if brightness_set else ''
+                print(f'Updated Razer keyboard ({device_name}): {mode} mode with #{self.rgb_to_hex(*primary_rgb)[1:]}{brightness_info}', file=sys.stderr)
+
+        except ImportError:
+            print('OpenRazer Python library not installed, skipping keyboard update', file=sys.stderr)
         except Exception as e:
             print(f'Error updating Razer keyboard: {e}', file=sys.stderr)
     

@@ -438,3 +438,842 @@
 2025-10-13 02:51:18 [/home/rhea/scripts] git commit -m "mako update"
 2025-10-13 02:51:28 [/home/rhea] git push -u origin main
 2025-10-13 02:51:31 [/home/rhea/scripts] cd scripts/
+2025-11-01 20:22:42 [/home/rhea] ./restore-configs.sh 
+2025-11-01 20:24:28 [/home/rhea] curl -fsSl https://claude.ai/install.sh | bash
+2025-11-01 20:26:28 [/home/rhea] curl -fsSl https://claude.ai/install.sh | bash -s latest
+2025-11-01 20:27:44 [/home/rhea] sudo pacman -S chromium
+2025-11-01 20:29:21 [/home/rhea] sudo pacman -S chromium
+2025-11-01 20:29:42 [/home/rhea] [200~# Install stable version
+2025-11-01 20:29:54 [/home/rhea] curl -fsSL https://claude.ai/install.sh | bash
+2025-11-01 20:30:34 [/home/rhea/scripts] cd scripts/
+2025-11-01 20:30:36 [/home/rhea/scripts] claude
+2025-11-01 20:31:03 [/home/rhea/scripts] echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+2025-11-01 20:31:06 [/home/rhea/scripts] claude
+2025-11-01 20:31:09 [/home/rhea] claude
+2025-11-01 20:31:28 [/home/rhea] ls -la ~/.local/bin/claude
+2025-11-01 20:33:24 [/home/rhea] ls -la ~/.local/share/claude/versions/2.0.31/
+2025-11-01 20:34:22 [/home/rhea] ls -la ~/.local/share/claude/versions/2.0.31
+2025-11-01 20:34:26 [/home/rhea] chmod +x ~/.local/share/claude/versions/2.0.31
+2025-11-01 20:34:31 [/home/rhea] echo $PATH | grep ".local/bin"
+2025-11-01 20:35:29 [/home/rhea] export PATH="$HOME/.local/bin:$PATH"
+2025-11-01 20:36:44 [/home/rhea] claude
+2025-11-01 20:36:46 [/home/rhea/scripts] cd scripts/
+2025-11-01 20:36:48 [/home/rhea/scripts] claude
+2025-11-01 20:36:53 [/home/rhea] claude
+2025-11-01 20:37:17 [/home/rhea] ls -la ~/.local/share/claude/versions/2.0.31
+2025-11-01 20:37:22 [/home/rhea] chmod +x ~/.local/share/claude/versions/2.0.31
+2025-11-01 20:37:25 [/home/rhea] claude
+2025-11-01 20:37:29 [/home/rhea] echo $PATH | grep ".local/bin"
+2025-11-01 20:37:31 [/home/rhea] claude
+2025-11-01 20:37:36 [/home/rhea] export PATH="$HOME/.local/bin:$PATH"
+2025-11-01 20:38:31 [/home/rhea] claude
+2025-11-01 20:38:33 [/home/rhea] echo $SHELL
+2025-11-01 20:38:58 [/home/rhea] echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+2025-11-01 20:39:03 [/home/rhea] tail -5 ~/.bashrc
+2025-11-01 20:39:13 [/home/rhea] claude
+2025-11-01 20:41:18 [/home/rhea] claude
+2025-11-01 20:41:21 [/home/rhea/scripts] cd scripts/
+2025-11-01 20:41:41 [/home/rhea] claude
+2025-11-01 20:41:46 [/home/rhea] ls
+2026-01-24 16:24:18 [/home/rhea] claude
+2026-01-24 16:24:20 [/home/rhea] ls
+2026-01-24 16:29:19 [/home/rhea] claude
+2026-01-24 16:29:24 [/home/rhea/scripts] cd scripts/
+2026-01-24 16:29:25 [/home/rhea/scripts] claude
+2026-01-24 16:29:34 [/home/rhea] claude
+2026-01-24 21:39:34 [/home/rhea] claude
+2026-01-24 21:43:37 [/home/rhea] curl -fsSL https://claude.ai/install.sh | bash
+2026-01-24 21:43:45 [/home/rhea/scripts] cd scripts/
+2026-01-24 21:43:46 [/home/rhea/scripts] claude
+2026-01-24 21:44:36 [/home/rhea/scripts] echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc 
+2026-01-24 21:44:38 [/home/rhea/scripts] claude
+2026-01-24 21:44:58 [/home/rhea/scripts] echo $SHELL
+2026-01-24 21:45:07 [/home/rhea/scripts] echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+2026-01-24 21:45:19 [/home/rhea/scripts] export PATH="$HOME/.local/bin:$PATH"
+2026-01-24 21:55:49 [/home/rhea] claude
+2026-01-24 21:56:37 [/home/rhea] sudo pacman -S --noconfirm waybar mako hyprpaper hyprlock
+2026-01-24 21:58:14 [/home/rhea] sudo pacman -Sy
+2026-01-24 21:58:18 [/home/rhea] sudo pacman -S --noconfirm waybar mako hyprpaper hyprlock
+2026-01-24 21:58:33 [/home/rhea] clear
+2026-01-24 21:58:34 [/home/rhea] sudo pacman -S --noconfirm waybar mako hyprpaper hyprlock
+2026-01-24 22:00:34 [/home/rhea] sudo pacman -Syu
+2026-01-24 22:01:27 [/home/rhea] clear
+2026-01-24 22:03:20 [/home/rhea] sudo pacman -Sy archlinux-keyring && sudo pacman -Su
+2026-01-24 22:04:36 [/home/rhea] sudo pacman -S --noconfirm waybar mako hyprpaper hyprlock
+2026-01-24 22:06:44 [/home/rhea] claude
+2026-01-24 22:06:50 [/home/rhea/.local/share/fonts] sudo pacman -S --noconfirm unzip && cd ~/.local/share/fonts && unzip -o VictorMono.zip -d VictorMono && rm VictorMono.zip 
+2026-01-24 22:08:41 [/home/rhea] claude
+2026-01-24 22:08:45 [/home/rhea] restart
+2026-01-24 22:08:48 [/home/rhea] reboot
+2026-01-24 22:19:44 [/home/rhea] sudo pacman -S --noconfirm waybar mako hyprpaper hyprlock
+2026-01-24 22:19:49 [/home/rhea/scripts] cd scripts/
+2026-01-24 22:23:22 [/home/rhea] claude
+2026-01-24 22:23:26 [/home/rhea/scripts] cd scripts/
+2026-01-24 22:25:00 [/home/rhea] claude
+2026-01-24 22:25:14 [/home/rhea] hyprctl reload
+2026-01-24 22:42:36 [/home/rhea] reboot
+2026-01-24 22:55:01 [/home/rhea] reboot
+2026-01-24 22:55:06 [/home/rhea/scripts] cd scripts/
+2026-01-24 23:00:08 [/home/rhea] reboot
+2026-01-24 23:00:13 [/home/rhea] sudo pacman -S --noconfirm swaybg 
+2026-01-24 23:00:25 [/home/rhea] pkill hyprpaper                                                                                                                         
+2026-01-24 23:00:43 [/home/rhea] reboot
+2026-01-24 23:00:49 [/home/rhea] reboot
+2026-01-24 23:08:25 [/home/rhea] pkill hyprpaper                                                                                                                         
+2026-01-24 23:08:36 [/home/rhea] sudo pacman -S --noconfirm xorg-xrandr unzip   
+2026-01-24 23:09:13 [/home/rhea/.local/share/fonts] cd ~/.local/share/fonts                                                                                                                 
+2026-01-24 23:11:10 [/tmp/yay] sudo pacman -S --needed base-devel git                                                                                                  
+2026-01-24 23:15:08 [/tmp/yay] # Then install OpenRazer + Polychromatic                                                                                                
+2026-01-24 23:15:33 [/tmp/yay] sudo gpasswd -a $USER plugdev 
+2026-01-24 23:16:00 [/tmp/yay] systemctl --user enable --now openrazer-daemon 
+2026-01-24 23:18:19 [/home/rhea] systemctl --user enable --now openrazer-daemon 
+2026-01-24 23:18:21 [/home/rhea/scripts] cd scripts/
+2026-01-24 23:20:04 [/home/rhea] systemctl --user enable --now openrazer-daemon 
+2026-01-24 23:20:07 [/home/rhea] sudo gpasswd -a $USER openrazer
+2026-01-24 23:20:12 [/home/rhea] reboot
+2026-01-24 23:29:57 [/home/rhea] claude
+2026-01-24 23:30:15 [/home/rhea] claude
+2026-01-24 23:36:05 [/home/rhea/scripts] cd scripts/
+2026-01-24 23:40:25 [/home/rhea] claude
+2026-01-24 23:40:27 [/home/rhea] gh auth
+2026-01-24 23:41:03 [/home/rhea] sudo pacman -S --noconfirm github-cli    
+2026-01-24 23:42:43 [/home/rhea] gh auth login
+2026-01-24 23:42:50 [/home/rhea] gh auth status
+2026-01-24 23:44:30 [/home/rhea] gh auth login
+2026-01-24 23:44:41 [/home/rhea] gh auth status
+2026-01-25 00:02:12 [/home/rhea] yay -S --noconfirm visual-studio-code-bin 
+2026-01-25 00:04:15 [/home/rhea] yay -S --noconfirm dropbox  
+2026-01-25 00:07:12 [/home/rhea] dropbox &
+2026-01-25 00:08:12 [/home/rhea/scripts] cd scripts/
+2026-01-25 00:08:14 [/home/rhea/scripts] code .
+2026-01-25 00:10:42 [/home/rhea] cd ..
+2026-01-25 00:10:44 [/home/rhea] ls
+2026-01-25 00:10:47 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 00:10:47 [/home/rhea/Dropbox] ls
+2026-01-25 00:11:16 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 00:11:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-25 00:11:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] ls
+2026-01-25 00:13:39 [/home/rhea] claude
+2026-01-25 00:14:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-25 00:15:18 [/home/rhea] watch dropbox status
+2026-01-25 00:18:25 [/home/rhea] watch dropbox status
+2026-01-25 00:18:57 [/home/rhea] dropbox start
+2026-01-25 00:19:25 [/home/rhea] dropbox start
+2026-01-25 00:19:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] dropbox status 
+2026-01-25 00:19:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python setup.py 
+2026-01-25 00:21:03 [/home/rhea] dropbox status 
+2026-01-25 00:21:10 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 00:21:11 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 00:21:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-25 00:30:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-01-25 00:31:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python3 main.py
+2026-01-25 00:32:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-01-25 00:32:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "fixed setup script to work for arch linux"
+2026-01-25 00:33:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-01-25 00:35:00 [/home/rhea] claude
+2026-01-25 00:35:03 [/home/rhea] shutdown now
+2026-01-25 10:02:55 [/home/rhea] shutdown now
+2026-01-25 10:03:02 [/home/rhea/scripts] cd scripts/
+2026-01-25 10:05:41 [/home/rhea] shutdown now
+2026-01-25 10:05:42 [/home/rhea] systemctl list-units --type=service | grep -E 'gdm|sddm|lightdm|ly|greetd' 
+2026-01-25 10:07:35 [/home/rhea] sudo systemctl disable --now sddm     
+2026-01-25 10:07:42 [/home/rhea/scripts] cd scripts/
+2026-01-25 10:08:52 [/home/rhea/scripts] claude
+2026-01-25 10:11:44 [/home/rhea] sudo systemctl disable --now sddm     
+2026-01-25 10:11:49 [/home/rhea/scripts] cd scripts/
+2026-01-25 10:13:07 [/home/rhea] sudo systemctl disable --now sddm     
+2026-01-25 10:13:09 [/home/rhea] reboot
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:00 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:01 [/home/rhea] claude
+2026-01-25 10:14:15 [/home/rhea] claude
+2026-01-25 10:14:18 [/home/rhea] shutdown now
+2026-01-25 11:34:03 [/home/rhea] shutdown now
+2026-01-25 11:34:06 [/home/rhea/scripts] cd scripts/
+2026-01-25 11:41:57 [/home/rhea] shutdown now
+2026-01-25 11:42:37 [/home/rhea] claude
+2026-01-25 11:42:48 [/home/rhea/scripts] cd scripts/
+2026-01-25 11:47:32 [/home/rhea] claude
+2026-01-25 11:47:39 [/home/rhea] which yay paru
+2026-01-25 11:48:50 [/home/rhea] sudo pacman -S smartmontools 
+2026-01-25 11:48:56 [/home/rhea] sudo smartctl -a /dev/nvme0n1
+2026-01-25 11:50:27 [/home/rhea] sudo paccache -r
+2026-01-25 11:54:17 [/home/rhea] sudo pacman -S pacman-contrib 
+2026-01-25 11:54:18 [/home/rhea] sudo paccache -r
+2026-01-25 11:57:01 [/home/rhea] claude
+2026-01-25 11:57:03 [/home/rhea] osrs
+2026-01-25 11:57:37 [/home/rhea/Downloads] cd Downloads/
+2026-01-25 11:57:45 [/home/rhea/Downloads] chmod x+ RuneLite.AppImage 
+2026-01-25 11:57:55 [/home/rhea/Downloads] chmod x RuneLite.AppImage 
+2026-01-25 11:58:11 [/home/rhea/Downloads] chmod +x RuneLite.AppImage 
+2026-01-25 11:58:21 [/home/rhea/Downloads] osrs
+2026-01-25 12:00:15 [/home/rhea] claude
+2026-01-25 12:00:22 [/home/rhea] claude
+2026-01-25 12:01:43 [/home/rhea] osrs
+2026-01-25 12:01:49 [/home/rhea] shutdown
+2026-01-25 12:01:53 [/home/rhea] shutdown now
+2026-01-25 15:37:08 [/home/rhea] shutdown now
+2026-01-25 15:37:17 [/home/rhea/scripts] cd scripts/
+2026-01-25 16:46:12 [/home/rhea] shutdown now
+2026-01-25 16:46:15 [/home/rhea] reboot now
+2026-01-25 16:49:05 [/home/rhea] claude
+2026-01-25 16:49:29 [/home/rhea/scripts] cd scripts/
+2026-01-25 16:57:13 [/home/rhea] claude
+2026-01-25 16:58:00 [/home/rhea] claude
+2026-01-25 16:58:07 [/home/rhea] claude
+2026-01-25 16:58:10 [/home/rhea] sc scripts/
+2026-01-25 16:58:15 [/home/rhea/scripts] cd scripts/
+2026-01-25 17:09:21 [/home/rhea] claude
+2026-01-25 17:12:47 [/home/rhea] claude
+2026-01-25 17:12:50 [/home/rhea] claude
+2026-01-25 17:12:50 [/home/rhea] claude
+2026-01-25 17:12:51 [/home/rhea] claude
+2026-01-25 17:12:51 [/home/rhea] claude
+2026-01-25 17:12:51 [/home/rhea] claude
+2026-01-25 17:12:57 [/home/rhea] claude
+2026-01-25 17:13:00 [/home/rhea/scripts] cd scripts/
+2026-01-25 17:18:08 [/home/rhea] claude
+2026-01-25 17:18:17 [/home/rhea/scripts] cd scripts/
+2026-01-25 17:18:18 [/home/rhea/scripts] ls
+2026-01-25 17:23:23 [/home/rhea] claude
+2026-01-25 17:29:46 [/home/rhea] claude
+2026-01-25 17:30:06 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:30:22 [/home/rhea] claude
+2026-01-25 17:30:37 [/home/rhea] claude
+2026-01-25 17:32:42 [/home/rhea] cp ~/scripts/hyprland-ecosystem/hyprland.conf ~/.config/hypr/hyprland.conf && hyprctl reload  
+2026-01-25 17:36:36 [/home/rhea] cp ~/scripts/hyprland-ecosystem/hyprland.conf ~/.config/hypr/hyprland.conf && hyprctl reload 
+2026-01-25 17:37:47 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:40:50 [/home/rhea] claude
+2026-01-25 17:43:19 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:46:20 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:15 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:21 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:21 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:21 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:21 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:47:21 [/home/rhea] ~/scripts/restore-configs.sh --skip-deps 
+2026-01-25 17:50:54 [/home/rhea] htop
+2026-01-25 17:51:03 [/home/rhea] htop
+2026-01-25 17:51:04 [/home/rhea] htop
+2026-01-25 17:51:04 [/home/rhea] htop
+2026-01-25 17:51:04 [/home/rhea] htop
+2026-01-25 17:51:04 [/home/rhea] htop
+2026-01-25 17:51:04 [/home/rhea] htop
+2026-01-25 17:52:33 [/home/rhea] htop
+2026-01-25 17:54:16 [/home/rhea] htop
+2026-01-25 17:54:47 [/home/rhea] htop
+2026-01-25 17:54:52 [/home/rhea] htop
+2026-01-25 17:54:54 [/home/rhea] htop
+2026-01-25 17:55:00 [/home/rhea] htop
+2026-01-25 17:55:00 [/home/rhea] htop
+2026-01-25 17:55:01 [/home/rhea] htop
+2026-01-25 17:55:01 [/home/rhea] htop
+2026-01-25 17:55:02 [/home/rhea] htop
+2026-01-25 17:55:02 [/home/rhea] htop
+2026-01-25 17:55:02 [/home/rhea] htop
+2026-01-25 17:55:06 [/home/rhea] htop
+2026-01-25 17:55:06 [/home/rhea] htop
+2026-01-25 17:55:07 [/home/rhea] htop
+2026-01-25 17:55:14 [/home/rhea] htop
+2026-01-25 17:55:37 [/home/rhea] htop
+2026-01-25 18:15:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] htop
+2026-01-25 18:28:39 [/home/rhea] htop
+2026-01-25 18:28:39 [/home/rhea] htop
+2026-01-25 18:44:37 [/home/rhea] htop
+2026-01-25 18:50:50 [/home/rhea] htop
+2026-01-25 18:58:09 [/home/rhea] htop
+2026-01-25 18:58:16 [/home/rhea] sudo pacman -S pavucontrol blueman  
+2026-01-25 19:07:06 [/home/rhea] sudo pacman -S kvantum qt5ct qt6ct 
+2026-01-25 19:10:35 [/home/rhea] htop
+2026-01-25 19:10:38 [/home/rhea] reboot
+2026-01-25 19:11:35 [/home/rhea] sudo pacman -S kvantum qt5ct qt6ct 
+2026-01-25 19:11:43 [/home/rhea/scripts] cd scripts/
+2026-01-25 19:11:48 [/home/rhea/scripts] claude
+2026-01-25 19:13:24 [/home/rhea/scripts] export PATH="$HOME/.local/bin:$PATH"
+2026-01-25 19:20:13 [/home/rhea] sudo pacman -S kvantum qt5ct qt6ct 
+2026-01-25 19:20:20 [/home/rhea] dolphin &
+2026-01-25 19:32:17 [/home/rhea] sudo pacman -S breeze     
+2026-01-25 19:34:45 [/home/rhea] sudo pacman -S kvantum qt5ct qt6ct 
+2026-01-25 19:35:34 [/home/rhea] sudo pacman -S breeze     
+2026-01-25 19:35:36 [/home/rhea/scripts] cd scripts/
+2026-01-25 19:35:39 [/home/rhea/scripts] claude
+2026-01-25 19:35:43 [/home/rhea/scripts] export PATH="$HOME/.local/bin:$PATH"
+2026-01-25 19:36:56 [/home/rhea] sudo pacman -S breeze     
+2026-01-25 19:38:59 [/home/rhea] sudo pacman -S breeze     
+2026-01-25 19:39:12 [/home/rhea] reboot 
+2026-01-25 19:39:50 [/home/rhea] reboot 
+2026-01-25 19:41:47 [/home/rhea] reboot 
+2026-01-25 19:41:51 [/home/rhea/scripts] cd scripts/
+2026-01-25 19:42:01 [/home/rhea] claude
+2026-01-25 19:42:05 [/home/rhea/scripts] cd scripts/
+2026-01-25 19:42:25 [/home/rhea/scripts] clit
+2026-01-25 19:43:32 [/home/rhea] clit
+2026-01-25 19:43:42 [/home/rhea] shutdown
+2026-01-25 20:04:27 [/home/rhea] clit
+2026-01-25 20:05:32 [/home/rhea/scripts] cd scripts/
+2026-01-25 20:07:44 [/home/rhea] clit
+2026-01-25 20:08:41 [/home/rhea] claude
+2026-01-25 20:08:45 [/home/rhea] osrs
+2026-01-25 20:11:16 [/home/rhea] claude
+2026-01-25 20:11:49 [/home/rhea] claude
+2026-01-25 20:11:52 [/home/rhea/scripts] cd scripts/
+2026-01-25 20:14:48 [/home/rhea] dropbox status
+2026-01-25 20:20:34 [/home/rhea/Dropbox] dropbox status
+2026-01-25 20:20:38 [/home/rhea/Dropbox] ls
+2026-01-25 20:22:06 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:22:09 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-01-25 20:22:11 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:25:18 [/home/rhea] dropbox status
+2026-01-25 20:25:23 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 20:25:25 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:25:27 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:26:47 [/home/rhea] ll
+2026-01-25 20:26:51 [/home/rhea] cd Dro[
+2026-01-25 20:26:54 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 20:26:56 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:26:58 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:30:23 [/home/rhea] ll
+2026-01-25 20:30:28 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 20:30:30 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:30:31 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:33:13 [/home/rhea/Dropbox/WayBetterProjects] source ~/.bashrc 
+2026-01-25 20:33:17 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:36:03 [/home/rhea/Dropbox/WayBetterProjects] source ~/.bashrc 
+2026-01-25 20:36:05 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:36:10 [/home/rhea] ll
+2026-01-25 20:36:13 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 20:36:26 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:36:27 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:39:03 [/home/rhea/Dropbox/WayBetterProjects] source ~/.bashrc 
+2026-01-25 20:40:09 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:42:10 [/home/rhea/Dropbox/WayBetterProjects] source ~/.bashrc 
+2026-01-25 20:42:12 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:42:24 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-01-25 20:42:27 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-01-25 20:45:54 [/home/rhea/Dropbox/WayBetterProjects] dolphin
+2026-01-25 20:46:04 [/home/rhea] claude
+2026-01-25 20:46:05 [/home/rhea] claude
+2026-01-25 20:46:20 [/home/rhea] claude
+2026-01-25 20:46:28 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-25 20:46:30 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-25 20:46:35 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-25 20:46:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-25 20:46:41 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-25 20:48:15 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-25 20:48:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-25 20:48:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-25 20:48:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-01-25 21:00:43 [/home/rhea] claude
+2026-01-25 21:00:48 [/home/rhea] shutdown now
+2026-01-27 20:54:03 [/home/rhea] shutdown now
+2026-01-30 19:26:59 [/home/rhea] shutdown now
+2026-01-30 19:27:03 [/home/rhea] ls
+2026-01-30 19:27:11 [/home/rhea] mk dir rhea
+2026-01-30 19:27:43 [/home/rhea] mkdir rhea
+2026-01-30 19:27:47 [/home/rhea/rhea] cd rhea
+2026-01-30 19:28:48 [/home/rhea/rhea] code .
+2026-01-30 19:32:18 [/home/rhea] cd ..
+2026-01-30 19:32:21 [/home/rhea/scripts] cd scripts/
+2026-01-30 19:34:52 [/home/rhea] shutdown now
+2026-01-30 19:34:58 [/home/rhea] hyprctl reload
+2026-01-30 19:35:21 [/home/rhea/scripts] cd scripts/
+2026-01-30 19:35:22 [/home/rhea/scripts] ls
+2026-01-30 19:35:32 [/home/rhea/scripts] ./restore-configs.sh 
+2026-01-30 19:50:46 [/home/rhea] claude
+2026-01-30 19:50:51 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-30 19:50:54 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-30 19:50:55 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-01-30 19:50:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-30 19:51:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-30 19:51:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-30 19:51:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-30 19:55:19 [/home/rhea] claude
+2026-01-30 19:55:23 [/home/rhea/scripts] cd scripts/
+2026-01-30 19:57:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-30 19:57:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-30 19:57:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-30 19:57:46 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-30 20:00:47 [/home/rhea/.vscode/extensions/seyyedkhandon.firacode-2.2.2/firaCodeFont] claude
+2026-01-30 20:11:17 [/home/rhea] claude
+2026-01-30 20:11:22 [/home/rhea] osrs
+2026-01-30 20:12:26 [/home/rhea] claude
+2026-01-30 20:12:29 [/home/rhea] claude
+2026-01-30 20:15:48 [/home/rhea] claude
+2026-01-30 20:15:51 [/home/rhea] claude
+2026-01-30 20:16:11 [/home/rhea/rhea] cd rhea
+2026-01-30 20:20:55 [/home/rhea/rhea] claude
+2026-01-30 21:13:23 [/home/rhea] claude
+2026-01-30 21:13:26 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-30 21:13:29 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-30 21:13:31 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-01-30 21:13:42 [/home/rhea/Dropbox/WayBetterProjects] mkdir _BAS
+2026-01-30 21:13:45 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS
+2026-01-30 21:14:02 [/home/rhea] claude
+2026-01-30 21:18:28 [/home/rhea] claude
+2026-01-30 21:18:33 [/home/rhea] shutdown now
+2026-01-31 19:04:25 [/home/rhea] claude
+2026-01-31 19:07:39 [/home/rhea] claude
+2026-01-31 19:07:46 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-31 19:07:50 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-31 19:07:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-31 19:08:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-31 19:08:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-31 19:08:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-01-31 19:09:01 [/home/rhea/Downloads] claude
+2026-01-31 19:09:04 [/home/rhea/Downloads] ls
+2026-01-31 19:10:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-01-31 19:11:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "still fixing obd handlers"
+2026-01-31 19:11:31 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-01-31 19:14:14 [/home/rhea] claude
+2026-01-31 19:14:37 [/home/rhea] dropbox -status
+2026-01-31 19:15:03 [/home/rhea] dropbox -status
+2026-01-31 19:15:11 [/home/rhea] dropbox start
+2026-01-31 19:18:20 [/home/rhea] dropbox start
+2026-01-31 19:19:11 [/home/rhea] watch dropbox status
+2026-01-31 19:19:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-01-31 19:20:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "still fixing obd handlers"
+2026-01-31 19:20:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-01-31 19:20:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] chmod +x .git/hooks/post-commit .git/hooks/pre-push     
+2026-01-31 19:28:33 [/home/rhea/Downloads] dolphin 
+2026-01-31 19:29:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] ./dev/ dev_main.py
+2026-01-31 19:30:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python3 ./dev/ dev_main.py
+2026-01-31 19:32:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate 
+2026-01-31 19:33:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python3 dev/dev_main.py 
+2026-01-31 19:34:40 [/home/rhea] python3 dev/dev_main.py 
+2026-01-31 19:34:49 [/home/rhea/Dropbox] cd Dropbox/
+2026-01-31 19:34:52 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-01-31 19:34:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-01-31 19:34:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-01-31 19:34:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python3 dev/dev_main.py 
+2026-01-31 19:35:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python3 dev/dev_main.py 
+2026-01-31 19:36:01 [/home/rhea] code .
+2026-01-31 19:36:04 [/home/rhea/scripts] cd scripts/
+2026-01-31 19:39:50 [/home/rhea] code .
+2026-01-31 19:39:53 [/home/rhea/scripts] cd scripts/
+2026-01-31 19:39:55 [/home/rhea/scripts] ls
+2026-01-31 19:40:11 [/home/rhea/scripts] ./restore-configs.sh --skip dep
+2026-01-31 19:42:27 [/home/rhea] code .
+2026-01-31 19:51:03 [/home/rhea] dolphin 
+2026-01-31 19:51:10 [/home/rhea] osrs
+2026-01-31 19:51:57 [/home/rhea] dolphin 
+2026-01-31 19:51:58 [/home/rhea] dolphin 
+2026-01-31 20:08:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-01-31 20:31:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git -status
+2026-01-31 20:31:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git --status
+2026-01-31 20:31:31 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] gh -status
+2026-01-31 20:32:42 [/home/rhea] gh -status
+2026-01-31 20:32:47 [/home/rhea] gh -status
+2026-01-31 20:34:12 [/home/rhea] gh -status
+2026-01-31 20:35:49 [/home/rhea/scripts] cd scripts/
+2026-01-31 20:37:27 [/home/rhea] gh -status
+2026-01-31 20:37:30 [/home/rhea/scripts] cd scripts/
+2026-01-31 20:37:49 [/home/rhea/scripts] ls
+2026-01-31 20:37:54 [/home/rhea/scripts] ./restore-configs.sh 
+2026-01-31 20:38:28 [/home/rhea/scripts] hyperctl reload
+2026-01-31 20:38:34 [/home/rhea/scripts] hyperland reload
+2026-01-31 20:48:16 [/home/rhea] gh -status
+2026-01-31 20:48:21 [/home/rhea] shutdown now
+2026-02-01 11:23:54 [/home/rhea] shutdown now
+2026-02-01 11:23:57 [/home/rhea/scripts] cd scripts/
+2026-02-01 11:26:29 [/home/rhea] shutdown now
+2026-02-01 11:35:49 [/home/rhea] shutdown now
+2026-02-01 11:35:53 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 11:35:56 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 11:35:57 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-01 11:36:25 [/home/rhea/Dropbox/WayBetterProjects] mkdir _Spotify Song Downloader
+2026-02-01 11:36:30 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-01 11:36:33 [/home/rhea/Dropbox/WayBetterProjects] cd ..
+2026-02-01 11:36:43 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-01 11:37:10 [/home/rhea/Dropbox/WayBetterProjects] rm dir _Spotify/
+2026-02-01 11:37:26 [/home/rhea/Dropbox/WayBetterProjects] rm f _Spotify/
+2026-02-01 11:37:51 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-01 11:41:38 [/home/rhea] shutdown now
+2026-02-01 11:41:43 [/home/rhea] cd rhe
+2026-02-01 11:41:45 [/home/rhea/rhea] cd rhea/
+2026-02-01 11:45:37 [/home/rhea] shutdown now
+2026-02-01 11:45:44 [/home/rhea] sudo pacman -S python-pipx 
+2026-02-01 11:50:29 [/home/rhea] claude
+2026-02-01 11:50:45 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 11:50:47 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 11:50:51 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-01 12:07:43 [/home/rhea] claude
+2026-02-01 12:13:04 [/home/rhea] claude
+2026-02-01 12:13:07 [/home/rhea] osrs
+2026-02-01 12:15:20 [/home/rhea] yay -S python312
+2026-02-01 12:38:00 [/home/rhea] claude
+2026-02-01 12:38:03 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 12:38:04 [/home/rhea/Dropbox] cd WY
+2026-02-01 12:38:08 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 12:38:10 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-01 12:56:42 [/home/rhea] claude
+2026-02-01 12:56:45 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 12:56:46 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 12:56:51 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-01 12:56:52 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] ls
+2026-02-01 13:00:01 [/home/rhea] claude
+2026-02-01 13:00:03 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 13:00:05 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 13:00:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-01 13:00:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source 
+2026-02-01 13:00:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-01 13:03:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-01 13:08:46 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] dolphin 
+2026-02-01 13:14:02 [/home/rhea] python main.py
+2026-02-01 13:14:13 [/home/rhea] claude
+2026-02-01 13:17:26 [/home/rhea] shutdown 
+2026-02-01 17:44:30 [/home/rhea] claude
+2026-02-01 17:44:37 [/home/rhea/Downloads] cd Downloads/
+2026-02-01 17:44:39 [/home/rhea/Downloads] ls
+2026-02-01 17:44:48 [/home/rhea] claude
+2026-02-01 17:46:24 [/home/rhea/rhea] cd rhea
+2026-02-01 17:46:28 [/home/rhea] cd ..
+2026-02-01 17:46:30 [/home/rhea/scripts] cd scripts/
+2026-02-01 17:50:22 [/home/rhea] claude
+2026-02-01 17:50:26 [/home/rhea] osrs
+2026-02-01 17:51:24 [/home/rhea] osrs
+2026-02-01 17:51:48 [/home/rhea] homeassistant 
+2026-02-01 17:53:10 [/home/rhea] ls
+2026-02-01 17:53:14 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 17:53:18 [/home/rhea/Dropbox] cd way
+2026-02-01 17:53:21 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 17:53:22 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-01 17:57:09 [/home/rhea] ls
+2026-02-01 17:57:18 [/home/rhea] dropbox start
+2026-02-01 18:03:26 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 18:03:32 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 18:03:34 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-01 18:03:43 [/home/rhea/Dropbox/WayBetterProjects/_LINK] cd _LINK
+2026-02-01 18:03:45 [/home/rhea/Dropbox/WayBetterProjects/_LINK] ls
+2026-02-01 18:03:47 [/home/rhea/Dropbox/WayBetterProjects/_LINK] ll
+2026-02-01 18:03:50 [/home/rhea/Dropbox/WayBetterProjects/_LINK] ls
+2026-02-01 18:07:53 [/home/rhea/Dropbox/WayBetterProjects/$Archive] cd ..
+2026-02-01 18:08:04 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-01 18:22:05 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS
+2026-02-01 18:22:06 [/home/rhea/Dropbox/WayBetterProjects/_BAS] ls
+2026-02-01 18:27:05 [/home/rhea] ls
+2026-02-01 18:27:10 [/home/rhea] cd Dropbox/ cd Way
+2026-02-01 18:27:18 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 18:27:20 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 18:27:24 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS
+2026-02-01 18:27:25 [/home/rhea/Dropbox/WayBetterProjects/_BAS] ls
+2026-02-01 18:27:34 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] cd V10
+2026-02-01 18:27:36 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] code .
+2026-02-01 18:29:05 [/home/rhea/Dropbox/WayBetterProjects/_BAS] claude
+2026-02-01 18:29:09 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] cd V10
+2026-02-01 18:39:27 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] code .
+2026-02-01 19:02:51 [/home/rhea] code .
+2026-02-01 19:03:04 [/home/rhea] shutdown now
+2026-02-01 20:29:27 [/home/rhea] shutdown now
+2026-02-01 20:29:34 [/home/rhea] dropbox start
+2026-02-01 20:29:43 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 20:29:45 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 20:29:49 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS/
+2026-02-01 20:29:59 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] cd V10
+2026-02-01 20:30:01 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] code .
+2026-02-01 21:20:31 [/home/rhea] shutdown now
+2026-02-01 21:20:37 [/home/rhea] sudo pacman -S --noconfirm nodejs npm 
+2026-02-01 22:51:10 [/home/rhea] sudo pacman -S --noconfirm nodejs npm 
+2026-02-01 22:51:14 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 22:51:16 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 22:51:19 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS/
+2026-02-01 22:51:22 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] cd V10/
+2026-02-01 22:53:40 [/home/rhea] claude
+2026-02-01 22:53:47 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-01 22:53:48 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-01 22:53:53 [/home/rhea/Dropbox/WayBetterProjects/_BAS] cd _BAS/
+2026-02-01 22:53:55 [/home/rhea/Dropbox/WayBetterProjects/_BAS/V10] cd V10/
+2026-02-01 23:47:32 [/home/rhea] claude
+2026-02-01 23:47:39 [/home/rhea] shutdown now
+2026-02-04 19:23:29 [/home/rhea] shutdown now
+2026-02-04 19:39:06 [/home/rhea] shutdown now
+2026-02-04 19:39:13 [/home/rhea] claude
+2026-02-04 19:39:15 [/home/rhea/rhea] cd rhea/
+2026-02-04 19:49:45 [/home/rhea/Downloads] claude
+2026-02-04 19:49:56 [/home/rhea/Downloads] ls
+2026-02-04 19:50:52 [/home/rhea] claude 
+2026-02-04 19:50:55 [/home/rhea/Downloads] cd Downloads/
+2026-02-04 19:50:56 [/home/rhea/Downloads] ls
+2026-02-04 19:51:39 [/home/rhea] dolphin
+2026-02-04 19:53:34 [/home/rhea] dolphin
+2026-02-04 19:55:52 [/home/rhea] dolphin
+2026-02-04 19:56:23 [/home/rhea] dolphin
+2026-02-04 19:56:26 [/home/rhea/Downloads] cd Downloads/
+2026-02-04 19:56:28 [/home/rhea/Downloads] code .
+2026-02-04 19:59:11 [/home/rhea] claude
+2026-02-04 19:59:13 [/home/rhea/rhea] cd rhea/
+2026-02-04 19:59:16 [/home/rhea/rhea/Logos] cd Logos/
+2026-02-04 19:59:23 [/home/rhea/rhea/Logos] claude
+2026-02-04 19:59:24 [/home/rhea/rhea/Logos] ls
+2026-02-04 20:03:21 [/home/rhea] code .
+2026-02-04 20:03:23 [/home/rhea/rhea] cd rhea/
+2026-02-04 20:03:26 [/home/rhea/rhea/Logos] cd Logos/
+2026-02-04 20:03:29 [/home/rhea/rhea/Logos] code .
+2026-02-04 20:06:30 [/home/rhea] code .
+2026-02-04 20:08:36 [/home/rhea] code .
+2026-02-04 20:08:40 [/home/rhea] 2
+2026-02-04 20:22:33 [/home/rhea] 2
+2026-02-04 20:22:38 [/home/rhea] shutdown
+2026-02-04 20:22:47 [/home/rhea] shutdown now
+2026-02-04 20:26:50 [/home/rhea] 2
+2026-02-04 20:43:58 [/home/rhea] 2
+2026-02-04 20:44:05 [/home/rhea] shutdown now
+2026-02-06 19:43:18 [/home/rhea] shutdown now
+2026-02-06 20:30:09 [/home/rhea] shutdown now
+2026-02-06 20:40:08 [/home/rhea] shutdown now
+2026-02-06 20:40:14 [/home/rhea/rhea] cd rhea
+2026-02-06 20:44:29 [/home/rhea] claude
+2026-02-06 20:44:30 [/home/rhea] rhea
+2026-02-06 20:44:33 [/home/rhea/rhea] cd rhea
+2026-02-06 20:44:34 [/home/rhea/rhea] ls
+2026-02-06 20:52:25 [/home/rhea] claude
+2026-02-06 20:52:26 [/home/rhea/rhea] cd rhea/
+2026-02-06 20:52:33 [/home/rhea/rhea] feh manhattan_affordability_map.png 
+2026-02-06 20:52:55 [/home/rhea/rhea] sudo pacman -S feh
+2026-02-06 20:53:04 [/home/rhea] feh manhattan_affordability_map.png 
+2026-02-06 20:53:06 [/home/rhea/rhea] cd rhea/
+2026-02-06 20:54:29 [/home/rhea/rhea] feh manhattan_affordability_map.png 
+2026-02-06 21:16:03 [/home/rhea] feh manhattan_affordability_map.png 
+2026-02-06 21:37:22 [/home/rhea] feh manhattan_affordability_map.png 
+2026-02-07 12:28:08 [/home/rhea] feh manhattan_affordability_map.png 
+2026-02-07 12:28:17 [/home/rhea] shutdown now
+2026-02-07 14:15:16 [/home/rhea] shutdown now
+2026-02-07 14:15:19 [/home/rhea/rhea] cd rhea
+2026-02-07 14:36:16 [/home/rhea] shutdown now
+2026-02-07 14:36:20 [/home/rhea/rhea] cd rhea
+2026-02-07 14:36:22 [/home/rhea/rhea] code .
+2026-02-07 14:37:44 [/home/rhea/rhea] code .
+2026-02-07 14:42:24 [/home/rhea] code .
+2026-02-07 14:42:25 [/home/rhea] hyprctl reload
+2026-02-07 14:43:32 [/home/rhea] hyprctl reload
+2026-02-07 14:43:38 [/home/rhea] sudo pacman -S wl-clipboard     
+2026-02-07 15:48:31 [/home/rhea] sudo pacman -S wl-clipboard     
+2026-02-07 15:48:36 [/home/rhea] sudo pacman -S --noconfirm jq 2>&1 
+2026-02-07 15:54:28 [/home/rhea] sudo pacman -S wl-clipboard     
+2026-02-07 15:54:32 [/home/rhea] shutdown now
+2026-02-07 18:57:56 [/home/rhea] shutdown now
+2026-02-07 18:58:04 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-07 18:58:08 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-07 18:58:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-07 18:58:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-02-07 18:58:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-07 18:58:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-07 19:32:01 [/home/rhea] code .
+2026-02-07 19:32:05 [/home/rhea] shutdown now
+2026-02-07 20:50:57 [/home/rhea] shutdown now
+2026-02-07 20:51:00 [/home/rhea/rhea] cd rhea/
+2026-02-07 20:53:42 [/home/rhea] shutdown now
+2026-02-07 21:06:36 [/home/rhea] shutdown now
+2026-02-07 21:06:39 [/home/rhea/Pictures] cd Pictures/
+2026-02-07 21:06:41 [/home/rhea/Pictures/Screenshots] cd Screenshots/
+2026-02-07 21:06:43 [/home/rhea/Pictures/Screenshots] ls
+2026-02-07 21:08:19 [/home/rhea/Pictures/Screenshots] feh 2026-02-07_21-06-29_screenshot.png
+2026-02-07 21:11:01 [/home/rhea] feh 2026-02-07_21-06-29_screenshot.png
+2026-02-07 21:11:02 [/home/rhea] reboot
+2026-02-07 21:12:07 [/home/rhea] claude
+2026-02-07 21:12:09 [/home/rhea/rhea] cd rhea/
+2026-02-07 21:29:12 [/home/rhea] claude
+2026-02-08 12:36:41 [/home/rhea] claude
+2026-02-08 12:36:43 [/home/rhea] cd rhe
+2026-02-08 12:36:48 [/home/rhea/rhea] cd rhea
+2026-02-08 12:39:25 [/home/rhea] claude
+2026-02-08 12:39:32 [/home/rhea] dropbox start
+2026-02-08 12:41:39 [/home/rhea] claude
+2026-02-08 12:41:43 [/home/rhea] dropboc status
+2026-02-08 12:41:54 [/home/rhea] dropbox status
+2026-02-08 12:48:12 [/home/rhea] "~
+2026-02-08 12:53:39 [/home/rhea] "~
+2026-02-08 12:53:42 [/home/rhea] cd rhe
+2026-02-08 12:53:45 [/home/rhea/rhea] cd rhea/
+2026-02-08 12:54:32 [/home/rhea] "~
+2026-02-08 12:54:38 [/home/rhea] "~
+2026-02-08 12:54:45 [/home/rhea/rhea] cd rhea/
+2026-02-08 13:12:09 [/home/rhea] "~
+2026-02-09 17:38:33 [/home/rhea] claude
+2026-02-09 17:38:36 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-09 17:38:41 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-09 17:38:42 [/home/rhea/Dropbox/WayBetterProjects] ls
+2026-02-09 17:38:44 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-09 17:40:45 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-09 17:40:48 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] code .
+2026-02-09 17:41:52 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] claude
+2026-02-09 18:50:10 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] claude
+2026-02-09 18:50:10 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] source /home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor/venv/bin/activate
+2026-02-09 19:25:49 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] jupyter lab
+2026-02-09 19:26:49 [/home/rhea] claude
+2026-02-09 19:26:57 [/home/rhea] [Ccd ~/Dropbox/WayBetterProjects/_FinacialAdvisor
+2026-02-09 19:26:59 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd ~/Dropbox/WayBetterProjects/_FinacialAdvisor
+2026-02-09 20:01:54 [/home/rhea] '
+2026-02-09 20:01:58 [/home/rhea] shutdown now
+2026-02-10 16:24:31 [/home/rhea] jupyter lab
+2026-02-10 16:24:35 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-10 16:24:37 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-10 16:24:49 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-10 16:59:59 [/home/rhea] jupyter lab
+2026-02-10 17:00:05 [/home/rhea] shutdown now
+2026-02-10 17:24:36 [/home/rhea] claude
+2026-02-10 17:24:39 [/home/rhea/rhea] cd rhea
+2026-02-10 17:27:48 [/home/rhea] claude
+2026-02-10 17:27:53 [/home/rhea/rhea] cd rhea/
+2026-02-10 17:27:55 [/home/rhea/rhea] ll
+2026-02-10 17:27:57 [/home/rhea/rhea] ls
+2026-02-10 17:28:09 [/home/rhea] cd ..
+2026-02-10 17:28:11 [/home/rhea] cd scr
+2026-02-10 17:28:13 [/home/rhea] ll
+2026-02-10 17:52:21 [/home/rhea] claude
+2026-02-10 17:52:23 [/home/rhea/rhea] cd rhea
+2026-02-10 17:52:24 [/home/rhea/rhea] ll
+2026-02-10 17:53:22 [/home/rhea] claude
+2026-02-10 18:47:47 [/home/rhea] ll
+2026-02-10 18:48:05 [/home/rhea] ll
+2026-02-10 18:48:07 [/home/rhea/rhea] cd rhea/
+2026-02-10 18:48:21 [/home/rhea/rhea] what does mod + shift+ s do in my config for hyperland
+2026-02-10 18:50:04 [/home/rhea] ll
+2026-02-10 18:53:29 [/home/rhea] ll
+2026-02-10 18:56:58 [/home/rhea] djbvkj
+2026-02-10 18:56:59 [/home/rhea] cnwelcnwe
+2026-02-10 18:58:48 [/home/rhea] ll
+2026-02-10 18:59:27 [/home/rhea] ll
+2026-02-10 19:00:52 [/home/rhea] ll
+2026-02-10 19:01:18 [/home/rhea] ll
+2026-02-10 19:17:07 [/home/rhea/rhea] claude
+2026-02-10 19:34:25 [/home/rhea] cnwelcnwe
+2026-02-10 19:34:29 [/home/rhea] shutdown now
+2026-02-10 20:05:37 [/home/rhea] shutdown now
+2026-02-10 20:05:39 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-10 20:05:48 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-10 20:05:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-10 20:05:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-02-10 20:06:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:06:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:06:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:08:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:08:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:08:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] shutdown now
+2026-02-10 20:12:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-10 20:16:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-10 20:17:56 [/home/rhea] python main.py
+2026-02-10 22:20:15 [/home/rhea] python main.py
+2026-02-10 22:20:51 [/home/rhea/rhea] cd rhea
+2026-02-10 22:21:43 [/home/rhea] claude
+2026-02-10 22:21:50 [/home/rhea] dropbox status
+2026-02-10 22:22:19 [/home/rhea/Downloads] dropbox status
+2026-02-10 22:24:26 [/home/rhea] dropbox status
+2026-02-10 22:24:33 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-10 22:24:36 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-10 22:24:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-10 22:24:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-02-10 22:24:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] dropbox status
+2026-02-10 22:24:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] dropbox status
+2026-02-10 22:25:35 [/home/rhea/Downloads] dropbox status
+2026-02-10 22:26:23 [/home/rhea] dropbox status
+2026-02-10 22:26:27 [/home/rhea/Downloads] cd Downloads/
+2026-02-10 22:26:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-10 22:27:15 [/home/rhea] dropbox status
+2026-02-10 22:27:19 [/home/rhea] sudo dpkg -i ~/Downloads/code_1.109.2-1770755809_amd64.deb 
+2026-02-10 22:31:05 [/home/rhea] yay -S visual-studio-code-bin
+2026-02-10 22:31:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-02-10 22:31:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] dropbox status
+2026-02-10 22:32:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] dropbox status
+2026-02-10 22:35:32 [/home/rhea] claude
+2026-02-10 22:35:34 [/home/rhea/rhea] cd rhea
+2026-02-10 22:45:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-10 22:46:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-10 22:46:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-10 22:46:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git status
+2026-02-10 22:47:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "added support for gesture sensor"
+2026-02-10 22:47:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-10 22:49:32 [/home/rhea] claude
+2026-02-10 22:49:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-10 22:49:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "added support for gesture sensor"
+2026-02-10 22:49:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-10 22:53:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 13:31:47 [/home/rhea] claude
+2026-02-11 13:31:49 [/home/rhea/rhea] cd rhea
+2026-02-11 13:44:11 [/home/rhea/rhea] claude
+2026-02-11 13:44:39 [/home/rhea] claude
+2026-02-11 13:44:40 [/home/rhea/rhea] cd rhea
+2026-02-11 13:45:06 [/home/rhea/rhea] claude
+2026-02-11 13:57:14 [/home/rhea] claude
+2026-02-11 13:58:03 [/home/rhea] claude
+2026-02-11 13:58:06 [/home/rhea/rhea] cd rhea/
+2026-02-11 13:58:21 [/home/rhea] claude
+2026-02-11 13:58:26 [/home/rhea] sudo pacman -S --noconfirm wev
+2026-02-11 14:19:09 [/home/rhea] claude
+2026-02-11 14:19:13 [/home/rhea/rhea] cd rhea/
+2026-02-11 18:54:02 [/home/rhea] claude
+2026-02-11 18:54:05 [/home/rhea/rhea] cd rhea/
+2026-02-11 19:03:13 [/home/rhea] claude
+2026-02-11 19:03:16 [/home/rhea/rhea] cd rhea/
+2026-02-11 19:07:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-11 19:07:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-11 19:15:17 [/home/rhea] claude
+2026-02-11 19:15:19 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-11 19:15:22 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-11 19:15:36 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-11 19:30:51 [/home/rhea] claude
+2026-02-11 19:32:14 [/home/rhea] claude
+2026-02-11 19:32:17 [/home/rhea/rhea] cd rhea/
+2026-02-11 19:58:15 [/home/rhea] claude
+2026-02-11 20:13:30 [/home/rhea] claude
+2026-02-11 20:13:42 [/home/rhea/rhea] cd rhea/
+2026-02-11 20:14:24 [/home/rhea] claude
+2026-02-11 20:14:31 [/home/rhea] claude
+2026-02-11 20:14:57 [/home/rhea] sudo pacman -S kicad kicad-library kicad-library-3d
+2026-02-11 20:29:19 [/home/rhea] claude
+2026-02-11 20:29:22 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-11 20:29:28 [/home/rhea/Dropbox] cd wa
+2026-02-11 20:29:31 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-11 20:29:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-11 20:29:51 [/home/rhea] claude
+2026-02-11 20:30:03 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-11 20:30:05 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-11 20:30:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-11 20:30:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-11 20:37:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:43:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:45:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:47:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:51:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:51:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:52:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:53:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:53:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:54:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:55:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 20:58:27 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 20:58:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 21:01:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-11 21:02:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-11 21:02:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-11 21:03:29 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "made shuffle button more visible on the music page"
+2026-02-11 21:03:38 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-11 21:05:06 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] ll
+2026-02-11 21:05:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] ls
+2026-02-11 21:05:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] ll
+2026-02-11 21:07:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-11 21:11:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code CLAUDE.md 
+2026-02-11 21:14:29 [/home/rhea] claude
+2026-02-11 21:32:35 [/home/rhea] claude
+2026-02-11 21:32:44 [/home/rhea/scripts] cd scripts/
+2026-02-11 21:32:49 [/home/rhea/scripts] git status
+2026-02-11 21:33:06 [/home/rhea/scripts] git add .
+2026-02-11 21:33:46 [/home/rhea/scripts] git commit -m "a bunch of stuff has happened im just along for the ride at this point"
+2026-02-11 21:34:03 [/home/rhea/scripts] gh auth
+2026-02-11 21:34:10 [/home/rhea/scripts] gh auth status
+2026-02-11 21:37:22 [/home/rhea/scripts] claude
+2026-02-11 21:37:36 [/home/rhea/scripts] git push -u origin main

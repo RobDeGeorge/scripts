@@ -20,10 +20,10 @@ if [ $? -eq 0 ]; then
         vram_percent = int((vram_used * 100) / vram_total)
 
         # Output in JSON format for Waybar
-        printf "{\"text\": \"VRAM %sG/%sG\", \"tooltip\": \"VRAM: %d%% used\", \"percentage\": %d}\n",
+        printf "{\"text\": \"%sG/%sG\", \"tooltip\": \"VRAM: %d%% used\", \"percentage\": %d}\n",
                vram_used_gb, vram_total_gb, vram_percent, vram_percent
     }'
 else
     # Fallback if nvidia-smi fails
-    echo "{\"text\": \"VRAM N/A\", \"tooltip\": \"nvidia-smi unavailable\"}"
+    echo "{\"text\": \"N/A\", \"tooltip\": \"nvidia-smi unavailable\"}"
 fi

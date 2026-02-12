@@ -8,6 +8,9 @@ case $- in
       *) return;;
 esac
 
+# Add local bin to PATH (for Claude, etc.)
+export PATH="$HOME/.local/bin:$PATH"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -108,7 +111,24 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+unalias ll 2>/dev/null
+ll() {
+    local output
+    output=$(LC_COLLATE=C ls -alF --color=always "$@")
+    echo "$output" | head -1
+    echo "$output" | tail -n +2 | awk '
+        {
+            filename = ""
+            for (i = 9; i <= NF; i++) filename = filename (i > 9 ? " " : "") $i
+            gsub(/[\/\*@]$/, "", filename)
+            is_dir = /^d/ ? "0" : "1"
+            if (filename ~ /^\./) cat = "0"
+            else if (filename ~ /^[^A-Za-z]/) cat = "1"
+            else cat = "2"
+            printf "%s%s\t%s\t%s\n", is_dir, cat, filename, $0
+        }
+    ' | LC_COLLATE=C sort -t$'\t' -k1,1 -k2,2 | cut -f3-
+}
 alias la='ls -A'
 alias l='ls -CF'
 alias octave='git clone https://github.com/waybetterengineering/octave.git'
@@ -125,7 +145,7 @@ alias github='chromium https://github.com --new-window'
 
 #games
 alias gameboy='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia mgba-qt'
-alias osrs='DRI_PRIME=1 $HOME/Downloads/RuneLite.AppImage'
+alias osrs='DRI_PRIME=1 $HOME/.local/bin/RuneLite.AppImage'
 
 # GPU Control Aliases
 alias gpu-on='sudo prime-select nvidia && echo "GPU switched to NVIDIA. Reboot required."'
@@ -165,8 +185,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Source greeting script
-source ~/scripts/terminal-shell/greetings/constellation.sh
+# Source greeting script (uncomment one)
+source ~/scripts/terminal-shell/greetings/fetch.sh
+#source ~/scripts/terminal-shell/greetings/wave.sh
+#source ~/scripts/terminal-shell/greetings/moon.sh
+#source ~/scripts/terminal-shell/greetings/constellation.sh
 #source ~/scripts/terminal-shell/greetings/wizard.sh
 #source ~/scripts/terminal-shell/greetings/tree.sh
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
