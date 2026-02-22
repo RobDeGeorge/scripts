@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["mpris", "backlight", "pulseaudio", "network", "cpu", "temperature", "custom/gpu-usage", "custom/gpu-temp", "memory", "custom/vram", "disk", "battery", "custom/pacman", "tray"],
+    "modules-right": ["mpris", "backlight", "pulseaudio", "network", "cpu", "temperature", "custom/gpu-usage", "custom/gpu-temp", "memory", "custom/vram", "disk", "battery", "custom/pacman", "custom/wireguard", "tray"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -146,6 +146,15 @@
         "exec": "count=$(checkupdates 2>/dev/null | wc -l); [ \"$count\" -gt 0 ] && echo \"$count\"",
         "interval": 600,
         "on-click": "kitty -e sudo pacman -Syu"
+    },
+
+    "custom/wireguard": {
+        "exec": "~/scripts/hyprland-ecosystem/wg-status.sh",
+        "return-type": "json",
+        "interval": 5,
+        "format": "{}",
+        "on-click": "~/scripts/hyprland-ecosystem/wg-connect.sh",
+        "on-click-right": "kitty --directory /mnt/wbsolutions"
     },
 
     "tray": {

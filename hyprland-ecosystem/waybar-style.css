@@ -1,10 +1,10 @@
 /* === Theme Colors — updated by theming engine === */
-@define-color bg_color #050a14;
-@define-color bg_module #0a1328;
-@define-color text_color #eed8a9;
-@define-color text_dim #cb9728;
-@define-color accent_color #cbba96;
-@define-color border_color #b39a66;
+@define-color bg_color #0f0f0a;
+@define-color bg_module #1e1e14;
+@define-color text_color #feda99;
+@define-color text_dim #f19c02;
+@define-color accent_color #caa563;
+@define-color border_color #b3893d;
 @define-color urgent_color #e06060;
 @define-color charging_color #60c060;
 
@@ -15,7 +15,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@bg_color, 0.85);
+    background-color: alpha(@bg_color, 0.55);
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: @accent_color;
@@ -72,6 +72,7 @@ window#waybar.hidden {
 #backlight,
 #mpris,
 #custom-pacman,
+#custom-wireguard,
 #tray,
 #window {
     padding: 0 8px;
@@ -128,6 +129,27 @@ window#waybar.hidden {
     margin-left: 4px;
     margin-right: 4px;
     padding: 0 12px;
+}
+
+/* --- WireGuard (standalone pill) --- */
+#custom-wireguard {
+    background-color: alpha(@bg_module, 0.9);
+    border-radius: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0 12px;
+}
+
+#custom-wireguard.connected {
+    color: @charging_color;
+}
+
+#custom-wireguard.partial {
+    color: #e0a050;
+}
+
+#custom-wireguard.disconnected {
+    color: @text_dim;
 }
 
 /* --- CPU: usage | temp --- */
@@ -268,6 +290,7 @@ window#waybar.hidden {
 #network:hover,
 #battery:hover,
 #mpris:hover,
+#custom-wireguard:hover,
 #custom-pacman:hover {
     background-color: alpha(@accent_color, 0.15);
 }

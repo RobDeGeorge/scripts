@@ -28,6 +28,9 @@ case "$WM" in
         [ -f "$CONFIG_DIR/waybar/config" ] && cp "$CONFIG_DIR/waybar/config" "$KIT_DIR/hyprland-ecosystem/waybar-config"
         [ -f "$CONFIG_DIR/waybar/style.css" ] && cp "$CONFIG_DIR/waybar/style.css" "$KIT_DIR/hyprland-ecosystem/waybar-style.css"
         [ -f "$CONFIG_DIR/mako/config" ] && cp "$CONFIG_DIR/mako/config" "$KIT_DIR/hyprland-ecosystem/mako-config"
+        mkdir -p "$KIT_DIR/hyprland-ecosystem/wofi"
+        [ -f "$CONFIG_DIR/wofi/config" ] && cp "$CONFIG_DIR/wofi/config" "$KIT_DIR/hyprland-ecosystem/wofi/config"
+        [ -f "$CONFIG_DIR/wofi/style.css" ] && cp "$CONFIG_DIR/wofi/style.css" "$KIT_DIR/hyprland-ecosystem/wofi/style.css"
         ;;
     "i3")
         [ -f "$CONFIG_DIR/i3/config" ] && cp "$CONFIG_DIR/i3/config" "$KIT_DIR/i3-ecosystem/i3-config"

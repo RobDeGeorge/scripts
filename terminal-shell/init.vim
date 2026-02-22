@@ -48,25 +48,25 @@ set updatetime=300
 set timeoutlen=500
 
 " Custom color scheme to match kitty Deep Space theme
-highlight Normal guifg=#eed8a9 guibg=#060b12
-highlight CursorLine guibg=#09101b
-highlight LineNr guifg=#0f192c guibg=#060b12
-highlight CursorLineNr guifg=#27406f guibg=#09101b gui=bold
-highlight Visual guifg=#eed8a9 guibg=#192c4c
-highlight Search guifg=#f9f4eb guibg=#27406f
-highlight IncSearch guifg=#000819 guibg=#cbba96
-highlight StatusLine guifg=#eed8a9 guibg=#070c16
-highlight StatusLineNC guifg=#0f192c guibg=#070d15
-highlight VertSplit guifg=#192c4c guibg=#060b12
-highlight Pmenu guifg=#eed8a9 guibg=#070c16
-highlight PmenuSel guifg=#eed8a9 guibg=#192c4c
-highlight Comment guifg=#132037 gui=italic
-highlight String guifg=#888687
-highlight Number guifg=#27406f
-highlight Function guifg=#cbba96
-highlight Keyword guifg=#e2d9c5 gui=bold
-highlight Type guifg=#959394
-highlight Special guifg=#27406f
+highlight Normal guifg=#feda99 guibg=#0f0f09
+highlight CursorLine guibg=#16160d
+highlight LineNr guifg=#1c1c13 guibg=#0f0f09
+highlight CursorLineNr guifg=#474731 guibg=#16160d gui=bold
+highlight Visual guifg=#feda99 guibg=#3d3d28
+highlight Search guifg=#fcf5e8 guibg=#474731
+highlight IncSearch guifg=#0d0d0b guibg=#caa563
+highlight StatusLine guifg=#feda99 guibg=#0e0e09
+highlight StatusLineNC guifg=#1c1c13 guibg=#12120a
+highlight VertSplit guifg=#3d3d28 guibg=#0f0f09
+highlight Pmenu guifg=#feda99 guibg=#0e0e09
+highlight PmenuSel guifg=#feda99 guibg=#3d3d28
+highlight Comment guifg=#232318 gui=italic
+highlight String guifg=#33342e
+highlight Number guifg=#474731
+highlight Function guifg=#caa563
+highlight Keyword guifg=#d9be8f gui=bold
+highlight Type guifg=#383932
+highlight Special guifg=#474731
 highlight Error guifg=#ff6b6b guibg=#2a0a0a
 highlight Warning guifg=#ffa500 guibg=#2a1a00
 

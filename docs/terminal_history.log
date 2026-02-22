@@ -1299,3 +1299,766 @@
 2026-02-11 22:46:38 [/home/rhea/scripts] git commit -m "a bunch of dependecy fixes"
 2026-02-11 22:46:46 [/home/rhea/scripts] git push -u origin main
 2026-02-11 22:49:26 [/home/rhea/scripts] claude
+2026-02-11 22:49:29 [/home/rhea/scripts] git add .
+2026-02-11 22:49:31 [/home/rhea/scripts] git commit -m "a bunch of dependecy fixes"
+2026-02-11 22:49:34 [/home/rhea/scripts] git push -u origin main
+2026-02-11 22:55:00 [/home/rhea] claude
+2026-02-11 23:10:01 [/home/rhea] claude
+2026-02-11 23:10:05 [/home/rhea/rhea] cd rhea
+2026-02-11 23:11:10 [/home/rhea] claude
+2026-02-11 23:11:13 [/home/rhea/rhea] cd rhea/
+2026-02-12 00:00:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:00:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:09:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:11:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:12:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:12:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:12:32 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:12:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:21:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:21:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:28:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:30:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:32:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:32:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:32:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-12 00:32:31 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "settings menu revamp"
+2026-02-12 00:32:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-12 00:37:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:37:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 00:37:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 00:39:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 16:14:24 [/home/rhea] python main.py
+2026-02-12 16:14:27 [/home/rhea/rhea] cd rhea/
+2026-02-12 16:14:32 [/home/rhea] cd ..
+2026-02-12 16:14:34 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-12 16:14:36 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-12 16:14:44 [/home/rhea/Dropbox/WayBetterProjects] cd _Fina`
+2026-02-12 16:14:51 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-12 17:24:32 [/home/rhea] claude
+2026-02-12 17:24:39 [/home/rhea] claude
+2026-02-12 19:00:27 [/home/rhea] claude
+2026-02-12 19:00:31 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-12 19:00:34 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-12 19:00:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-12 19:00:57 [/home/rhea] claude
+2026-02-12 19:01:00 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-12 19:01:03 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-12 19:01:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-12 19:50:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 19:50:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source 
+2026-02-12 19:50:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-12 19:50:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 19:50:46 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 19:59:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:00:25 [/home/rhea] claude
+2026-02-12 20:00:27 [/home/rhea/rhea] cd rhea/
+2026-02-12 20:01:03 [/home/rhea] claude
+2026-02-12 20:01:28 [/home/rhea] sudo pacman -S neovim
+2026-02-12 20:01:32 [/home/rhea] neovim
+2026-02-12 20:01:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:02:37 [/home/rhea] nvim
+2026-02-12 20:02:55 [/home/rhea] nvim
+2026-02-12 20:02:57 [/home/rhea/rhea] cd rhea/
+2026-02-12 20:03:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:03:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:05:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:11:26 [/home/rhea] nvim
+2026-02-12 20:11:46 [/home/rhea] nvim
+2026-02-12 20:11:54 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-12 20:11:56 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-12 20:11:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-12 20:19:24 [/home/rhea] nvim
+2026-02-12 20:19:27 [/home/rhea] npm install -g svgo
+2026-02-12 20:24:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:26:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:30:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:31:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:35:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:36:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:36:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:36:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:38:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:39:06 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:39:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:43:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:43:29 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:44:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:51:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 20:56:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 20:57:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:00:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:23:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:32:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:32:35 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:32:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:34:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:37:41 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:44:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:45:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:48:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:50:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:51:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:51:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:53:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:53:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:54:35 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 21:55:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 21:58:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-12 21:58:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "setting menu revamp once again"
+2026-02-12 21:58:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-12 22:07:06 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:13:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:13:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:14:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:17:54 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:18:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:18:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:20:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:21:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:23:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:23:06 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-12 22:23:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "hub style settings page"
+2026-02-12 22:23:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin
+2026-02-12 22:27:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:45:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:45:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:49:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:49:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:49:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:50:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:50:29 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:52:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 22:52:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 22:56:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 23:00:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 23:00:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 23:01:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 23:01:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 23:01:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 23:01:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-12 23:04:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-12 23:04:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-12 23:05:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "settings hub updates"
+2026-02-12 23:05:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-13 13:11:40 [/home/rhea] claude
+2026-02-13 13:11:45 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 13:11:50 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 13:11:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 13:11:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-13 15:12:52 [/home/rhea] python main.py
+2026-02-13 15:12:57 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 15:12:59 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 15:13:05 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-13 18:30:10 [/home/rhea] claude
+2026-02-13 18:31:23 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 18:31:24 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 18:31:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 18:31:35 [/home/rhea] claude
+2026-02-13 18:31:37 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 18:31:38 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 18:31:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 18:32:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-13 18:32:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 18:32:32 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 18:40:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 18:40:40 [/home/rhea] claude
+2026-02-13 18:40:46 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 18:40:48 [/home/rhea/Dropbox] cd Wau
+2026-02-13 18:40:50 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 18:40:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 18:48:47 [/home/rhea] claude
+2026-02-13 18:48:49 [/home/rhea/rhea] cd rhea/
+2026-02-13 18:53:47 [/home/rhea] claude
+2026-02-13 18:53:54 [/home/rhea] sudo pacman -S intel-media-driver libva-utils
+2026-02-13 18:54:02 [/home/rhea] ~/.config/chromium-flags.conf
+2026-02-13 18:57:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 18:58:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 19:15:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 19:17:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 19:20:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 19:21:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 19:45:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 20:00:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 20:00:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 20:05:38 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 20:05:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 20:05:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 21:27:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 21:29:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 21:29:38 [/home/rhea] ~/.config/chromium-flags.conf
+2026-02-13 21:29:43 [/home/rhea/rhea] cd rhea/
+2026-02-13 21:34:32 [/home/rhea] ~/.config/chromium-flags.conf
+2026-02-13 21:37:34 [/home/rhea] sudo pacman -S tlp powertop && yay -S envycontrol
+2026-02-13 21:37:40 [/home/rhea] sudo systemctl enable --now tlp && sudo systemctl enable --now auto-cpufreq
+2026-02-13 21:39:13 [/home/rhea] sudo envycontrol -s integrated
+2026-02-13 21:41:01 [/home/rhea] sudo envycontrol -s hybrid
+2026-02-13 21:44:19 [/home/rhea] sudo powertop
+2026-02-13 21:44:23 [/home/rhea] clear
+2026-02-13 21:44:34 [/home/rhea] sudo powertop
+2026-02-13 21:44:36 [/home/rhea] clear
+2026-02-13 21:44:59 [/home/rhea] sudo powertop
+2026-02-13 21:46:28 [/home/rhea] sudo powertop --csv=powertop-report.csv 
+2026-02-13 21:48:56 [/home/rhea] sudo powertop --auto-tune
+2026-02-13 21:49:47 [/home/rhea] sudo envycontrol -s hybrid 
+2026-02-13 21:56:43 [/home/rhea] sudo envycontrol -s hybrid 
+2026-02-13 21:56:49 [/home/rhea/rhea] cd rhea
+2026-02-13 21:57:03 [/home/rhea] sudo envycontrol -s hybrid 
+2026-02-13 21:57:21 [/home/rhea] envycontrol --query   
+2026-02-13 21:57:50 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:01:13 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:01:21 [/home/rhea/rhea] cd rhea/
+2026-02-13 22:01:46 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:01:49 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 22:01:51 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 22:01:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 22:01:59 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:02:01 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 22:02:12 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects
+2026-02-13 22:02:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 22:02:19 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:02:22 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 22:02:24 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 22:02:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-13 22:04:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source 
+2026-02-13 22:04:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-13 22:05:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:09:16 [/home/rhea] sudo powertop --csv=powertop-report-after.csv
+2026-02-13 22:09:21 [/home/rhea/rhea] cd rhea/
+2026-02-13 22:09:53 [/home/rhea/rhea] powertop
+2026-02-13 22:15:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-13 22:16:31 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clea
+2026-02-13 22:16:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:17:24 [/home/rhea] sudo powertop
+2026-02-13 22:18:15 [/home/rhea/rhea] cd rhea
+2026-02-13 22:26:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:26:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:27:12 [/home/rhea/rhea] claude
+2026-02-13 22:29:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:29:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:31:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:31:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:31:46 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:31:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-13 22:32:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "fixed scaling anf fixed some audio not playing bugs"
+2026-02-13 22:32:52 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-13 22:38:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:44:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:52:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 22:53:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 22:58:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 23:02:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 23:06:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 23:07:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 23:09:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 23:12:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 23:12:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-13 23:14:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-13 23:15:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-13 23:15:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "updated media visualizer from eating CPU"
+2026-02-13 23:15:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-13 23:17:48 [/home/rhea] claude
+2026-02-13 23:17:53 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-13 23:18:08 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-13 23:18:18 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor/
+2026-02-13 23:49:05 [/home/rhea] claude
+2026-02-13 23:49:08 [/home/rhea/rhea] cd rhea
+2026-02-13 23:53:56 [/home/rhea] claude
+2026-02-13 23:54:00 [/home/rhea] waybar &
+2026-02-13 23:54:27 [/home/rhea] claude
+2026-02-13 23:54:37 [/home/rhea] claude
+2026-02-13 23:54:39 [/home/rhea/rhea] cd rhea/
+2026-02-13 23:54:51 [/home/rhea] claude
+2026-02-13 23:54:53 [/home/rhea] waybar &
+2026-02-13 23:55:58 [/home/rhea] waybar &
+2026-02-13 23:56:05 [/home/rhea] waybar & disown
+2026-02-14 00:24:18 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 00:24:59 [/home/rhea] waybar & disown
+2026-02-14 00:25:02 [/home/rhea/rhea] cd rhea/
+2026-02-14 01:06:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-14 01:06:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "fixed media visualizer bars not being smooth and not showing up in windows"
+2026-02-14 01:06:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-14 01:12:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 01:18:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] claude
+2026-02-14 02:01:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:03:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:03:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:05:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:10:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-14 02:11:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "added strip button to media settings to clean up song directory" 
+2026-02-14 02:11:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-14 02:13:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] code .
+2026-02-14 02:13:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] waybar & disown
+2026-02-14 02:13:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] waybar & disown
+2026-02-14 02:28:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:33:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:38:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:39:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:41:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:42:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:47:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:49:15 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:52:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 02:53:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 02:57:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 03:07:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 03:13:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-14 03:13:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "Added multiple 3D effects to the media room"
+2026-02-14 03:13:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-14 10:33:50 [/home/rhea] claude
+2026-02-14 10:33:54 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 10:33:57 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 10:33:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 10:34:03 [/home/rhea] claude
+2026-02-14 10:34:05 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 10:34:07 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 10:34:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 10:34:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-14 10:34:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 10:34:38 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 10:35:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 10:37:44 [/home/rhea] claude
+2026-02-14 10:37:47 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 10:37:48 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 10:37:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 10:38:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 10:40:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 10:41:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-14 10:42:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "added more fidelity to gesture sensor volume mapping, fixed song stripping not persisting through app restarts"
+2026-02-14 10:42:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-14 10:43:57 [/home/rhea] claude
+2026-02-14 10:48:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 10:49:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 10:50:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 10:50:51 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 13:05:09 [/home/rhea] claude
+2026-02-14 13:25:56 [/home/rhea] claude
+2026-02-14 13:26:01 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 13:26:02 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 13:26:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 13:26:10 [/home/rhea] claude
+2026-02-14 13:26:11 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 13:26:13 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 13:26:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 13:26:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-14 13:26:35 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 13:35:08 [/home/rhea] claude
+2026-02-14 13:35:15 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-14 13:35:19 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-14 13:35:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-14 14:55:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 14:55:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-14 14:57:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "optimized off screen animations, network manager threading, and media room blur effects"
+2026-02-14 14:57:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-14 14:57:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-14 15:09:00 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-14 15:10:11 [/home/rhea] claude
+2026-02-14 15:10:13 [/home/rhea/rhea] cd rhea/
+2026-02-15 13:18:44 [/home/rhea] claude
+2026-02-15 13:18:48 [/home/rhea/rhea] cd rhea
+2026-02-15 13:27:38 [/home/rhea] claude
+2026-02-15 13:27:41 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 13:27:43 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 13:27:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 13:27:50 [/home/rhea] claude
+2026-02-15 13:27:53 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 13:28:13 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 13:28:15 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 13:29:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-15 13:30:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 14:33:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 14:59:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 15:01:41 [/home/rhea] claude
+2026-02-15 15:01:44 [/home/rhea/Dropbox] cd Dropbox/ 
+2026-02-15 15:01:45 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 15:01:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 15:07:38 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 15:09:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 15:14:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 15:14:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear all
+2026-02-15 15:14:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear -T
+2026-02-15 15:14:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 15:15:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 15:16:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 15:22:05 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 15:29:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 15:30:32 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 15:30:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 16:01:43 [/home/rhea] claude
+2026-02-15 16:01:46 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 16:01:48 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 16:01:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 16:01:54 [/home/rhea] claude
+2026-02-15 16:01:56 [/home/rhea] cd Way
+2026-02-15 16:01:59 [/home/rhea/Dropbox] cd Dropbox
+2026-02-15 16:02:01 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 16:02:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 16:02:06 [/home/rhea] claude
+2026-02-15 16:02:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-15 16:02:35 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 16:05:25 [/home/rhea] claude
+2026-02-15 16:05:28 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 16:05:30 [/home/rhea/Dropbox] cd way
+2026-02-15 16:05:32 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 16:05:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 16:34:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 16:35:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 16:37:16 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 16:40:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 16:47:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-15 16:48:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "Added a way to save album art themes, modified obd paramter scanning logic"
+2026-02-15 16:48:28 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-15 16:52:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:04:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:06:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:27:28 [/home/rhea] claude
+2026-02-15 17:27:31 [/home/rhea/rhea] cd rhea
+2026-02-15 17:30:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:31:42 [/home/rhea] claude
+2026-02-15 17:31:48 [/home/rhea] waybar & disown
+2026-02-15 17:33:04 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:35:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:41:27 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:41:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:43:20 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:43:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:43:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:43:51 [/home/rhea] claude
+2026-02-15 17:43:55 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 17:43:57 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 17:43:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 17:44:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:45:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:45:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:46:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:47:15 [/home/rhea] claude
+2026-02-15 17:47:18 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 17:47:19 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 17:47:20 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-15 17:47:33 [/home/rhea/Dropbox/WayBetterProjects] cd _JEEP
+2026-02-15 17:47:36 [/home/rhea/Dropbox/WayBetterProjects/_Jeep] cd _Jeep/
+2026-02-15 17:47:38 [/home/rhea/Dropbox/WayBetterProjects/_Jeep] ll
+2026-02-15 17:47:47 [/home/rhea/Dropbox/WayBetterProjects/_Jeep/Tail Lights] cd Tail\ Lights/
+2026-02-15 17:47:48 [/home/rhea/Dropbox/WayBetterProjects/_Jeep/Tail Lights] ll
+2026-02-15 17:47:56 [/home/rhea/Dropbox/WayBetterProjects/_Jeep] cd ..
+2026-02-15 17:49:18 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:50:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:51:15 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:51:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:52:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:54:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:54:18 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 17:55:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 17:59:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:00:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:00:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:01:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:10:11 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:10:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:11:27 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:11:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:13:15 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:13:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:13:58 [/home/rhea] cd ..
+2026-02-15 18:14:04 [/home/rhea] cd ..
+2026-02-15 18:14:08 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 18:14:10 [/home/rhea/Dropbox] cd rhe
+2026-02-15 18:14:14 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 18:15:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 18:15:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:16:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:16:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:16:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:16:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-15 18:17:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "tons of fixes sorry too much to update"
+2026-02-15 18:17:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-15 18:19:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-15 18:19:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "Removed the 3D text flip feature, reworked the album art coverflow to use a dual-card enter/exit animation, added a custom scroll rail to settings pages, and made various UI sizing and styling tweaks."   
+2026-02-15 18:19:47 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-15 18:19:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:30:07 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:45:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:45:29 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:56:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 18:57:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 18:58:50 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 19:03:49 [/home/rhea] claude
+2026-02-15 19:03:53 [/home/rhea] cd rhe
+2026-02-15 19:03:55 [/home/rhea/rhea] cd rhea/
+2026-02-15 19:08:46 [/home/rhea] claude
+2026-02-15 19:08:49 [/home/rhea] sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet mem_sleep_default=deep"/' /etc/default/grub 
+2026-02-15 19:09:00 [/home/rhea] sudo grub-mkconfig -o /boot/grub/grub.cfg
+2026-02-15 19:10:26 [/home/rhea] sudo grub-mkconfig -o /boot/grub/grub.cfg
+2026-02-15 19:10:31 [/home/rhea/rhea] cd rhea
+2026-02-15 19:12:58 [/home/rhea] sudo grub-mkconfig -o /boot/grub/grub.cfg
+2026-02-15 19:14:05 [/home/rhea] sudo grub-mkconfig -o /boot/grub/grub.cfg
+2026-02-15 19:14:08 [/home/rhea] sudo dmesg | grep -iE "i2c|hid|trackpad|touchpad|resume|suspend" | tail -30 
+2026-02-15 19:15:49 [/home/rhea] sudo dmesg | grep -iE "i2c|hid|trackpad|touchpad|resume|suspend" | tail -30 
+2026-02-15 19:17:46 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:23:04 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:23:05 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 22:23:09 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd WayBetterProjects/_OCTAVE/
+2026-02-15 22:23:13 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:23:22 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd Dropbox/WayBetterProjects/_OCTAVE/
+2026-02-15 22:23:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-15 22:25:08 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 22:25:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 22:30:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 22:37:52 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:37:54 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 22:37:56 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 22:37:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 22:40:22 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:40:26 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 22:40:28 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 22:40:30 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 22:42:35 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:46:58 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh                                               
+2026-02-15 22:47:01 [/home/rhea/rhea] cd rhea/
+2026-02-15 22:54:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 22:58:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:00:54 [/home/rhea] claude
+2026-02-15 23:00:56 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 23:00:58 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 23:01:02 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 23:07:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:08:45 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:13:59 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:20:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:20:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:21:34 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:21:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:27:56 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:28:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:30:33 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:38:26 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:40:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:40:17 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-15 23:41:42 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-15 23:46:14 [/home/rhea] claude
+2026-02-15 23:46:16 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-15 23:46:23 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-15 23:46:27 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-15 23:50:19 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-15 23:50:32 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "Optimized media track-change performance, centralized OBD parameter definitions into a singleton, added in-app self-update, and reorganized settings pages with new widget cards."      
+2026-02-15 23:50:43 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-17 18:21:21 [/home/rhea] claude
+2026-02-17 18:22:59 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-17 18:23:20 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-17 18:25:18 [/home/rhea/Dropbox/WayBetterProjects] cd..
+2026-02-17 18:27:57 [/home/rhea/Dropbox/WayBetterProjects] cd _FinancialAdvisor
+2026-02-17 18:29:16 [/home/rhea/Dropbox/WayBetterProjects] cd_Finan
+2026-02-17 18:30:31 [/home/rhea/Dropbox/WayBetterProjects/_FinacialAdvisor] cd _FinacialAdvisor
+2026-02-20 14:06:00 [/home/rhea] claude
+2026-02-20 14:06:02 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-20 14:06:01 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-20 14:06:06 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-20 14:06:17 [/home/rhea] claude
+2026-02-20 14:06:18 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-20 14:06:20 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-20 14:06:24 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-20 14:06:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-20 14:06:53 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 14:06:55 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] lear
+2026-02-20 14:06:57 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-20 14:09:40 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 14:45:27 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-20 14:48:10 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 14:55:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-20 14:56:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 15:06:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-20 15:07:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 15:24:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] clear
+2026-02-20 15:25:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 15:37:49 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-20 15:38:14 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "optimized album art animation further"
+2026-02-20 15:38:21 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-20 15:38:39 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-20 21:44:08 [/home/rhea] claude
+2026-02-20 21:44:10 [/home/rhea] cd 
+2026-02-20 21:44:15 [/home/rhea/rhea] cd rhea/
+2026-02-20 21:45:05 [/home/rhea] claude
+2026-02-20 21:45:07 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-20 21:45:08 [/home/rhea/Dropbox] cd way
+2026-02-20 21:45:11 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-20 21:45:13 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-20 21:45:16 [/home/rhea] claude
+2026-02-20 21:45:18 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-20 21:45:20 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-20 21:45:23 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-20 21:45:33 [/home/rhea] claude
+2026-02-20 21:45:40 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-20 21:45:45 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-20 21:45:47 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-20 21:45:58 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-21 00:01:15 [/home/rhea] claude
+2026-02-21 00:01:19 [/home/rhea] sudo sh -c 'echo "i2c-ELAN0406:00" > /sys/bus/i2c/drivers/i2c_hid_acpi/unbind && sleep 0.5 && echo "i2c-ELAN0406:00" > /sys/bus/i2c/drivers/i2c_hid_acpi/bind'
+2026-02-21 00:02:14 [/home/rhea] sudo dmesg | grep -iE "elan|touchpad|i2c.*hid|0406" | tail -30 
+2026-02-21 00:05:26 [/home/rhea] sudo modprobe -r i2c_hid_acpi && sleep 1 && sudo modprobe i2c_hid_acpi
+2026-02-21 00:09:47 [/home/rhea] /sys/bus/pci/drivers/intel-lpss/bind' 
+2026-02-21 00:10:53 [/home/rhea] sudo sh -c 'echo 0000:00:15.0 > /sys/bus/pci/drivers/intel-lpss/unbind && sleep 2 && echo 0000:00:15.0 > /sys/bus/pci/drivers/intel-lpss/bind'
+2026-02-21 00:18:27 [/home/rhea] sudo cp ~/rhea/touchpad-resume.sh /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 00:18:38 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 00:19:56 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 00:19:59 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-21 00:20:03 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd WayBetterProjects/_OCTAVE/
+2026-02-21 00:20:07 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 00:20:08 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-21 00:20:10 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-21 00:20:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd _OCTAVE/
+2026-02-21 00:23:29 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 00:24:36 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] cd Dropbox/WayBetterProjects/_OCTAVE/
+2026-02-21 00:25:37 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:05:48 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] source venv/bin/activate
+2026-02-21 01:06:01 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-21 01:13:28 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:13:59 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:14:11 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:14:13 [/home/rhea/rhea] cd rhea/
+2026-02-21 01:17:26 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:17:33 [/home/rhea] sudo pacman -S wireguard-tools
+2026-02-21 01:33:53 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:34:33 [/home/rhea/Downloads] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:35:39 [/home/rhea] sudo pacman -S wireguard-tools   
+2026-02-21 01:35:48 [/home/rhea] sudo cp /home/rhea/Downloads/wbs-robert2-wg0-8.conf /etc/wireguard/wg0.conf
+2026-02-21 01:35:55 [/home/rhea] sudo chmod 600 /etc/wireguard/wg0.conf
+2026-02-21 01:36:02 [/home/rhea] sudo wg-quick up wg0
+2026-02-21 01:36:12 [/home/rhea] sudo systemctl enable wg-quick@wg0
+2026-02-21 01:37:05 [/home/rhea] udo wg-quick up wg0
+2026-02-21 01:37:11 [/home/rhea] sudo wg-quick up wg0
+2026-02-21 01:38:01 [/home/rhea] ssh wbsolutions@10.253.0.1
+2026-02-21 01:38:37 [/home/rhea] ssh -v wbsolutions@10.253.0.1
+2026-02-21 01:40:18 [/home/rhea] ssh -o PreferredAuthentications=password wbsolutions@10.253.0.1
+2026-02-21 01:44:17 [/home/rhea] sudo pacman -S smbclient cifs-utils 
+2026-02-21 01:44:29 [/home/rhea] smbclient -L 10.253.0.1 -U wbsolutions
+2026-02-21 01:44:59 [/home/rhea] smbclient //10.253.0.1/sharename -U wbsolutions
+2026-02-21 01:45:33 [/home/rhea] smbclient -L 10.253.0.1 -U wbsolutions
+2026-02-21 01:45:42 [/home/rhea] sudo pacman -S smbclient cifs-utils  
+2026-02-21 01:45:58 [/home/rhea] smbclient -L 10.253.0.1 -U wbsolutions
+2026-02-21 01:46:35 [/home/rhea] sudo mkdir /mnt/wbsolutions
+2026-02-21 01:46:52 [/home/rhea] sudo mount -t cifs //10.253.0.1/sharename /mnt/wbsolutions -o username=wbsolutions
+2026-02-21 01:47:21 [/home/rhea] sudo mount -t cifs //10.253.0.1/wbsolutions /mnt/wbsolutions -o username=wbsolutions
+2026-02-21 01:47:23 [/home/rhea] ll
+2026-02-21 01:47:44 [/mnt/wbsolutions] cd /mnt/wbsolutions/
+2026-02-21 01:47:46 [/mnt/wbsolutions] ll
+2026-02-21 01:48:48 [/mnt/wbsolutions/WayBetterProjects (DropBox)] cd WayBetterProjects\ \(DropBox\)/
+2026-02-21 01:48:50 [/mnt/wbsolutions/WayBetterProjects (DropBox)] ll
+2026-02-21 01:48:52 [/mnt/wbsolutions/WayBetterProjects (DropBox)/_OCTAVE] cd _OCTAVE/
+2026-02-21 01:52:18 [/mnt/wbsolutions/WayBetterProjects (DropBox)] cd ..
+2026-02-21 01:52:21 [/mnt/wbsolutions] ll
+2026-02-21 01:53:04 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:53:08 [/home/rhea] sudo pacman -S smbclient cifs-utils 
+2026-02-21 01:53:40 [/home/rhea] sudo chmod +x /usr/lib/systemd/system-sleep/touchpad-resume.sh
+2026-02-21 01:53:44 [/home/rhea] sudo mkdir -p /etc/samba
+2026-02-21 01:53:54 [/home/rhea] echo -e "username=wbsolutions\npassword=wbsolutions" | sudo tee /etc/samba/credentials
+2026-02-21 01:54:02 [/home/rhea] sudo chmod 600 /etc/samba/credentials
+2026-02-21 01:54:07 [/home/rhea] sudo mkdir -p /mnt/wbs
+2026-02-21 01:54:16 [/home/rhea] smbclient -L 10.253.0.1 -U wbsolutions
+2026-02-21 01:55:19 [/home/rhea] echo '//10.253.0.1/wbsolutions /mnt/wbs cifs credentials=/etc/samba/credentials,_netdev 0 0' 
+2026-02-21 01:55:31 [/home/rhea] echo '//10.253.0.1/wbsolutions /mnt/wbs cifs credentials=/etc/samba/credentials,_netdev 0 0' | sudo tee -a /etc/fstab
+2026-02-21 01:55:41 [/home/rhea] sudo mount /mnt/wbs
+2026-02-21 01:58:20 [/home/rhea] sudo mount /mnt/wbsoltuions
+2026-02-21 01:58:46 [/home/rhea] sudo systemctl daemon-reload && sudo mount /mnt/wbsolutions  
+2026-02-21 01:59:55 [/home/rhea] sudo mount /mnt/wbs
+2026-02-21 02:00:12 [/home/rhea] sudo sed -i 's|/mnt/wbs |/mnt/wbsolutions |' /etc/fstab
+2026-02-21 02:00:18 [/home/rhea] sudo mkdir -p /mnt/wbsolutions
+2026-02-21 02:00:23 [/home/rhea] sudo systemctl daemon-reload
+2026-02-21 02:00:28 [/home/rhea] sudo mount /mnt/wbsolutions
+2026-02-21 02:01:21 [/home/rhea] ls /mnt/wbs 
+2026-02-21 02:02:33 [/home/rhea] sudo umount /mnt/wbs 
+2026-02-21 02:02:38 [/home/rhea] sudo mv /mnt/wbs /mnt/wbsolutions  
+2026-02-21 02:02:43 [/home/rhea] sudo sed -i 's|/mnt/wbs |/mnt/wbsolutions |' /etc/fstab
+2026-02-21 02:02:48 [/home/rhea] sudo systemctl daemon-reload    
+2026-02-21 02:02:54 [/home/rhea] sudo mount /mnt/wbsolutions
+2026-02-21 02:03:03 [/home/rhea] ls /mnt/wbsolutions/
+2026-02-21 02:08:58 [/home/rhea] claude
+2026-02-21 02:08:59 [/home/rhea] killall waybar && waybar &disown 
+2026-02-21 02:16:40 [/home/rhea] claude
+2026-02-21 02:16:42 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-21 02:16:45 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-21 02:16:53 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] cd _Spotify/
+2026-02-21 02:16:54 [/home/rhea/Dropbox/WayBetterProjects/_Spotify] ll
+2026-02-21 02:16:58 [/home/rhea/Dropbox/WayBetterProjects/_Spotify/Downloads] cd Downloads/
+2026-02-21 02:16:59 [/home/rhea/Dropbox/WayBetterProjects/_Spotify/Downloads] ll
+2026-02-21 02:20:38 [/mnt/wbsolutions] claude
+2026-02-21 02:20:41 [/mnt/wbsolutions] ll
+2026-02-21 02:21:38 [/home/rhea] killall waybar && waybar &disown
+2026-02-21 02:37:51 [/home/rhea] ll
+2026-02-21 02:37:53 [/home/rhea/rhea] cd rhea/
+2026-02-21 02:59:36 [/mnt/wbsolutions] claude
+2026-02-21 02:59:40 [/mnt/wbsolutions] ll
+2026-02-21 02:59:44 [/mnt/wbsolutions/#CUSTOMERS] cd \#CUSTOMERS/
+2026-02-21 02:59:46 [/mnt/wbsolutions/#CUSTOMERS] ll
+2026-02-21 02:59:48 [/mnt/wbsolutions/#CUSTOMERS/MONTBLEAU] cd MONTBLEAU/
+2026-02-21 02:59:50 [/mnt/wbsolutions/#CUSTOMERS/MONTBLEAU] ll
+2026-02-21 02:59:57 [/mnt/wbsolutions/#CUSTOMERS/MONTBLEAU/STUDIO B LACMA PANELS FULL G CODE PACKAGE] cd STUDIO\ B\ LACMA\ PANELS\ FULL\ G\ CODE\ PACKAGE
+2026-02-21 02:59:59 [/mnt/wbsolutions/#CUSTOMERS/MONTBLEAU/STUDIO B LACMA PANELS FULL G CODE PACKAGE] ll
+2026-02-21 03:27:44 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] (venv) rhea@rhea:~/Dropbox/WayBetterProjects/_OCTAVE$ git add .
+2026-02-21 03:27:58 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git add .
+2026-02-21 03:28:37 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] python main.py
+2026-02-21 03:29:12 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git commit -m "Added Music download menu"
+2026-02-21 03:29:25 [/home/rhea/Dropbox/WayBetterProjects/_OCTAVE] git push -u origin main
+2026-02-21 14:52:11 [/home/rhea] ll
+2026-02-21 14:52:57 [/home/rhea] ll
+2026-02-21 14:59:27 [/home/rhea] ll
+2026-02-21 14:59:29 [/home/rhea/rhea] cd rhea/
+2026-02-21 15:04:59 [/mnt/wbsolutions] ll
+2026-02-21 15:05:44 [/home/rhea] ll
+2026-02-21 15:05:59 [/home/rhea] nvim /ect/fstab
+2026-02-21 15:06:06 [/home/rhea] code /etc/fstab
+2026-02-21 15:10:18 [/home/rhea] sudo nano /etc/fstab
+2026-02-21 15:10:37 [/home/rhea] sudo systemctl daemon-reload
+2026-02-21 15:12:58 [/home/rhea] sudo pacman -Syu
+2026-02-21 15:14:20 [/home/rhea] reboot
+2026-02-21 17:52:16 [/home/rhea] claude
+2026-02-21 17:52:20 [/home/rhea/rhea] cd rhea/
+2026-02-21 17:54:51 [/home/rhea] claude
+2026-02-21 17:56:19 [/mnt/wbsolutions] claude
+2026-02-21 17:56:19 [/mnt/wbsolutions] claude
+2026-02-21 17:56:21 [/mnt/wbsolutions] ll
+2026-02-21 17:57:01 [/mnt/wbsolutions/_Projects [INT]] cd _Projects\ \[INT\]/
+2026-02-21 17:57:03 [/mnt/wbsolutions/_Projects [INT]] ll
+2026-02-21 20:55:02 [/home/rhea] ll
+2026-02-21 20:55:06 [/home/rhea/rhea] cd rhea/
+2026-02-21 20:59:26 [/mnt/wbsolutions] ll
+2026-02-21 21:05:25 [/home/rhea] ll
+2026-02-21 21:05:28 [/home/rhea] sudo systemctl enable --now wg-quick@wg0
+2026-02-21 21:06:01 [/mnt/wbsolutions] sudo systemctl enable --now wg-quick@wg0
+2026-02-21 21:06:03 [/mnt/wbsolutions] ll
+2026-02-21 21:06:07 [/mnt/wbsolutions/WayBetterProjects (DropBox)] cd WayBetterProjects\ \(DropBox\)/
+2026-02-21 21:06:10 [/mnt/wbsolutions/WayBetterProjects (DropBox)] ll
+2026-02-21 21:06:32 [/home/rhea] sudo systemctl enable --now wg-quick@wg0
+2026-02-21 21:06:33 [/home/rhea/Dropbox] cd Dropbox/
+2026-02-21 21:06:35 [/home/rhea/Dropbox/WayBetterProjects] cd WayBetterProjects/
+2026-02-21 21:06:36 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-21 21:08:47 [/home/rhea/Dropbox/WayBetterProjects] code .
+2026-02-21 21:15:35 [/home/rhea/Dropbox/WayBetterProjects] dolphin
+2026-02-21 21:15:44 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-21 21:15:46 [/home/rhea/Dropbox/WayBetterProjects] clear
+2026-02-21 21:15:48 [/home/rhea/Dropbox/WayBetterProjects] ll
+2026-02-21 21:15:51 [/mnt/wbsolutions/WayBetterProjects (DropBox)] clear
+2026-02-21 21:15:53 [/mnt/wbsolutions/WayBetterProjects (DropBox)] ll
+2026-02-21 21:31:00 [/home/rhea] sudo systemctl enable --now wg-quick@wg0
+2026-02-21 21:31:03 [/home/rhea] sudo rsync -avh --delete --progress ~/Dropbox/WayBetterProjects/ "/mnt/wbsolutions/WayBetterProjects (DropBox)/" 
+2026-02-21 21:31:15 [/home/rhea] sudo rsync -avh --delete --progress ~/Dropbox/WayBetterProjects/ "/mnt/wbsolutions/WayBetterProjects (DropBox)/" 
+2026-02-21 21:31:18 [/home/rhea] sudo umount /mnt/wbsolutions && sudo mount -o username=wbsolutions,uid=$(id -u),gid=$(id -g) //10.253.0.1/wbsolutions /mnt/wbsolutions
+2026-02-21 21:44:09 [/home/rhea] ll
+2026-02-21 21:57:40 [/home/rhea] sudo umount /mnt/wbsolutions && sudo mount -o username=wbsolutions,uid=$(id -u),gid=$(id -g) //10.253.0.1/wbsolutions /mnt/wbsolutions
+2026-02-21 21:57:45 [/home/rhea] sudo pacman -S rsync
+2026-02-21 22:07:30 [/home/rhea] sudo pacman -S rsync
+2026-02-21 22:07:57 [/home/rhea] du -sh "/mnt/wbsolutions/WayBetterProjects (DropBox)/" 
+2026-02-21 22:08:08 [/home/rhea] ps aux | grep tar  
+2026-02-21 22:26:57 [/home/rhea] ps aux | grep tar  
+2026-02-21 22:26:59 [/home/rhea/rhea] cd rhea/
+2026-02-21 22:28:56 [/home/rhea] ps aux | grep tar  
+2026-02-21 22:29:03 [/home/rhea] killall waybar && waybar & disown
+2026-02-21 22:30:04 [/home/rhea] killall waybar && waybar & disown
+2026-02-21 22:30:09 [/home/rhea] killall waybar
+2026-02-21 22:30:13 [/home/rhea] killall waybar && waybar & disown
+2026-02-21 22:33:26 [/home/rhea] ~/scripts/sync-configs.sh
+2026-02-21 22:33:38 [/home/rhea/rhea] cd rhea/
+2026-02-21 22:33:40 [/home/rhea/rhea] ll
+2026-02-21 22:33:51 [/home/rhea] cd ..
+2026-02-21 22:33:54 [/home/rhea] ll
+2026-02-21 22:34:03 [/home/rhea/scripts] cd scripts/
+2026-02-21 22:34:05 [/home/rhea/scripts] ll
