@@ -84,15 +84,15 @@
     },
 
     "cpu": {
-        "format": "  {usage}%",
+        "format": "󰻠  {usage}%",
         "tooltip-format": "CPU: {usage}%\n{avg_frequency} GHz",
         "interval": 2
     },
 
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°",
-        "format-critical": "{temperatureC}°",
+        "format": "󰔏  {temperatureC}°",
+        "format-critical": "󰔏  {temperatureC}°",
         "tooltip": false
     },
 
@@ -112,13 +112,13 @@
     "custom/gpu-usage": {
         "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo 'N/A'",
         "interval": 2,
-        "format": "󰘚  {}%"
+        "format": "󰍹  {}%"
     },
 
     "custom/gpu-temp": {
         "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null",
         "interval": 5,
-        "format": "{}°"
+        "format": "󰈸  {}°"
     },
 
     "disk": {
@@ -129,6 +129,7 @@
     },
 
     "battery": {
+        "interval": 5,
         "states": {
             "good": 95,
             "warning": 30,

@@ -1,10 +1,10 @@
 /* === Theme Colors — updated by theming engine === */
-@define-color bg_color #0f0f0a;
-@define-color bg_module #1e1e14;
-@define-color text_color #feda99;
-@define-color text_dim #f19c02;
-@define-color accent_color #caa563;
-@define-color border_color #b3893d;
+@define-color bg_color #0b0e0e;
+@define-color bg_module #151c1c;
+@define-color text_color #99eaff;
+@define-color text_dim #00c2f4;
+@define-color accent_color #147289;
+@define-color border_color #105c6f;
 @define-color urgent_color #e06060;
 @define-color charging_color #60c060;
 
@@ -91,6 +91,7 @@ window#waybar.hidden {
 #clock {
     font-weight: bold;
     color: @text_color;
+    margin-right: 340px;
 }
 
 /* ============================================= */
@@ -241,6 +242,10 @@ window#waybar.hidden {
 /* ============================================= */
 
 /* Battery states */
+#battery {
+    color: #e0a050;
+}
+
 #battery.charging, #battery.plugged {
     color: @charging_color;
 }
